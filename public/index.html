@@ -1,0 +1,647 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="theme-color" content="#0a0a0a" />
+
+  <title>ZAVOZ — импорт автомобилей и техники из Китая, Кореи и Японии в Россию</title>
+  <meta name="description" content="ZAVOZ — прямой импорт автомобилей и техники из Китая, Южной Кореи и Японии. Подберём, проверим, купим и доставим авто в любой город России. Без лишних посредников, с полной поддержкой от подбора до доставки." />
+  <meta name="keywords" content="импорт авто из Китая, авто из Кореи, авто из Японии, доставка автомобилей в Россию, подбор авто в Азии, привезти машину из Китая, импорт автомобилей ZAVOZ" />
+  <link rel="canonical" href="https://zavoz.example/" />
+
+  <!-- Open Graph / social -->
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="ZAVOZ" />
+  <meta property="og:title" content="ZAVOZ — автомобили из Азии без лишних посредников" />
+  <meta property="og:description" content="Подберём, проверим, купим и доставим автомобиль из Китая, Кореи или Японии в любой город России." />
+  <meta property="og:locale" content="ru_RU" />
+  <meta property="og:url" content="https://zavoz.example/" />
+  <meta name="twitter:card" content="summary_large_image" />
+
+  <!-- Inline SVG favicon placeholder (swap for real brand favicon later) -->
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%230a0a0a'/%3E%3Ctext x='16' y='22' font-family='Arial' font-size='18' font-weight='700' fill='white' text-anchor='middle'%3EZ%3C/text%3E%3C/svg%3E" />
+
+  <link rel="preload" href="/css/styles.css" as="style" />
+  <link rel="stylesheet" href="/css/styles.css" />
+  <link rel="stylesheet" href="/css/form.css" />
+
+  <!-- Structured data: Organization -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "ZAVOZ",
+    "description": "Импорт автомобилей и техники из Китая, Южной Кореи и Японии в Россию.",
+    "areaServed": "RU",
+    "address": {
+      "@type": "PostalAddress",
+      "addressLocality": "Благовещенск",
+      "addressCountry": "RU"
+    },
+    "knowsAbout": ["импорт автомобилей", "импорт спецтехники", "доставка авто из Азии"]
+  }
+  </script>
+</head>
+<body>
+
+  <!-- ====================== HEADER ====================== -->
+  <header class="header" id="header">
+    <div class="container">
+      <!-- LOGO PLACEHOLDER: replace .logo__mark contents with <img src="/images/logo.svg" alt="ZAVOZ"> -->
+      <a class="logo" href="/" aria-label="ZAVOZ — на главную">
+        <span class="logo__mark">Z</span>
+        <span class="logo__word">ZAVOZ</span>
+      </a>
+
+      <nav class="nav" aria-label="Основная навигация">
+        <a href="#cars">Автомобили</a>
+        <a href="#process">Как мы работаем</a>
+        <a href="#services">Услуги</a>
+        <a href="#team">Команда</a>
+        <a href="#contacts">Контакты</a>
+      </nav>
+
+      <div class="header__actions">
+        <button class="btn btn--light js-request">Подобрать автомобиль</button>
+        <button class="burger" id="burger" aria-label="Меню" aria-expanded="false" aria-controls="mobile-menu">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Mobile menu -->
+  <nav class="mobile-menu" id="mobile-menu" aria-label="Мобильная навигация">
+    <a href="#cars">Автомобили</a>
+    <a href="#process">Как мы работаем</a>
+    <a href="#services">Услуги</a>
+    <a href="#team">Команда</a>
+    <a href="#contacts">Контакты</a>
+    <button class="btn btn--light btn--block js-request">Подобрать автомобиль</button>
+  </nav>
+
+  <main>
+    <!-- ====================== HERO ====================== -->
+    <section class="hero" id="top">
+      <div class="hero__bg" aria-hidden="true"></div>
+      <div class="container">
+        <div class="hero__grid">
+          <div class="hero__copy">
+            <span class="eyebrow hero__eyebrow">Китай · Корея · Япония → Россия</span>
+            <h1 class="display">
+              Автомобили из Азии.<br />
+              <span class="thin">Без лишних посредников.</span>
+            </h1>
+            <p class="lead hero__lead">
+              Подберём, проверим, купим и доставим автомобиль или технику из Китая,
+              Кореи или Японии — в любой город России. Мы работаем напрямую с рынком,
+              поэтому вы платите за автомобиль, а не за цепочку посредников.
+            </p>
+            <div class="hero__cta">
+              <button class="btn btn--light js-request">Подобрать автомобиль</button>
+              <a class="btn btn--ghost on-dark" href="#cars">Посмотреть автомобили</a>
+            </div>
+            <div class="hero__flags">
+              <div class="hero__flag"><b>Китай</b><span>Новые · электро · премиум</span></div>
+              <div class="hero__flag"><b>Корея</b><span>Премиум · аукционы</span></div>
+              <div class="hero__flag"><b>Япония</b><span>Аукционы · пробег</span></div>
+            </div>
+          </div>
+
+          <!-- HERO VISUAL PLACEHOLDER: replace with real automotive photo/video -->
+          <div class="hero__visual reveal" aria-hidden="true">
+            <div class="hero__pulse"><i></i> Представители на месте</div>
+            <div class="hero__visual-label">
+              <span>ZAVOZ · Благовещенск ↔ Хэйхэ</span>
+              <span>Asia → RU</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ====================== STATS ====================== -->
+    <section class="section--darker" aria-label="Ключевые показатели">
+      <div class="stats">
+        <div class="stat reveal"><b>3</b><span>страны прямой работы</span></div>
+        <div class="stat reveal" data-delay="1"><b>85+</b><span>регионов доставки в РФ</span></div>
+        <div class="stat reveal" data-delay="2"><b>0</b><span>лишних посредников</span></div>
+        <div class="stat reveal" data-delay="3"><b>1</b><span>команда — от заявки до ключей</span></div>
+      </div>
+    </section>
+
+    <!-- ====================== TRUST ====================== -->
+    <section class="section section--light" id="trust">
+      <div class="container">
+        <div class="section-head">
+          <span class="eyebrow">Почему ZAVOZ</span>
+          <p class="trust__quote">Мы находимся внутри процесса, а не между вами и автомобилем.</p>
+        </div>
+        <div class="trust__grid">
+          <div class="trust__item reveal">
+            <div class="trust__num">01</div>
+            <h3 class="h3">Прямая работа с Азией</h3>
+            <p>У нас есть представители и рабочие связи в Китае, Корее и Японии. Мы покупаем на месте, а не через цепочку перекупщиков.</p>
+          </div>
+          <div class="trust__item reveal" data-delay="1">
+            <div class="trust__num">02</div>
+            <h3 class="h3">Прозрачный процесс</h3>
+            <p>Вы видите автомобиль, его историю и реальную стоимость. Никаких скрытых наценок и «сюрпризов» на финише.</p>
+          </div>
+          <div class="trust__item reveal" data-delay="2">
+            <div class="trust__num">03</div>
+            <h3 class="h3">Полная поддержка</h3>
+            <p>От подбора и проверки до таможни и доставки к вашему подъезду — одну заявку ведёт одна команда.</p>
+          </div>
+          <div class="trust__item reveal">
+            <div class="trust__num">04</div>
+            <h3 class="h3">Честная цена</h3>
+            <p>Минимум посредников — конкурентная итоговая стоимость. Мы объясняем, из чего складывается цена.</p>
+          </div>
+          <div class="trust__item reveal" data-delay="1">
+            <div class="trust__num">05</div>
+            <h3 class="h3">Доставка по всей России</h3>
+            <p>Логистику берём на себя: организуем перевозку и оформление в любой регион страны.</p>
+          </div>
+          <div class="trust__item reveal" data-delay="2">
+            <div class="trust__num">06</div>
+            <h3 class="h3">Реальные люди</h3>
+            <p>За каждой машиной стоят конкретные представители, с которыми вы общаетесь напрямую в удобном мессенджере.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ====================== COUNTRIES ====================== -->
+    <section class="section section--dark" id="countries">
+      <div class="container">
+        <div class="section-head">
+          <span class="eyebrow">Направления</span>
+          <h2 class="h2">Три рынка — один подход</h2>
+          <p class="lead" style="margin-top:18px">Не уверены, откуда выгоднее везти? Мы поможем выбрать рынок под вашу задачу и бюджет.</p>
+        </div>
+        <div class="countries__grid">
+          <article class="country reveal">
+            <div class="country__media" style="background:radial-gradient(120% 100% at 80% 0%, #2a2d33, #0b0c0e);"></div>
+            <div class="country__body">
+              <div class="country__code">CN · 中国</div>
+              <h3>Китай</h3>
+              <p>Новые и электрические автомобили, премиум, современные технологии, мотоциклы, спецтехника и запчасти.</p>
+              <div class="country__tags">
+                <span class="tag">Новые</span><span class="tag">Электро</span>
+                <span class="tag">Премиум</span><span class="tag">Спецтехника</span>
+              </div>
+            </div>
+          </article>
+          <article class="country reveal" data-delay="1">
+            <div class="country__media" style="background:radial-gradient(120% 100% at 80% 0%, #2b2f36, #0b0c0e);"></div>
+            <div class="country__body">
+              <div class="country__code">KR · 한국</div>
+              <h3>Южная Корея</h3>
+              <p>Корейские и премиальные автомобили, автомобили с пробегом, покупка напрямую и через аукционы.</p>
+              <div class="country__tags">
+                <span class="tag">Премиум</span><span class="tag">С пробегом</span>
+                <span class="tag">Аукционы</span><span class="tag">Genesis · Kia</span>
+              </div>
+            </div>
+          </article>
+          <article class="country reveal" data-delay="2">
+            <div class="country__media" style="background:radial-gradient(120% 100% at 80% 0%, #2a2e34, #0b0c0e);"></div>
+            <div class="country__body">
+              <div class="country__code">JP · 日本</div>
+              <h3>Япония</h3>
+              <p>Японские автомобили с аукционов, надёжный пробег, мотоциклы и спецтехника с прозрачной историей.</p>
+              <div class="country__tags">
+                <span class="tag">Аукционы</span><span class="tag">Пробег</span>
+                <span class="tag">Мотоциклы</span><span class="tag">Спецтехника</span>
+              </div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ====================== SERVICES ====================== -->
+    <section class="section section--light" id="services">
+      <div class="container">
+        <div class="section-head">
+          <span class="eyebrow">Услуги</span>
+          <h2 class="h2">Всё, что нужно для импорта — под ключ</h2>
+        </div>
+        <div class="services__grid">
+          <article class="service service--wide reveal">
+            <div class="service__icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M3 13l2-5a2 2 0 012-1.4h10A2 2 0 0119 8l2 5v5a1 1 0 01-1 1h-1a1 1 0 01-1-1v-1H6v1a1 1 0 01-1 1H4a1 1 0 01-1-1z"/><circle cx="7" cy="15" r="1.3"/><circle cx="17" cy="15" r="1.3"/></svg>
+            </div>
+            <h3 class="h3">Импорт автомобилей</h3>
+            <p>Главное направление ZAVOZ: полный цикл от подбора до передачи автомобиля владельцу в России.</p>
+            <ul class="service__list">
+              <li>Подбор</li><li>Поиск на рынке</li><li>Техническая проверка</li>
+              <li>Проверка истории</li><li>Покупка</li><li>Участие в аукционах</li>
+              <li>Ставки</li><li>Логистика</li><li>Растаможка</li><li>Доставка по РФ</li>
+            </ul>
+          </article>
+
+          <article class="service service--third reveal" data-delay="1">
+            <div class="service__icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="6" cy="17" r="3"/><circle cx="18" cy="17" r="3"/><path d="M6 17h6l3-7h3M9 10l3 4"/></svg>
+            </div>
+            <h3 class="h3">Мотоциклы</h3>
+            <p>Импорт мотоциклов с азиатских рынков — от дорожных до внедорожных.</p>
+          </article>
+
+          <article class="service service--third reveal" data-delay="2">
+            <div class="service__icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M3 18h11v-4l3-1 4 3v2M3 18v-6h8l3 2"/><circle cx="7" cy="19" r="1.6"/><circle cx="18" cy="19" r="1.6"/></svg>
+            </div>
+            <h3 class="h3">Спецтехника</h3>
+            <p>Строительная, коммерческая и другая техника под ваши задачи.</p>
+          </article>
+
+          <article class="service service--third reveal" data-delay="3">
+            <div class="service__icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 3l2.5 4.5L20 9l-4 4 1 6-5-3-5 3 1-6-4-4 5.5-1.5z"/></svg>
+            </div>
+            <h3 class="h3">Запчасти</h3>
+            <p>Поиск и доставка запчастей из Азии — оригинал и качественные аналоги.</p>
+          </article>
+
+          <article class="service service--half reveal">
+            <div class="service__icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M4 12a8 8 0 0116 0v4a2 2 0 01-2 2h-2v-5h4M6 18H4a2 2 0 01-2-2v-4"/></svg>
+            </div>
+            <h3 class="h3">Подготовка автомобиля</h3>
+            <p>До отправки в Россию можем организовать дополнительные работы прямо в Азии — часто удобнее и выгоднее, чем делать то же самое потом.</p>
+            <ul class="service__list">
+              <li>Защитная плёнка</li><li>Детейлинг</li><li>Шумоизоляция</li><li>Доп. оборудование</li>
+            </ul>
+          </article>
+
+          <article class="service service--half reveal" data-delay="1">
+            <div class="service__icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 21s-7-4.35-7-10a7 7 0 0114 0c0 5.65-7 10-7 10z"/><circle cx="12" cy="11" r="2.4"/></svg>
+            </div>
+            <h3 class="h3">Один менеджер на весь путь</h3>
+            <p>Вашу заявку от начала до конца ведёт конкретный представитель. Вы всегда знаете, на каком этапе автомобиль и что происходит дальше.</p>
+            <ul class="service__list">
+              <li>Прозрачные статусы</li><li>Связь в мессенджере</li><li>Фото и видео с места</li>
+            </ul>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ====================== CATALOG PREVIEW ====================== -->
+    <section class="section section--muted" id="cars">
+      <div class="container">
+        <div class="section-head" style="display:flex; flex-wrap:wrap; gap:20px; justify-content:space-between; align-items:flex-end; max-width:none;">
+          <div>
+            <span class="eyebrow">Каталог</span>
+            <h2 class="h2">Автомобили, которые можно привезти</h2>
+          </div>
+          <a class="textlink" href="/cars">Открыть весь каталог →</a>
+        </div>
+        <div class="cars-grid" id="catalog-preview">
+          <!-- Cards injected by main.js. Placeholder data lives in js/data/vehicles.js -->
+        </div>
+        <div class="catalog-preview__foot">
+          <a class="btn" href="/cars">Смотреть все автомобили</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ====================== PROCESS ====================== -->
+    <section class="section section--dark" id="process">
+      <div class="container">
+        <div class="section-head">
+          <span class="eyebrow">Как мы работаем</span>
+          <h2 class="h2">Семь шагов от заявки до ключей</h2>
+        </div>
+        <div class="process__list">
+          <div class="step reveal"><div class="step__num">01</div><div><h3>Заявка</h3><p>Вы рассказываете, какой автомобиль или технику ищете — вплоть до цвета и комплектации, или просто задаёте направление.</p></div></div>
+          <div class="step reveal"><div class="step__num">02</div><div><h3>Поиск и подбор</h3><p>Ищем подходящие варианты на рынках Китая, Кореи или Японии и присылаем реальные предложения.</p></div></div>
+          <div class="step reveal"><div class="step__num">03</div><div><h3>Проверка</h3><p>Осматриваем автомобиль, проверяем историю и техническое состояние. Присылаем фото и видео.</p></div></div>
+          <div class="step reveal"><div class="step__num">04</div><div><h3>Покупка</h3><p>Организуем покупку, участие в аукционе и ставки — прозрачно и на выгодных условиях.</p></div></div>
+          <div class="step reveal"><div class="step__num">05</div><div><h3>Подготовка</h3><p>При необходимости — детейлинг, защитная плёнка, шумоизоляция или доп. оборудование ещё в Азии.</p></div></div>
+          <div class="step reveal"><div class="step__num">06</div><div><h3>Логистика</h3><p>Берём на себя доставку и таможенное оформление.</p></div></div>
+          <div class="step reveal"><div class="step__num">07</div><div><h3>Доставка</h3><p>Автомобиль приезжает в ваш город в России — остаётся забрать ключи.</p></div></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ====================== PREPARATION ====================== -->
+    <section class="section section--light" id="preparation">
+      <div class="container">
+        <div class="prep">
+          <div class="reveal">
+            <span class="eyebrow">Подготовка в Азии</span>
+            <h2 class="h2">Доведём автомобиль до идеала ещё до отправки</h2>
+            <p class="lead" style="margin-top:18px">
+              Если автомобиль находится в Китае, часто можно сделать подготовку и доработки
+              на месте — это удобнее и потенциально выгоднее, чем организовывать те же работы
+              уже в России.
+            </p>
+            <div class="prep__chips">
+              <span class="prep__chip">Защитная плёнка</span>
+              <span class="prep__chip">Детейлинг</span>
+              <span class="prep__chip">Шумоизоляция</span>
+              <span class="prep__chip">Доп. оборудование</span>
+              <span class="prep__chip">Другие доработки</span>
+            </div>
+            <div class="prep__note">
+              <p>Расскажите о пожеланиях в заявке — подскажем, что имеет смысл сделать в Азии, а что лучше в России.</p>
+            </div>
+          </div>
+          <div class="prep__visual reveal" data-delay="1" aria-hidden="true"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ====================== TEAM ====================== -->
+    <section class="section section--muted" id="team">
+      <div class="container">
+        <div class="section-head">
+          <span class="eyebrow">Команда</span>
+          <h2 class="h2">За каждой машиной стоят реальные люди</h2>
+          <p class="lead" style="margin-top:18px">Представители не жёстко закреплены за странами — любой из нас поможет с подбором и общением по вашему автомобилю.</p>
+        </div>
+        <div class="team__grid">
+          <!-- TEAM PHOTO PLACEHOLDERS: replace .member__photo contents with <img src="/images/team/..."> -->
+          <article class="member reveal">
+            <div class="member__photo"><span class="member__initials">ШЕ</span></div>
+            <div class="member__name">Шмаков Егор</div>
+            <div class="member__role">Представитель компании</div>
+            <p class="member__desc">Помогает с подбором, проверкой и сопровождением сделки от первого сообщения до доставки.</p>
+          </article>
+          <article class="member reveal" data-delay="1">
+            <div class="member__photo"><span class="member__initials">БС</span></div>
+            <div class="member__name">Борисов Степан</div>
+            <div class="member__role">Представитель компании</div>
+            <p class="member__desc">На связи по вашему автомобилю, объясняет процесс и держит вас в курсе на каждом этапе.</p>
+          </article>
+          <article class="member reveal" data-delay="2">
+            <div class="member__photo"><span class="member__initials">КА</span></div>
+            <div class="member__name">Кустов Андрей</div>
+            <div class="member__role">Представитель компании</div>
+            <p class="member__desc">Помогает выбрать рынок и вариант под задачу и бюджет, ведёт переговоры и покупку.</p>
+          </article>
+          <article class="member reveal" data-delay="3">
+            <!-- ФАМИЛИЯ БУДЕТ ДОБАВЛЕНА ПОЗЖЕ -->
+            <div class="member__photo"><span class="member__initials">А</span></div>
+            <div class="member__name">Андрей</div>
+            <div class="member__role">Представитель компании</div>
+            <p class="member__desc">Сопровождает клиентов на всех этапах — от подбора до передачи автомобиля.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ====================== WHY ZAVOZ ====================== -->
+    <section class="section section--dark" id="why">
+      <div class="container">
+        <div class="section-head">
+          <span class="eyebrow">Преимущества</span>
+          <h2 class="h2">Почему выбирают ZAVOZ</h2>
+        </div>
+        <div class="why__grid">
+          <div class="why__item reveal"><h3>Прямой доступ к рынкам Азии</h3><p>Покупаем на месте, а не через посредников.</p></div>
+          <div class="why__item reveal" data-delay="1"><h3>Представители в трёх странах</h3><p>Китай, Корея и Япония — рабочие связи на местах.</p></div>
+          <div class="why__item reveal" data-delay="2"><h3>Полное сопровождение</h3><p>От подбора до доставки — одна команда.</p></div>
+          <div class="why__item reveal" data-delay="3"><h3>Прозрачный процесс</h3><p>Понятная стоимость и честные статусы.</p></div>
+          <div class="why__item reveal"><h3>Конкурентные цены</h3><p>Меньше посредников — адекватная итоговая цена.</p></div>
+          <div class="why__item reveal" data-delay="1"><h3>Доставка по всей России</h3><p>Логистику и оформление берём на себя.</p></div>
+          <div class="why__item reveal" data-delay="2"><h3>Разные типы техники</h3><p>Авто, мотоциклы, спецтехника и запчасти.</p></div>
+          <div class="why__item reveal" data-delay="3"><h3>Живое общение</h3><p>Реальные люди в удобном для вас мессенджере.</p></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ====================== FINAL CTA ====================== -->
+    <section class="section section--darker final" id="request">
+      <div class="container">
+        <span class="eyebrow" style="justify-content:center">Заявка</span>
+        <h2 class="h2 reveal">Расскажите, какой автомобиль вы ищете.</h2>
+        <p class="lead reveal" data-delay="1">
+          Даже если вы ещё не определились с конкретной моделью — мы поможем найти
+          подходящий вариант и рассчитать его доставку.
+        </p>
+        <div class="final__cta reveal" data-delay="2">
+          <button class="btn btn--light js-request">Получить подбор</button>
+          <a class="btn btn--ghost on-dark" href="#contacts">Связаться напрямую</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ====================== CONTACTS ====================== -->
+    <section class="section section--dark" id="contacts">
+      <div class="container">
+        <div class="section-head">
+          <span class="eyebrow">Контакты</span>
+          <h2 class="h2">Свяжитесь удобным способом</h2>
+          <p class="lead" style="margin-top:18px">Выберите канал, в котором вам комфортно — ответим и поможем с подбором.</p>
+        </div>
+        <div class="contacts__grid">
+          <!-- CONTACT PLACEHOLDERS: replace href="#" with real links -->
+          <a class="contact-card" href="#" data-contact="telegram"><span>Telegram</span><b>@zavoz</b><small>Быстрый ответ</small></a>
+          <a class="contact-card" href="#" data-contact="whatsapp"><span>WhatsApp</span><b>+7 ··· ·· ··</b><small>Напишите нам</small></a>
+          <a class="contact-card" href="#" data-contact="instagram"><span>Instagram</span><b>@zavoz</b><small>Примеры авто</small></a>
+          <a class="contact-card" href="#" data-contact="phone"><span>Телефон</span><b>Скоро</b><small>Благовещенск</small></a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ====================== FOOTER ====================== -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer__top">
+        <div class="footer__brand">
+          <a class="logo" href="/"><span class="logo__mark">Z</span><span class="logo__word">ZAVOZ</span></a>
+          <p>Импорт автомобилей и техники из Китая, Кореи и Японии. Благовещенск — рядом с границей с Хэйхэ. Работаем по всей России.</p>
+        </div>
+        <div class="footer__cols">
+          <div class="footer__col">
+            <h4>Разделы</h4>
+            <a href="#cars">Автомобили</a>
+            <a href="#process">Как мы работаем</a>
+            <a href="#services">Услуги</a>
+            <a href="#team">Команда</a>
+          </div>
+          <div class="footer__col">
+            <h4>Направления</h4>
+            <a href="#countries">Китай</a>
+            <a href="#countries">Корея</a>
+            <a href="#countries">Япония</a>
+            <a href="/cars">Каталог</a>
+          </div>
+          <div class="footer__col">
+            <h4>Связь</h4>
+            <a href="#" data-contact="telegram">Telegram</a>
+            <a href="#" data-contact="whatsapp">WhatsApp</a>
+            <a href="#" data-contact="instagram">Instagram</a>
+          </div>
+        </div>
+      </div>
+      <div class="footer__bottom">
+        <span>© <span id="year">2026</span> ZAVOZ. Все права защищены.</span>
+        <span>Благовещенск, Россия · Работаем по всей стране</span>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ====================== REQUEST MODAL ====================== -->
+  <div class="modal" id="request-modal" role="dialog" aria-modal="true" aria-labelledby="modal-title" aria-hidden="true">
+    <div class="modal__overlay" data-close></div>
+    <div class="modal__dialog">
+      <div class="modal__head">
+        <div>
+          <h2 id="modal-title">Получить подбор автомобиля</h2>
+          <p>Заполните заявку — подберём вариант и рассчитаем доставку. Ответим в удобном мессенджере.</p>
+        </div>
+        <button class="modal__close" data-close aria-label="Закрыть">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M6 6l12 12M18 6L6 18"/></svg>
+        </button>
+      </div>
+
+      <div class="modal__body">
+        <form id="request-form" novalidate>
+          <div id="form-alert" class="form__alert" role="alert"></div>
+
+          <!-- Honeypot: hidden from users, tempting for bots -->
+          <div class="hp" aria-hidden="true">
+            <label>Не заполняйте это поле <input type="text" name="website" tabindex="-1" autocomplete="off" /></label>
+          </div>
+
+          <fieldset class="form__section">
+            <div class="form__legend">Контакты</div>
+            <div class="form__grid form__grid--2">
+              <div class="field">
+                <label for="f-name">Имя</label>
+                <input id="f-name" name="name" type="text" autocomplete="name" placeholder="Как к вам обращаться" required />
+                <div class="field__error"></div>
+              </div>
+              <div class="field">
+                <label for="f-phone">Телефон <span class="opt">— один из способов связи</span></label>
+                <input id="f-phone" name="phone" type="tel" autocomplete="tel" inputmode="tel" placeholder="+7 ___ ___ __ __" />
+                <div class="field__error"></div>
+              </div>
+              <div class="field">
+                <label for="f-telegram">Telegram <span class="opt">— @username</span></label>
+                <input id="f-telegram" name="telegram" type="text" placeholder="@username" />
+                <div class="field__error"></div>
+              </div>
+              <div class="field">
+                <label for="f-whatsapp">WhatsApp <span class="opt">— если удобно</span></label>
+                <input id="f-whatsapp" name="whatsapp" type="tel" inputmode="tel" placeholder="+7 ___ ___ __ __" />
+                <div class="field__error"></div>
+              </div>
+              <div class="field">
+                <label for="f-instagram">Instagram <span class="opt">— если удобно</span></label>
+                <input id="f-instagram" name="instagram" type="text" placeholder="@username" />
+                <div class="field__error"></div>
+              </div>
+              <div class="field">
+                <label for="f-contact">Предпочтительный способ связи</label>
+                <select id="f-contact" name="preferred_contact_method">
+                  <option value="">Любой удобный</option>
+                  <option value="telegram">Telegram</option>
+                  <option value="whatsapp">WhatsApp</option>
+                  <option value="phone">Телефон</option>
+                  <option value="instagram">Instagram</option>
+                </select>
+              </div>
+            </div>
+          </fieldset>
+
+          <fieldset class="form__section">
+            <div class="form__legend">Автомобиль</div>
+            <div class="form__grid form__grid--2">
+              <div class="field">
+                <label for="f-country">Страна</label>
+                <select id="f-country" name="country">
+                  <option value="">Выберите страну</option>
+                  <option value="china">Китай</option>
+                  <option value="korea">Южная Корея</option>
+                  <option value="japan">Япония</option>
+                  <option value="unsure">Не уверен — помогите выбрать</option>
+                </select>
+              </div>
+              <div class="field">
+                <label for="f-type">Тип автомобиля</label>
+                <select id="f-type" name="vehicle_type">
+                  <option value="">Не важно / не уверен</option>
+                  <option value="sedan">Седан</option>
+                  <option value="crossover">Кроссовер</option>
+                  <option value="suv">Внедорожник</option>
+                  <option value="minivan">Минивэн</option>
+                  <option value="sports">Спорткар</option>
+                  <option value="motorcycle">Мотоцикл</option>
+                  <option value="special">Спецтехника</option>
+                  <option value="other">Другое</option>
+                </select>
+              </div>
+              <div class="field">
+                <label for="f-brand">Марка <span class="opt">— если есть</span></label>
+                <input id="f-brand" name="brand" type="text" placeholder="Toyota, Genesis, BYD…" />
+              </div>
+              <div class="field">
+                <label for="f-model">Модель <span class="opt">— если есть</span></label>
+                <input id="f-model" name="model" type="text" placeholder="Land Cruiser 300…" />
+              </div>
+              <div class="field">
+                <label>Год выпуска</label>
+                <div class="range">
+                  <input name="year_from" type="text" inputmode="numeric" placeholder="от" aria-label="Год от" maxlength="4" />
+                  <span>—</span>
+                  <input name="year_to" type="text" inputmode="numeric" placeholder="до" aria-label="Год до" maxlength="4" />
+                </div>
+              </div>
+              <div class="field">
+                <label>Бюджет, ₽</label>
+                <div class="range">
+                  <input name="budget_from" type="text" inputmode="numeric" placeholder="от" aria-label="Бюджет от" />
+                  <span>—</span>
+                  <input name="budget_to" type="text" inputmode="numeric" placeholder="до" aria-label="Бюджет до" />
+                </div>
+              </div>
+              <div class="field">
+                <label>Пробег, км</label>
+                <div class="range">
+                  <input name="mileage_from" type="text" inputmode="numeric" placeholder="от" aria-label="Пробег от" />
+                  <span>—</span>
+                  <input name="mileage_to" type="text" inputmode="numeric" placeholder="до" aria-label="Пробег до" />
+                </div>
+              </div>
+            </div>
+            <div class="field" style="margin-top:16px">
+              <label for="f-additional">Дополнительные пожелания</label>
+              <textarea id="f-additional" name="additional_requirements" placeholder="Например: чёрный цвет, максимальная комплектация, полный привод, без серьёзных ДТП…"></textarea>
+            </div>
+          </fieldset>
+        </form>
+
+        <!-- Success state -->
+        <div id="form-success" class="form__success">
+          <div class="check" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 13l4 4L19 7"/></svg>
+          </div>
+          <h2>Заявка отправлена</h2>
+          <p>Спасибо! Мы получили ваш запрос и скоро свяжемся с вами удобным способом.</p>
+          <button class="btn" data-close>Готово</button>
+        </div>
+      </div>
+
+      <div class="modal__foot" id="form-foot">
+        <button class="btn btn--block" id="form-submit" type="submit" form="request-form">
+          <span class="btn__label">Получить подбор</span>
+          <span class="btn__spinner" aria-hidden="true"></span>
+        </button>
+        <p class="modal__legal">Нажимая кнопку, вы соглашаетесь на обработку данных для ответа на заявку.</p>
+      </div>
+    </div>
+  </div>
+
+  <script type="module" src="/js/main.js"></script>
+</body>
+</html>

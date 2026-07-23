@@ -1,0 +1,58 @@
+/* ==========================================================================
+   ZAVOZ — /cars catalog page
+   ========================================================================== */
+
+.catalog-hero {
+  background: var(--ink); color: var(--paper);
+  padding-top: 130px; padding-bottom: clamp(40px, 6vw, 70px);
+}
+.catalog-hero h1 { margin-bottom: 18px; }
+.catalog-hero .lead { color: var(--gray-300); }
+
+/* Toolbar */
+.catalog { background: var(--paper); }
+.toolbar {
+  position: sticky; top: 76px; z-index: 40;
+  background: rgba(255,255,255,0.9);
+  backdrop-filter: saturate(180%) blur(12px);
+  border-bottom: 1px solid var(--line-light);
+  padding-block: 16px;
+}
+.toolbar__row { display: grid; gap: 12px; grid-template-columns: 1fr; }
+@media (min-width: 700px) { .toolbar__row { grid-template-columns: 1.4fr 1fr 1fr auto; align-items: center; } }
+.toolbar__search { position: relative; }
+.toolbar__search svg {
+  position: absolute; left: 14px; top: 50%; transform: translateY(-50%);
+  width: 18px; height: 18px; color: var(--gray-400);
+}
+.toolbar__search input {
+  width: 100%; padding: 13px 14px 13px 42px;
+  border: 1px solid var(--line-light); border-radius: var(--radius);
+  font-size: 15px;
+}
+.toolbar__search input:focus { outline: none; border-color: var(--ink); box-shadow: 0 0 0 3px rgba(10,10,10,0.08); }
+.toolbar select {
+  width: 100%; padding: 13px 38px 13px 14px;
+  border: 1px solid var(--line-light); border-radius: var(--radius);
+  font-size: 15px; appearance: none; background: var(--paper);
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%2371757c' stroke-width='1.6' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");
+  background-repeat: no-repeat; background-position: right 14px center;
+}
+.toolbar__reset {
+  padding: 13px 18px; border: 1px solid var(--line-light); border-radius: var(--radius);
+  font-size: 14px; font-weight: 500; white-space: nowrap;
+  transition: background 0.2s, color 0.2s;
+}
+.toolbar__reset:hover { background: var(--ink); color: var(--paper); }
+
+/* Advanced filter row */
+.toolbar__adv { display: grid; gap: 12px; grid-template-columns: 1fr; margin-top: 12px; }
+@media (min-width: 700px) { .toolbar__adv { grid-template-columns: repeat(3, 1fr); } }
+.toolbar__adv label { font-size: 12px; color: var(--gray-500); display: block; margin-bottom: 6px; }
+.toolbar__range { display: grid; grid-template-columns: 1fr auto 1fr; gap: 6px; align-items: center; }
+.toolbar__range input { padding: 10px 12px; border: 1px solid var(--line-light); border-radius: var(--radius); font-size: 14px; width: 100%; }
+.toolbar__range span { color: var(--gray-400); font-size: 13px; }
+
+.catalog__meta { padding-block: 24px 8px; font-size: 14px; color: var(--gray-500); }
+.catalog__empty { padding: 60px 0; text-align: center; color: var(--gray-500); }
+.catalog__list { padding-bottom: var(--section-y); }

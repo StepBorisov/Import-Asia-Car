@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="theme-color" content="#0a0a0a" />
+
+  <title>Каталог автомобилей из Азии — ZAVOZ</title>
+  <meta name="description" content="Каталог автомобилей, которые ZAVOZ может привезти из Китая, Кореи и Японии. Фильтры по марке, стране, цене и году. Получите расчёт доставки в Россию." />
+  <link rel="canonical" href="https://zavoz.example/cars" />
+
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="ZAVOZ" />
+  <meta property="og:title" content="Каталог автомобилей из Азии — ZAVOZ" />
+  <meta property="og:description" content="Автомобили из Китая, Кореи и Японии с расчётом доставки в Россию." />
+  <meta property="og:locale" content="ru_RU" />
+
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%230a0a0a'/%3E%3Ctext x='16' y='22' font-family='Arial' font-size='18' font-weight='700' fill='white' text-anchor='middle'%3EZ%3C/text%3E%3C/svg%3E" />
+
+  <link rel="stylesheet" href="/css/styles.css" />
+  <link rel="stylesheet" href="/css/form.css" />
+  <link rel="stylesheet" href="/css/cars.css" />
+</head>
+<body>
+
+  <!-- HEADER -->
+  <header class="header is-scrolled" id="header">
+    <div class="container">
+      <a class="logo" href="/" aria-label="ZAVOZ — на главную">
+        <span class="logo__mark">Z</span>
+        <span class="logo__word">ZAVOZ</span>
+      </a>
+      <nav class="nav" aria-label="Основная навигация">
+        <a href="/#trust">О компании</a>
+        <a href="/cars">Автомобили</a>
+        <a href="/#services">Услуги</a>
+        <a href="/#team">Команда</a>
+        <a href="/#contacts">Контакты</a>
+      </nav>
+      <div class="header__actions">
+        <button class="btn btn--light js-request">Подобрать автомобиль</button>
+        <button class="burger" id="burger" aria-label="Меню" aria-expanded="false" aria-controls="mobile-menu">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <nav class="mobile-menu" id="mobile-menu" aria-label="Мобильная навигация">
+    <a href="/#trust">О компании</a>
+    <a href="/cars">Автомобили</a>
+    <a href="/#services">Услуги</a>
+    <a href="/#team">Команда</a>
+    <a href="/#contacts">Контакты</a>
+    <button class="btn btn--light btn--block js-request">Подобрать автомобиль</button>
+  </nav>
+
+  <main>
+    <!-- HERO -->
+    <section class="catalog-hero">
+      <div class="container">
+        <span class="eyebrow" style="color:var(--gray-400)">Каталог</span>
+        <h1 class="display" style="font-size:clamp(2.2rem,6vw,4rem)">Автомобили из Азии</h1>
+        <p class="lead">Примеры автомобилей, которые мы можем привезти. Не нашли нужный — оставьте заявку, подберём под ваш запрос и рассчитаем доставку.</p>
+      </div>
+    </section>
+
+    <section class="catalog">
+      <!-- TOOLBAR -->
+      <div class="toolbar">
+        <div class="container">
+          <div class="toolbar__row">
+            <div class="toolbar__search">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4-4"/></svg>
+              <input id="f-search" type="search" placeholder="Поиск: марка, модель, двигатель…" aria-label="Поиск по каталогу" />
+            </div>
+            <select id="f-country" aria-label="Страна">
+              <option value="">Все страны</option>
+              <option value="china">Китай</option>
+              <option value="korea">Корея</option>
+              <option value="japan">Япония</option>
+            </select>
+            <select id="f-type" aria-label="Тип кузова">
+              <option value="">Любой тип</option>
+              <option value="sedan">Седан</option>
+              <option value="crossover">Кроссовер</option>
+              <option value="suv">Внедорожник</option>
+              <option value="minivan">Минивэн</option>
+              <option value="sports">Спорткар</option>
+              <option value="special">Спецтехника</option>
+            </select>
+            <button class="toolbar__reset" id="f-reset" type="button">Сбросить</button>
+          </div>
+          <div class="toolbar__adv">
+            <div>
+              <label>Марка</label>
+              <select id="f-brand" aria-label="Марка"><option value="">Все марки</option></select>
+            </div>
+            <div>
+              <label>Цена, ₽</label>
+              <div class="toolbar__range">
+                <input id="f-price-min" type="text" inputmode="numeric" placeholder="от" aria-label="Цена от" />
+                <span>—</span>
+                <input id="f-price-max" type="text" inputmode="numeric" placeholder="до" aria-label="Цена до" />
+              </div>
+            </div>
+            <div>
+              <label>Год</label>
+              <div class="toolbar__range">
+                <input id="f-year-min" type="text" inputmode="numeric" placeholder="от" aria-label="Год от" maxlength="4" />
+                <span>—</span>
+                <input id="f-year-max" type="text" inputmode="numeric" placeholder="до" aria-label="Год до" maxlength="4" />
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="container catalog__list">
+        <div class="catalog__meta" id="catalog-meta"></div>
+        <div class="cars-grid" id="catalog-list"></div>
+        <div class="catalog__empty" id="catalog-empty" hidden>
+          <p>По вашему запросу ничего не найдено.</p>
+          <p class="muted" style="margin-top:8px">Оставьте заявку — подберём автомобиль под ваши требования.</p>
+          <button class="btn js-request" style="margin-top:20px">Оставить заявку</button>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer__top">
+        <div class="footer__brand">
+          <a class="logo" href="/"><span class="logo__mark">Z</span><span class="logo__word">ZAVOZ</span></a>
+          <p>Импорт автомобилей и техники из Китая, Кореи и Японии. Благовещенск — рядом с границей с Хэйхэ. Работаем по всей России.</p>
+        </div>
+        <div class="footer__cols">
+          <div class="footer__col">
+            <h4>Разделы</h4>
+            <a href="/#trust">О компании</a>
+            <a href="/#process">Как мы работаем</a>
+            <a href="/#services">Услуги</a>
+            <a href="/#team">Команда</a>
+          </div>
+          <div class="footer__col">
+            <h4>Связь</h4>
+            <a href="#" data-contact="telegram">Telegram</a>
+            <a href="#" data-contact="whatsapp">WhatsApp</a>
+            <a href="#" data-contact="instagram">Instagram</a>
+          </div>
+        </div>
+      </div>
+      <div class="footer__bottom">
+        <span>© <span id="year">2026</span> ZAVOZ. Все права защищены.</span>
+        <span>Благовещенск, Россия · Работаем по всей стране</span>
+      </div>
+    </div>
+  </footer>
+
+  <!-- REQUEST MODAL (shared markup with index.html) -->
+  <div class="modal" id="request-modal" role="dialog" aria-modal="true" aria-labelledby="modal-title" aria-hidden="true">
+    <div class="modal__overlay" data-close></div>
+    <div class="modal__dialog">
+      <div class="modal__head">
+        <div>
+          <h2 id="modal-title">Получить подбор автомобиля</h2>
+          <p>Заполните заявку — подберём вариант и рассчитаем доставку. Ответим в удобном мессенджере.</p>
+        </div>
+        <button class="modal__close" data-close aria-label="Закрыть">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M6 6l12 12M18 6L6 18"/></svg>
+        </button>
+      </div>
+
+      <div class="modal__body">
+        <form id="request-form" novalidate>
+          <div id="form-alert" class="form__alert" role="alert"></div>
+
+          <div class="hp" aria-hidden="true">
+            <label>Не заполняйте это поле <input type="text" name="website" tabindex="-1" autocomplete="off" /></label>
+          </div>
+
+          <fieldset class="form__section">
+            <div class="form__legend">Контакты</div>
+            <div class="form__grid form__grid--2">
+              <div class="field">
+                <label for="f-name">Имя</label>
+                <input id="f-name" name="name" type="text" autocomplete="name" placeholder="Как к вам обращаться" required />
+                <div class="field__error"></div>
+              </div>
+              <div class="field">
+                <label for="f-phone">Телефон <span class="opt">— один из способов связи</span></label>
+                <input id="f-phone" name="phone" type="tel" autocomplete="tel" inputmode="tel" placeholder="+7 ___ ___ __ __" />
+                <div class="field__error"></div>
+              </div>
+              <div class="field">
+                <label for="f-telegram">Telegram <span class="opt">— @username</span></label>
+                <input id="f-telegram" name="telegram" type="text" placeholder="@username" />
+                <div class="field__error"></div>
+              </div>
+              <div class="field">
+                <label for="f-whatsapp">WhatsApp <span class="opt">— если удобно</span></label>
+                <input id="f-whatsapp" name="whatsapp" type="tel" inputmode="tel" placeholder="+7 ___ ___ __ __" />
+                <div class="field__error"></div>
+              </div>
+              <div class="field">
+                <label for="f-instagram">Instagram <span class="opt">— если удобно</span></label>
+                <input id="f-instagram" name="instagram" type="text" placeholder="@username" />
+                <div class="field__error"></div>
+              </div>
+              <div class="field">
+                <label for="f-contact">Предпочтительный способ связи</label>
+                <select id="f-contact" name="preferred_contact_method">
+                  <option value="">Любой удобный</option>
+                  <option value="telegram">Telegram</option>
+                  <option value="whatsapp">WhatsApp</option>
+                  <option value="phone">Телефон</option>
+                  <option value="instagram">Instagram</option>
+                </select>
+              </div>
+            </div>
+          </fieldset>
+
+          <fieldset class="form__section">
+            <div class="form__legend">Автомобиль</div>
+            <div class="form__grid form__grid--2">
+              <div class="field">
+                <label for="f-country-modal">Страна</label>
+                <select id="f-country-modal" name="country">
+                  <option value="">Выберите страну</option>
+                  <option value="china">Китай</option>
+                  <option value="korea">Южная Корея</option>
+                  <option value="japan">Япония</option>
+                  <option value="unsure">Не уверен — помогите выбрать</option>
+                </select>
+              </div>
+              <div class="field">
+                <label for="f-type-modal">Тип автомобиля</label>
+                <select id="f-type-modal" name="vehicle_type">
+                  <option value="">Не важно / не уверен</option>
+                  <option value="sedan">Седан</option>
+                  <option value="crossover">Кроссовер</option>
+                  <option value="suv">Внедорожник</option>
+                  <option value="minivan">Минивэн</option>
+                  <option value="sports">Спорткар</option>
+                  <option value="motorcycle">Мотоцикл</option>
+                  <option value="special">Спецтехника</option>
+                  <option value="other">Другое</option>
+                </select>
+              </div>
+              <div class="field">
+                <label for="f-brand-modal">Марка <span class="opt">— если есть</span></label>
+                <input id="f-brand-modal" name="brand" type="text" placeholder="Toyota, Genesis, BYD…" />
+              </div>
+              <div class="field">
+                <label for="f-model">Модель <span class="opt">— если есть</span></label>
+                <input id="f-model" name="model" type="text" placeholder="Land Cruiser 300…" />
+              </div>
+              <div class="field">
+                <label>Год выпуска</label>
+                <div class="range">
+                  <input name="year_from" type="text" inputmode="numeric" placeholder="от" aria-label="Год от" maxlength="4" />
+                  <span>—</span>
+                  <input name="year_to" type="text" inputmode="numeric" placeholder="до" aria-label="Год до" maxlength="4" />
+                </div>
+              </div>
+              <div class="field">
+                <label>Бюджет, ₽</label>
+                <div class="range">
+                  <input name="budget_from" type="text" inputmode="numeric" placeholder="от" aria-label="Бюджет от" />
+                  <span>—</span>
+                  <input name="budget_to" type="text" inputmode="numeric" placeholder="до" aria-label="Бюджет до" />
+                </div>
+              </div>
+              <div class="field">
+                <label>Пробег, км</label>
+                <div class="range">
+                  <input name="mileage_from" type="text" inputmode="numeric" placeholder="от" aria-label="Пробег от" />
+                  <span>—</span>
+                  <input name="mileage_to" type="text" inputmode="numeric" placeholder="до" aria-label="Пробег до" />
+                </div>
+              </div>
+            </div>
+            <div class="field" style="margin-top:16px">
+              <label for="f-additional">Дополнительные пожелания</label>
+              <textarea id="f-additional" name="additional_requirements" placeholder="Например: чёрный цвет, максимальная комплектация, полный привод, без серьёзных ДТП…"></textarea>
+            </div>
+          </fieldset>
+        </form>
+
+        <div id="form-success" class="form__success">
+          <div class="check" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 13l4 4L19 7"/></svg>
+          </div>
+          <h2>Заявка отправлена</h2>
+          <p>Спасибо! Мы получили ваш запрос и скоро свяжемся с вами удобным способом.</p>
+          <button class="btn" data-close>Готово</button>
+        </div>
+      </div>
+
+      <div class="modal__foot" id="form-foot">
+        <button class="btn btn--block" id="form-submit" type="submit" form="request-form">
+          <span class="btn__label">Получить подбор</span>
+          <span class="btn__spinner" aria-hidden="true"></span>
+        </button>
+        <p class="modal__legal">Нажимая кнопку, вы соглашаетесь на обработку данных для ответа на заявку.</p>
+      </div>
+    </div>
+  </div>
+
+  <script type="module" src="/js/catalog.js"></script>
+</body>
+</html>
