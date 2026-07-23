@@ -1,0 +1,33 @@
+# ============================================================================
+# Render Blueprint for ZAVOZ.
+# Deploy: Render Dashboard → New → Blueprint → connect this repo.
+# Secrets are set in the Render dashboard (Environment tab), NOT here.
+# ============================================================================
+services:
+  - type: web
+    name: zavoz
+    runtime: node
+    plan: free
+    branch: main
+    buildCommand: npm install
+    startCommand: npm start
+    healthCheckPath: /api/health
+    envVars:
+      - key: NODE_ENV
+        value: production
+      # The following are marked sync:false — set their real values in the
+      # Render dashboard so they are never committed to git.
+      - key: TELEGRAM_BOT_TOKEN
+        sync: false
+      - key: TELEGRAM_CHAT_ID
+        sync: false
+      - key: SUPABASE_URL
+        sync: false
+      - key: SUPABASE_SERVICE_ROLE_KEY
+        sync: false
+      - key: RATE_LIMIT_MAX
+        value: "5"
+      - key: RATE_LIMIT_WINDOW_MS
+        value: "600000"
+      - key: ALLOWED_ORIGINS
+        sync: false
