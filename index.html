@@ -93,7 +93,7 @@ body { font-family: 'Inter', sans-serif; background: var(--black); color: var(--
 .hero-tag {
   display: flex; align-items: center; gap: 10px;
   font-size: 11px; font-weight: 600; letter-spacing: 4px;
-  color: var(--red); text-transform: uppercase; margin-bottom: 28px;
+  color: var(--red); text-transform: uppercase; 
   opacity: 0; animation: fadeUp .7s .2s forwards;
 }
 .hero-tag::before, .hero-tag::after { content:''; flex:0 0 20px; height:1px; background:var(--red); }
@@ -101,7 +101,7 @@ body { font-family: 'Inter', sans-serif; background: var(--black); color: var(--
   font-family: 'Inter', sans-serif;
   font-size: clamp(36px, 9vw, 64px);
   font-weight: 700; line-height: 1.1;
-  margin-bottom: 28px;
+  
   opacity: 0; animation: fadeUp .7s .35s forwards;
 }
 .hero-h1 em {
@@ -111,7 +111,7 @@ body { font-family: 'Inter', sans-serif; background: var(--black); color: var(--
 .hero-sub {
   font-size: 15px; font-weight: 300; line-height: 1.75;
   color: rgba(255,255,255,0.55); max-width: 480px;
-  margin-bottom: 0;
+  
   opacity: 0; animation: fadeUp .7s .5s forwards;
 }
 .hero-btns {
@@ -131,7 +131,7 @@ body { font-family: 'Inter', sans-serif; background: var(--black); color: var(--
   cursor: pointer; border: none; font-family: 'Inter', sans-serif;
   white-space: nowrap; align-self: flex-start;
 }
-.btn-red:hover { background: #a00020; transform: translateY(-2px); }
+.btn-red:hover { background: #a8001c; transform: translateY(-2px); }
 .btn-red svg { width:20px; height:20px; fill:white; }
 .btn-outline {
   background: transparent; color: white;
@@ -176,12 +176,12 @@ body { font-family: 'Inter', sans-serif; background: var(--black); color: var(--
 .sec-tag {
   display: flex; align-items: center; gap: 10px;
   font-size: 11px; font-weight: 600; letter-spacing: 4px;
-  color: var(--red); text-transform: uppercase; margin-bottom: 20px;
+  color: var(--red); text-transform: uppercase; margin-bottom: 24px;
 }
 .sec-tag::before { content:''; width:20px; height:1px; background:var(--red); }
 .sec-h2 {
   font-size: clamp(28px, 7vw, 44px);
-  font-weight: 700; line-height: 1.15; margin-bottom: 14px;
+  font-weight: 700; line-height: 1.15; margin-bottom: 16px;
 }
 .sec-h2 em { font-family: 'Playfair Display', serif; font-style: italic; color: var(--red); }
 .sec-sub { font-size: 14px; color: var(--gray); line-height: 1.75; font-weight: 300; max-width: 480px; }
@@ -664,7 +664,7 @@ footer p { font-size: 12px; color: rgba(255,255,255,0.2); }
   text-decoration: none;
   transition: background .2s;
 }
-.burger-menu .bm-contact:hover { background: #a80e28; }
+.burger-menu .bm-contact:hover { background: #a8001c; }
 /* ======================== */
 
 /* Тусклый placeholder в полях формы */
@@ -681,6 +681,124 @@ footer p { font-size: 12px; color: rgba(255,255,255,0.2); }
 /* Тусклые placeholder в форме */
 .form-input::placeholder { color: rgba(255,255,255,0.25); }
 .form-input::-webkit-input-placeholder { color: rgba(255,255,255,0.25); }
+
+
+
+/* ===== КАТАЛОГ-СЛАЙДЕР ===== */
+.cat-tab {
+  background:rgba(255,255,255,0.07);border:1px solid rgba(255,255,255,0.12);
+  color:rgba(255,255,255,0.5);border-radius:50px;
+  padding:9px 20px;font-size:13px;font-weight:600;cursor:pointer;
+  font-family:'Inter',sans-serif;transition:all .2s;
+}
+.cat-tab.active { background:var(--red);border-color:var(--red);color:#fff; }
+#catalogSlider::-webkit-scrollbar { display:none; }
+
+.cat-card {
+  background:#fff;color:#111;
+  border-radius:16px;padding:24px 20px;
+  min-width:calc(100vw - 64px);
+  max-width:340px;
+  scroll-snap-align:start;
+  flex-shrink:0;
+  display:flex;flex-direction:column;
+  box-shadow:0 4px 24px rgba(0,0,0,0.25);
+}
+.cat-card__img {
+  width:100%;aspect-ratio:16/10;object-fit:cover;
+  border-radius:10px;margin-bottom:16px;background:#eee;display:block;
+}
+.cat-card__no-img {
+  width:100%;aspect-ratio:16/10;background:#f0f0f0;
+  border-radius:10px;margin-bottom:16px;
+  display:flex;align-items:center;justify-content:center;
+  color:#bbb;font-size:12px;
+}
+.cat-card__badge {
+  display:inline-block;background:var(--red);color:#fff;
+  font-size:10px;font-weight:700;letter-spacing:2px;text-transform:uppercase;
+  padding:4px 12px;border-radius:50px;margin-bottom:14px;
+}
+.cat-card__badge--order {
+  background:rgba(0,0,0,0.07);color:#555;
+}
+.cat-card__title { font-size:20px;font-weight:700;margin-bottom:4px;color:#111; }
+.cat-card__meta  { font-size:13px;color:#777;margin-bottom:16px; }
+.cat-card__price { font-size:26px;font-weight:700;margin-bottom:8px;color:#111; }
+.cat-card__price span { font-size:11px;font-weight:400;color:#999;display:block;margin-bottom:2px; }
+.cat-card__saving {
+  display:inline-block;background:rgba(34,139,34,0.1);color:#228B22;
+  font-size:12px;font-weight:600;padding:4px 12px;border-radius:50px;margin-bottom:14px;
+}
+.cat-card__desc { font-size:13px;color:#555;line-height:1.7;font-weight:300;margin-bottom:16px;flex:1; }
+.cat-card__btn {
+  width:100%;background:var(--red);color:#fff;border:none;
+  border-radius:50px;padding:12px;font-size:13px;font-weight:600;
+  cursor:pointer;font-family:'Inter',sans-serif;transition:background .2s;
+}
+.cat-card__btn:hover { background:#a8001c; }
+.cat-dot {
+  width:6px;height:6px;border-radius:50%;background:rgba(255,255,255,0.2);
+  transition:background .2s,transform .2s;cursor:pointer;
+}
+.cat-dot.active { background:var(--red);transform:scale(1.3); }
+#catPrev:hover,#catNext:hover { background:rgba(255,255,255,0.15); }
+/* =========================== */
+
+/* ===== КАТАЛОГ-СЛАЙДЕР ===== */
+.cat-tab {
+  background:rgba(255,255,255,0.07); border:1px solid rgba(255,255,255,0.12);
+  color:rgba(255,255,255,0.5); border-radius:50px;
+  padding:8px 18px; font-size:12px; font-weight:600; cursor:pointer;
+  font-family:inherit; transition:all .2s;
+}
+.cat-tab.active { background:var(--red); border-color:var(--red); color:#fff; }
+.cat-nav-btn {
+  width:36px; height:36px; border-radius:50%;
+  background:rgba(255,255,255,0.08); border:1px solid rgba(255,255,255,0.12);
+  color:#fff; cursor:pointer; display:flex; align-items:center; justify-content:center;
+  transition:background .2s;
+}
+.cat-nav-btn:hover { background:var(--red); border-color:var(--red); }
+.cat-slide-card {
+  background:#fff; color:#111;
+  border-radius:16px; flex-shrink:0;
+  width:calc(100vw - 64px); max-width:320px;
+  overflow:hidden; display:flex; flex-direction:column;
+}
+.cat-slide-card__img {
+  width:100%; aspect-ratio:16/10; object-fit:cover;
+  background:#eee; display:block;
+}
+.cat-slide-card__no-img {
+  width:100%; aspect-ratio:16/10; background:#f0f0f0;
+  display:flex; align-items:center; justify-content:center;
+  color:#bbb; font-size:12px;
+}
+.cat-slide-card__body { padding:18px; flex:1; display:flex; flex-direction:column; }
+.cat-slide-badge {
+  display:inline-block; font-size:9px; font-weight:700;
+  letter-spacing:1.5px; text-transform:uppercase;
+  padding:3px 10px; border-radius:20px; margin-bottom:10px;
+}
+.cat-slide-badge--arrived { background:var(--red); color:#fff; }
+.cat-slide-badge--order   { background:rgba(0,0,0,0.08); color:#666; }
+.cat-slide-card__title { font-size:16px; font-weight:700; line-height:1.3; margin-bottom:2px; }
+.cat-slide-card__year  { color:#999; font-size:12px; margin-bottom:10px; }
+.cat-slide-card__specs { color:#666; font-size:12px; line-height:1.65; margin-bottom:12px; flex:1; }
+.cat-slide-card__price { font-size:22px; font-weight:700; margin-bottom:12px; }
+.cat-slide-card__price span { font-size:11px; font-weight:400; color:#999; display:block; margin-bottom:2px; }
+.cat-slide-card__desc { color:#888; font-size:12px; line-height:1.6; margin-bottom:14px; }
+.cat-slide-btn {
+  width:100%; background:var(--red); color:#fff; border:none;
+  border-radius:50px; padding:11px; font-size:13px; font-weight:600;
+  cursor:pointer; font-family:inherit; transition:background .2s;
+}
+.cat-slide-btn:hover { background:#a8001c; }
+@media (min-width:768px) {
+  .cat-slide-card { width:300px; }
+}
+/* =========================== */
 </style>
 </head>
 <body>
@@ -746,14 +864,14 @@ footer p { font-size: 12px; color: rgba(255,255,255,0.2); }
   <div style="position:absolute;top:-40px;left:10%;width:380px;height:380px;background:radial-gradient(circle,rgba(200,16,46,0.28) 0%,transparent 68%);pointer-events:none;z-index:0;"></div>
   <div style="position:absolute;bottom:60px;right:5%;width:300px;height:300px;background:radial-gradient(circle,rgba(200,16,46,0.20) 0%,transparent 65%);pointer-events:none;z-index:0;"></div>
 
-  <div class="hero-tag" style="position:relative;z-index:1;">Import Asia Cars</div>
-  <h1 class="hero-h1" style="position:relative;z-index:1;">Авто из Японии —<br/>без <em>переплат</em><br/>и сюрпризов</h1>
-  <p class="hero-sub" style="position:relative;z-index:1;">Работаем напрямую с японскими аукционами. Вы видите каждый этап сделки и знаете, за что платите. Никаких скрытых комиссий.</p>
+  <div class="hero-tag" style="position:relative;z-index:1;display:block;margin:0 0 24px 0!important;padding:0!important;">Import Asia Cars</div>
+  <h1 class="hero-h1" style="position:relative;z-index:1;display:block;margin:0 0 0 0!important;padding:0 0 24px 0!important;">Авто из Японии —<br/>без <em>переплат</em><br/>и сюрпризов</h1>
+  <p class="hero-sub" style="position:relative;z-index:1;display:block;margin:0 0 24px 0!important;padding:0!important;">Работаем напрямую с японскими аукционами. Вы видите каждый этап сделки и знаете, за что платите. Никаких скрытых комиссий.</p>
   <!-- Форма заявки в hero -->
   <div id="heroForm" style="margin-top:0;padding-bottom:0;">
 
     <!-- Статы -->
-    <div style="display:flex;gap:48px;padding:28px 0 28px;justify-content:flex-start;align-items:center;">
+    <div style="display:flex;gap:48px;padding:0 0 36px;justify-content:flex-start;align-items:center;">
       <div style="text-align:left;">
         <div class="hero-stat-num" id="stat-cars">100<span>+</span></div>
         <div class="hero-stat-label">Авто доставлено</div>
@@ -766,18 +884,18 @@ footer p { font-size: 12px; color: rgba(255,255,255,0.2); }
 
     <!-- Форма -->
     <div style="background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.10);border-radius:20px;padding:20px;backdrop-filter:blur(8px);">
-      <div style="color:rgba(255,255,255,0.5);font-size:11px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;margin-bottom:14px;">Подобрать автомобиль</div>
+      <div style="color:#C8102E;font-size:11px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;margin-bottom:14px;">Подобрать автомобиль</div>
       <form id="heroRequestForm" onsubmit="submitHeroForm(event)">
 
         <!-- Ряд 1: Бюджет + Год от-до -->
         <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:10px;">
           <div>
-            <label style="color:rgba(255,255,255,0.45);font-size:11px;display:block;margin-bottom:5px;">Бюджет до, ₽</label>
+            <label style="color:rgba(255,255,255,0.6);font-size:11px;display:block;margin-bottom:5px;">Бюджет до, ₽</label>
             <input name="budget" type="number" placeholder="2 500 000"
               style="width:100%;background:rgba(0,0,0,0.4);border:1px solid rgba(255,255,255,0.12);border-radius:10px;color:#fff;padding:10px 12px;font-size:14px;outline:none;box-sizing:border-box;font-family:inherit;" class="form-input"/>
           </div>
           <div>
-            <label style="color:rgba(255,255,255,0.45);font-size:11px;display:block;margin-bottom:5px;">Год (от–до)</label>
+            <label style="color:rgba(255,255,255,0.6);font-size:11px;display:block;margin-bottom:5px;">Год (от–до)</label>
             <input name="year" type="text" placeholder="2020–2026"
               style="width:100%;background:rgba(0,0,0,0.4);border:1px solid rgba(255,255,255,0.12);border-radius:10px;color:#fff;padding:10px 12px;font-size:14px;outline:none;box-sizing:border-box;font-family:inherit;" class="form-input"/>
           </div>
@@ -785,7 +903,7 @@ footer p { font-size: 12px; color: rgba(255,255,255,0.2); }
 
         <!-- Ряд 2: Марка и модель -->
         <div style="margin-bottom:10px;">
-          <label style="color:rgba(255,255,255,0.45);font-size:11px;display:block;margin-bottom:5px;">Марка и модель</label>
+          <label style="color:rgba(255,255,255,0.6);font-size:11px;display:block;margin-bottom:5px;">Марка и модель</label>
           <input name="model" type="text" placeholder="Например: Toyota Camry"
             style="width:100%;background:rgba(0,0,0,0.4);border:1px solid rgba(255,255,255,0.12);border-radius:10px;color:#fff;padding:10px 12px;font-size:14px;outline:none;box-sizing:border-box;font-family:inherit;" class="form-input"/>
         </div>
@@ -793,12 +911,12 @@ footer p { font-size: 12px; color: rgba(255,255,255,0.2); }
         <!-- Ряд 3: Пробег + Цвет -->
         <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:10px;">
           <div>
-            <label style="color:rgba(255,255,255,0.45);font-size:11px;display:block;margin-bottom:5px;">Пробег до, км</label>
+            <label style="color:rgba(255,255,255,0.6);font-size:11px;display:block;margin-bottom:5px;">Пробег до, км</label>
             <input name="mileage" type="number" placeholder="60 000"
               style="width:100%;background:rgba(0,0,0,0.4);border:1px solid rgba(255,255,255,0.12);border-radius:10px;color:#fff;padding:10px 12px;font-size:14px;outline:none;box-sizing:border-box;font-family:inherit;" class="form-input"/>
           </div>
           <div>
-            <label style="color:rgba(255,255,255,0.45);font-size:11px;display:block;margin-bottom:5px;">Цвет</label>
+            <label style="color:rgba(255,255,255,0.6);font-size:11px;display:block;margin-bottom:5px;">Цвет</label>
             <input name="color" type="text" placeholder="Белый, чёрный…"
               style="width:100%;background:rgba(0,0,0,0.4);border:1px solid rgba(255,255,255,0.12);border-radius:10px;color:#fff;padding:10px 12px;font-size:14px;outline:none;box-sizing:border-box;font-family:inherit;" class="form-input"/>
           </div>
@@ -807,12 +925,12 @@ footer p { font-size: 12px; color: rgba(255,255,255,0.2); }
         <!-- Ряд 4: Телефон + Telegram -->
         <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:10px;">
           <div>
-            <label style="color:rgba(255,255,255,0.45);font-size:11px;display:block;margin-bottom:5px;">Телефон *</label>
+            <label style="color:rgba(255,255,255,0.6);font-size:11px;display:block;margin-bottom:5px;">Телефон *</label>
             <input name="phone" type="tel" placeholder="+7 000 000-00-00" required
               style="width:100%;background:rgba(0,0,0,0.4);border:1px solid rgba(255,255,255,0.12);border-radius:10px;color:#fff;padding:10px 12px;font-size:14px;outline:none;box-sizing:border-box;font-family:inherit;" class="form-input"/>
           </div>
           <div>
-            <label style="color:rgba(255,255,255,0.45);font-size:11px;display:block;margin-bottom:5px;">Telegram</label>
+            <label style="color:rgba(255,255,255,0.6);font-size:11px;display:block;margin-bottom:5px;">Telegram</label>
             <input name="telegram" type="text" placeholder="@username"
               style="width:100%;background:rgba(0,0,0,0.4);border:1px solid rgba(255,255,255,0.12);border-radius:10px;color:#fff;padding:10px 12px;font-size:14px;outline:none;box-sizing:border-box;font-family:inherit;" class="form-input"/>
           </div>
@@ -820,7 +938,7 @@ footer p { font-size: 12px; color: rgba(255,255,255,0.2); }
 
         <!-- Ряд 5: Имя -->
         <div style="margin-bottom:14px;">
-          <label style="color:rgba(255,255,255,0.45);font-size:11px;display:block;margin-bottom:5px;">Ваше имя *</label>
+          <label style="color:rgba(255,255,255,0.6);font-size:11px;display:block;margin-bottom:5px;">Ваше имя *</label>
           <input name="name" type="text" placeholder="Как к вам обращаться" required
             style="width:100%;background:rgba(0,0,0,0.4);border:1px solid rgba(255,255,255,0.12);border-radius:10px;color:#fff;padding:10px 12px;font-size:14px;outline:none;box-sizing:border-box;font-family:inherit;" class="form-input"/>
         </div>
@@ -913,6 +1031,40 @@ footer p { font-size: 12px; color: rgba(255,255,255,0.2); }
     <div class="step-row" style="border-bottom:none;"><div class="step-num">06</div><div class="step-content"><h3>Передача авто</h3><p>Помогаем с таможней, оформлением СБКТС и постановкой на учёт. Принимаете готовый автомобиль.</p></div></div>
   </div>
 </section>
+<section id="catalog" class="sec" style="background:var(--black);padding-left:0;padding-right:0;">
+  <div style="padding:0 24px;">
+    <div class="sec-tag"><span></span>Каталог<span></span></div>
+    <h2 class="sec-h2" style="color:var(--white);">Автомобили из <em style="font-family:'Playfair Display',serif;font-style:italic;color:var(--red);">Японии</em></h2>
+    <p class="sec-sub" style="color:rgba(255,255,255,0.5);margin-bottom:28px;">Уже привезённые авто и примеры того, что можно заказать под ваш запрос</p>
+
+    <!-- Вкладки + навигация -->
+    <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:20px;">
+      <div style="display:flex;gap:8px;">
+        <button class="cat-tab active" id="tab-arrived" onclick="switchTab('arrived')">Привезены</button>
+        <button class="cat-tab" id="tab-order" onclick="switchTab('order')">Под заказ</button>
+      </div>
+      <div style="display:flex;gap:8px;">
+        <button class="cat-nav-btn" id="catPrev" onclick="slideCatalog(-1)">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="18" height="18"><polyline points="15 18 9 12 15 6"/></svg>
+        </button>
+        <button class="cat-nav-btn" id="catNext" onclick="slideCatalog(1)">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="18" height="18"><polyline points="9 18 15 12 9 6"/></svg>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Слайдер -->
+  <div style="overflow:hidden;">
+    <div id="catalogTrack" style="display:flex;gap:16px;transition:transform .4s cubic-bezier(0.22,1,0.36,1);padding:0 24px 4px;">
+    </div>
+  </div>
+
+  <div id="catalogEmpty" style="display:none;color:rgba(255,255,255,0.3);font-size:14px;text-align:center;padding:40px 24px;">
+    Автомобили скоро появятся — оставьте заявку и мы подберём под ваш запрос
+  </div>
+</section>
+
 
 <section id="services" class="sec">
   <div class="sec-tag">Услуги</div>
@@ -927,37 +1079,7 @@ footer p { font-size: 12px; color: rgba(255,255,255,0.2); }
   </div>
 </section>
 
-<section id="cases" class="sec">
-  <div class="sec-tag">Кейсы</div>
-  <h2 class="sec-h2">Реальные <em>примеры</em> сделок</h2>
-  <p class="sec-sub">Несколько историй клиентов, которые уже получили свои автомобили.</p>
-  <div class="cases-cards">
-    <div class="case-card">
-      <div class="case-badge">Завершён</div>
-      <h3>Toyota Land Cruiser 200</h3>
-      <div class="case-meta">2018 год · 62 000 км</div>
-      <div class="case-price">3 200 000 ₽</div>
-      <div class="case-saving">Экономия ~580 000 ₽</div>
-      <p>Клиент из Благовещенска хотел LC200 в комплектации VX. На российском рынке аналоги стоили от 3,8 млн. Взяли с аукциона USS в отличном состоянии.</p>
-    </div>
-    <div class="case-card">
-      <div class="case-badge">Завершён</div>
-      <h3>Honda Vezel Hybrid</h3>
-      <div class="case-meta">2020 год · 28 000 км</div>
-      <div class="case-price">1 450 000 ₽</div>
-      <div class="case-saving">Экономия ~220 000 ₽</div>
-      <p>Молодая пара искала экономичный кроссовер. Hybrid-версия Vezel — редкость на рынке РФ. Привезли за 45 дней с полным комплектом документов.</p>
-    </div>
-    <div class="case-card">
-      <div class="case-badge">Завершён</div>
-      <h3>Nissan Skyline GT-R</h3>
-      <div class="case-meta">2019 год · 41 000 км</div>
-      <div class="case-price">2 750 000 ₽</div>
-      <div class="case-saving">Экономия ~400 000 ₽</div>
-      <p>Клиент давно мечтал о GT-R. Нашли редкую комплектацию на аукционе TAA. Провели полную проверку перед выкупом, доставили в срок.</p>
-    </div>
-  </div>
-</section>
+
 
 <section id="reviews" class="sec">
   <div class="sec-tag">Отзывы</div>
@@ -990,6 +1112,9 @@ footer p { font-size: 12px; color: rgba(255,255,255,0.2); }
     </div>
   </div>
 </section>
+
+
+
 
 
 
@@ -1226,6 +1351,201 @@ async function submitHeroForm(e) {
     btn.style.background = '#8B1A1A';
   }
 }
+
+
+
+
+
+// ===== КАТАЛОГ-СЛАЙДЕР =====
+// Формат: { id, type:'arrived'|'order', brand, model, year, engine, mileage, color, price, saving, image, desc }
+window.IAC_CATALOG = [
+  // Пример — раскомментируйте и заполните:
+  /*
+  {
+    id: 'jp-lc200-2018', type: 'arrived',
+    brand: 'Toyota', model: 'Land Cruiser 200', year: 2018,
+    engine: '4.6L 309hp', mileage: '62 000 км', color: 'Чёрный',
+    price: '3 200 000 ₽', saving: 'Экономия ~580 000 ₽',
+    image: 'images/lc200.jpg',
+    desc: 'Комплектация VX. Взяли с аукциона USS в отличном состоянии. Полный комплект документов.'
+  },
+  */
+];
+
+let catTab = 'arrived';
+let catIndex = 0;
+
+function switchCatTab(tab) {
+  catTab = tab;
+  catIndex = 0;
+  document.getElementById('tab-arrived').classList.toggle('active', tab === 'arrived');
+  document.getElementById('tab-order').classList.toggle('active', tab === 'order');
+  renderCatalogSlider();
+}
+
+function renderCatalogSlider() {
+  const slider = document.getElementById('catalogSlider');
+  const empty  = document.getElementById('catalogEmpty');
+  const dots   = document.getElementById('catDots');
+  const cars   = window.IAC_CATALOG.filter(c => c.type === catTab);
+
+  if (!cars.length) {
+    slider.innerHTML = '';
+    dots.innerHTML = '';
+    empty.style.display = 'block';
+    return;
+  }
+  empty.style.display = 'none';
+
+  slider.innerHTML = cars.map((car, i) => {
+    const img = car.image
+      ? `<img class="cat-card__img" src="${car.image}" alt="${car.brand} ${car.model}" loading="lazy" onerror="this.style.display='none'">`
+      : `<div class="cat-card__no-img">Фото скоро</div>`;
+    const badgeClass = car.type === 'arrived' ? '' : 'cat-card__badge--order';
+    const badgeText  = car.type === 'arrived' ? 'Привезён' : 'Под заказ';
+    const saving = car.saving ? `<div class="cat-card__saving">${car.saving}</div>` : '';
+    return `
+    <div class="cat-card" data-index="${i}">
+      ${img}
+      <span class="cat-card__badge ${badgeClass}">${badgeText}</span>
+      <div class="cat-card__title">${car.brand} ${car.model}</div>
+      <div class="cat-card__meta">${car.year} · ${car.mileage}${car.color ? ' · ' + car.color : ''}</div>
+      <div class="cat-card__price"><span>Под ключ</span>${car.price}</div>
+      ${saving}
+      <p class="cat-card__desc">${car.desc || ''}</p>
+      <button class="cat-card__btn" onclick="catRequestCar('${car.brand} ${car.model}')">Узнать детали →</button>
+    </div>`;
+  }).join('');
+
+  // Dots
+  dots.innerHTML = cars.map((_, i) =>
+    `<div class="cat-dot${i === 0 ? ' active' : ''}" onclick="goToCat(${i})"></div>`
+  ).join('');
+
+  catIndex = 0;
+  slider.scrollTo({left: 0});
+}
+
+function slideCat(dir) {
+  const cars = window.IAC_CATALOG.filter(c => c.type === catTab);
+  catIndex = Math.max(0, Math.min(catIndex + dir, cars.length - 1));
+  goToCat(catIndex);
+}
+
+function goToCat(i) {
+  catIndex = i;
+  const slider = document.getElementById('catalogSlider');
+  const card = slider.querySelector(`[data-index="${i}"]`);
+  if (card) card.scrollIntoView({behavior: 'smooth', block: 'nearest', inline: 'start'});
+  document.querySelectorAll('.cat-dot').forEach((d, idx) =>
+    d.classList.toggle('active', idx === i));
+}
+
+function catRequestCar(model) {
+  const form = document.getElementById('heroForm');
+  if (form) {
+    form.scrollIntoView({behavior:'smooth', block:'center'});
+    setTimeout(() => {
+      const inp = document.querySelector('#heroRequestForm [name="model"]');
+      if (inp) { inp.value = model; inp.focus(); }
+    }, 600);
+  }
+}
+
+renderCatalogSlider();
+// ===========================
+
+
+// ===== КАТАЛОГ СЛАЙДЕР =====
+window.IAC_CATALOG = [
+  // Добавьте машины сюда:
+  /*
+  {
+    id: 'jp-camry-2020',
+    type: 'arrived',           // 'arrived' = привезён, 'order' = под заказ
+    brand: 'Toyota', model: 'Camry 2.5', year: 2020,
+    engine: '2.5L 181hp, бензин',
+    mileage: '45 000 км',
+    color: 'Белый',
+    price: '2 150 000 ₽',
+    image: 'images/camry.jpg', // путь к фото
+    desc: 'Один владелец, оценка аукциона 4.5. Полный сервисный журнал.'
+  },
+  */
+];
+
+let catCurrentTab = 'arrived';
+let catOffset = 0;
+
+function switchTab(tab) {
+  catCurrentTab = tab;
+  catOffset = 0;
+  document.getElementById('tab-arrived').classList.toggle('active', tab === 'arrived');
+  document.getElementById('tab-order').classList.toggle('active', tab === 'order');
+  renderCatalogSlider();
+}
+
+function slideCatalog(dir) {
+  const cars = window.IAC_CATALOG.filter(c => c.type === catCurrentTab);
+  if (!cars.length) return;
+  const track = document.getElementById('catalogTrack');
+  const cardW = track.children[0] ? track.children[0].offsetWidth + 16 : 336;
+  const maxOffset = Math.max(0, cars.length - 1);
+  catOffset = Math.max(0, Math.min(maxOffset, catOffset + dir));
+  track.style.transform = `translateX(-${catOffset * cardW}px)`;
+}
+
+function renderCatalogSlider() {
+  const track = document.getElementById('catalogTrack');
+  const empty = document.getElementById('catalogEmpty');
+  const cars = window.IAC_CATALOG.filter(c => c.type === catCurrentTab);
+  catOffset = 0;
+  track.style.transform = 'translateX(0)';
+
+  if (!cars.length) {
+    track.innerHTML = '';
+    track.style.display = 'none';
+    empty.style.display = 'block';
+    return;
+  }
+  track.style.display = 'flex';
+  empty.style.display = 'none';
+
+  track.innerHTML = cars.map(car => {
+    const img = car.image
+      ? `<img class="cat-slide-card__img" src="${car.image}" alt="${car.brand} ${car.model}" loading="lazy" onerror="this.style.display='none'">`
+      : `<div class="cat-slide-card__no-img">Фото скоро</div>`;
+    const badgeClass = car.type === 'arrived' ? 'cat-slide-badge--arrived' : 'cat-slide-badge--order';
+    const badgeText = car.type === 'arrived' ? 'Привезён' : 'Под заказ';
+    return `
+    <div class="cat-slide-card">
+      ${img}
+      <div class="cat-slide-card__body">
+        <span class="cat-slide-badge ${badgeClass}">${badgeText}</span>
+        <div class="cat-slide-card__title">${car.brand} ${car.model}</div>
+        <div class="cat-slide-card__year">${car.year}</div>
+        <div class="cat-slide-card__specs">${[car.engine, car.mileage, car.color].filter(Boolean).join(' · ')}</div>
+        <div class="cat-slide-card__price"><span>Под ключ</span>${car.price}</div>
+        ${car.desc ? `<div class="cat-slide-card__desc">${car.desc}</div>` : ''}
+        <button class="cat-slide-btn" onclick="openRequestModalWithCar('${car.brand} ${car.model}')">Узнать детали</button>
+      </div>
+    </div>`;
+  }).join('');
+}
+
+function openRequestModalWithCar(model) {
+  const form = document.getElementById('heroForm');
+  if (form) {
+    form.scrollIntoView({behavior:'smooth', block:'center'});
+    setTimeout(() => {
+      const inp = document.querySelector('#heroRequestForm [name="model"]');
+      if (inp) { inp.value = model; inp.focus(); }
+    }, 600);
+  }
+}
+
+renderCatalogSlider();
+// ===========================
 
 </script>
 
