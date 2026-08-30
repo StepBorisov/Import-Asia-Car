@@ -57,13 +57,11 @@ body { font-family: 'Inter', sans-serif; background: var(--black); color: var(--
 
 #hero {
   background: var(--black);
-  padding: 110px 24px 56px;
+  padding: 110px 24px 80px;
   display: flex;
   flex-direction: column;
   position: relative;
   overflow: hidden;
-  height: 100dvh;
-  max-height: 100dvh;
   box-sizing: border-box;
 }
 
@@ -95,7 +93,7 @@ body { font-family: 'Inter', sans-serif; background: var(--black); color: var(--
 .hero-tag {
   display: flex; align-items: center; gap: 10px;
   font-size: 11px; font-weight: 600; letter-spacing: 4px;
-  color: var(--red); text-transform: uppercase; margin-bottom: 24px;
+  color: var(--red); text-transform: uppercase; margin-bottom: 28px;
   opacity: 0; animation: fadeUp .7s .2s forwards;
 }
 .hero-tag::before, .hero-tag::after { content:''; flex:0 0 20px; height:1px; background:var(--red); }
@@ -113,7 +111,7 @@ body { font-family: 'Inter', sans-serif; background: var(--black); color: var(--
 .hero-sub {
   font-size: 15px; font-weight: 300; line-height: 1.75;
   color: rgba(255,255,255,0.55); max-width: 480px;
-  margin-bottom: clamp(28px, 5vh, 72px);
+  margin-bottom: 0;
   opacity: 0; animation: fadeUp .7s .5s forwards;
 }
 .hero-btns {
@@ -295,12 +293,12 @@ body { font-family: 'Inter', sans-serif; background: var(--black); color: var(--
 .review-name { font-size: 14px; font-weight: 600; }
 .review-city { font-size: 12px; color: #888; }
 
-#cta-block { background: var(--black); text-align:center; padding: 80px 24px; }
-#cta-block .sec-tag { justify-content: center; }
-#cta-block .sec-tag::before { display:none; }
-#cta-block .sec-h2 { max-width:420px; margin: 0 auto 14px; }
-#cta-block .sec-sub { margin: 0 auto 40px; text-align:center; color: rgba(255,255,255,0.45); }
-.cta-btns { display:flex; flex-direction:column; gap:14px; max-width:320px; margin:0 auto; }
+
+
+
+
+
+
 
 #contacts { background: var(--dark); padding: 80px 24px; }
 #contacts .sec-sub { color: rgba(255,255,255,0.45); }
@@ -374,10 +372,7 @@ footer p { font-size: 12px; color: rgba(255,255,255,0.2); }
 }
 
 /* CTA popup */
-#ctaPopup {
-  position: relative; right: auto; top: auto;
-  margin-top: 12px; width: 100%; max-width: 320px; margin-left: auto; margin-right: auto;
-}
+
 
 .cpop-item {
   display: flex; align-items: center; gap: 14px;
@@ -427,7 +422,7 @@ footer p { font-size: 12px; color: rgba(255,255,255,0.2); }
   /* Секции — больше отступы */
   .sec { padding: 100px 48px; }
   #contacts { padding: 100px 48px; }
-  #cta-block { padding: 100px 48px; }
+  
 
   /* Hero */
   #hero { padding: 140px 48px 60px; }
@@ -485,9 +480,9 @@ footer p { font-size: 12px; color: rgba(255,255,255,0.2); }
   .contact-cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
 
   /* CTA кнопки */
-  .cta-btns { flex-direction: row; justify-content: center; max-width: 480px; }
+  
   .cta-btns .btn-red { width: auto; }
-  #ctaPopup { max-width: 100%; }
+  
 
   /* Sec заголовки крупнее */
   .sec-h2 { font-size: clamp(36px, 4vw, 52px); }
@@ -502,7 +497,7 @@ footer p { font-size: 12px; color: rgba(255,255,255,0.2); }
 
   .sec { padding: 120px max(80px, calc((100% - 1200px) / 2)); }
   #contacts { padding: 120px max(80px, calc((100% - 1200px) / 2)); }
-  #cta-block { padding: 120px max(80px, calc((100% - 1200px) / 2)); }
+  
   #hero { padding: 160px max(80px, calc((100% - 1200px) / 2)) 100px; }
 
   /* Hero — контент слева, статы справа */
@@ -522,12 +517,7 @@ footer p { font-size: 12px; color: rgba(255,255,255,0.2); }
   /* Контейнер для всего контента */
   .sec > *,
   #hero > *,
-  #cta-block > *,
-  #contacts > * {
-    max-width: 1200px;
-    margin-left: auto;
-    margin-right: auto;
-  }
+  
 
   /* Hero тег — по центру */
   .hero-tag {
@@ -559,17 +549,12 @@ footer p { font-size: 12px; color: rgba(255,255,255,0.2); }
   .cases-cards,
   .reviews-list,
   .contact-cards,
-  .cta-btns {
-    max-width: 1200px;
-    margin-left: auto;
-    margin-right: auto;
-    width: 100%;
-  }
+  
 
   /* CTA блок — центр */
-  #cta-block { text-align: center; }
-  #cta-block .sec-tag { justify-content: center; }
-  #cta-block .cta-btns { margin: 0 auto; }
+  
+  
+  
 }
 
 
@@ -681,6 +666,21 @@ footer p { font-size: 12px; color: rgba(255,255,255,0.2); }
 }
 .burger-menu .bm-contact:hover { background: #a80e28; }
 /* ======================== */
+
+/* Тусклый placeholder в полях формы */
+#heroRequestForm input::placeholder,
+#heroRequestForm textarea::placeholder {
+  color: rgba(255,255,255,0.25);
+}
+
+/* Тусклый placeholder в форме */
+.form-input::placeholder { color: rgba(255,255,255,0.2); }
+.form-input::-webkit-input-placeholder { color: rgba(255,255,255,0.2); }
+.form-input::-moz-placeholder { color: rgba(255,255,255,0.2); opacity:1; }
+
+/* Тусклые placeholder в форме */
+.form-input::placeholder { color: rgba(255,255,255,0.25); }
+.form-input::-webkit-input-placeholder { color: rgba(255,255,255,0.25); }
 </style>
 </head>
 <body>
@@ -749,37 +749,94 @@ footer p { font-size: 12px; color: rgba(255,255,255,0.2); }
   <div class="hero-tag" style="position:relative;z-index:1;">Import Asia Cars</div>
   <h1 class="hero-h1" style="position:relative;z-index:1;">Авто из Японии —<br/>без <em>переплат</em><br/>и сюрпризов</h1>
   <p class="hero-sub" style="position:relative;z-index:1;">Работаем напрямую с японскими аукционами. Вы видите каждый этап сделки и знаете, за что платите. Никаких скрытых комиссий.</p>
-  <div class="hero-bottom">
-  <div class="hero-stats">
-    <div>
-      <div class="hero-stat-num" id="stat-cars">100<span>+</span></div>
-      <div class="hero-stat-label">Авто доставлено</div>
+  <!-- Форма заявки в hero -->
+  <div id="heroForm" style="margin-top:0;padding-bottom:0;">
+
+    <!-- Статы -->
+    <div style="display:flex;gap:48px;padding:28px 0 28px;justify-content:flex-start;align-items:center;">
+      <div style="text-align:left;">
+        <div class="hero-stat-num" id="stat-cars">100<span>+</span></div>
+        <div class="hero-stat-label">Авто доставлено</div>
+      </div>
+      <div style="text-align:left;">
+        <div class="hero-stat-num" id="stat-years">3 <span>года</span></div>
+        <div class="hero-stat-label">Опыт на рынке</div>
+      </div>
     </div>
-    <div>
-      <div class="hero-stat-num" id="stat-years">3 <span>года</span></div>
-      <div class="hero-stat-label">Опыт на рынке</div>
+
+    <!-- Форма -->
+    <div style="background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.10);border-radius:20px;padding:20px;backdrop-filter:blur(8px);">
+      <div style="color:rgba(255,255,255,0.5);font-size:11px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;margin-bottom:14px;">Подобрать автомобиль</div>
+      <form id="heroRequestForm" onsubmit="submitHeroForm(event)">
+
+        <!-- Ряд 1: Бюджет + Год от-до -->
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:10px;">
+          <div>
+            <label style="color:rgba(255,255,255,0.45);font-size:11px;display:block;margin-bottom:5px;">Бюджет до, ₽</label>
+            <input name="budget" type="number" placeholder="2 500 000"
+              style="width:100%;background:rgba(0,0,0,0.4);border:1px solid rgba(255,255,255,0.12);border-radius:10px;color:#fff;padding:10px 12px;font-size:14px;outline:none;box-sizing:border-box;font-family:inherit;" class="form-input"/>
+          </div>
+          <div>
+            <label style="color:rgba(255,255,255,0.45);font-size:11px;display:block;margin-bottom:5px;">Год (от–до)</label>
+            <input name="year" type="text" placeholder="2020–2026"
+              style="width:100%;background:rgba(0,0,0,0.4);border:1px solid rgba(255,255,255,0.12);border-radius:10px;color:#fff;padding:10px 12px;font-size:14px;outline:none;box-sizing:border-box;font-family:inherit;" class="form-input"/>
+          </div>
+        </div>
+
+        <!-- Ряд 2: Марка и модель -->
+        <div style="margin-bottom:10px;">
+          <label style="color:rgba(255,255,255,0.45);font-size:11px;display:block;margin-bottom:5px;">Марка и модель</label>
+          <input name="model" type="text" placeholder="Например: Toyota Camry"
+            style="width:100%;background:rgba(0,0,0,0.4);border:1px solid rgba(255,255,255,0.12);border-radius:10px;color:#fff;padding:10px 12px;font-size:14px;outline:none;box-sizing:border-box;font-family:inherit;" class="form-input"/>
+        </div>
+
+        <!-- Ряд 3: Пробег + Цвет -->
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:10px;">
+          <div>
+            <label style="color:rgba(255,255,255,0.45);font-size:11px;display:block;margin-bottom:5px;">Пробег до, км</label>
+            <input name="mileage" type="number" placeholder="60 000"
+              style="width:100%;background:rgba(0,0,0,0.4);border:1px solid rgba(255,255,255,0.12);border-radius:10px;color:#fff;padding:10px 12px;font-size:14px;outline:none;box-sizing:border-box;font-family:inherit;" class="form-input"/>
+          </div>
+          <div>
+            <label style="color:rgba(255,255,255,0.45);font-size:11px;display:block;margin-bottom:5px;">Цвет</label>
+            <input name="color" type="text" placeholder="Белый, чёрный…"
+              style="width:100%;background:rgba(0,0,0,0.4);border:1px solid rgba(255,255,255,0.12);border-radius:10px;color:#fff;padding:10px 12px;font-size:14px;outline:none;box-sizing:border-box;font-family:inherit;" class="form-input"/>
+          </div>
+        </div>
+
+        <!-- Ряд 4: Телефон + Telegram -->
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:10px;">
+          <div>
+            <label style="color:rgba(255,255,255,0.45);font-size:11px;display:block;margin-bottom:5px;">Телефон *</label>
+            <input name="phone" type="tel" placeholder="+7 000 000-00-00" required
+              style="width:100%;background:rgba(0,0,0,0.4);border:1px solid rgba(255,255,255,0.12);border-radius:10px;color:#fff;padding:10px 12px;font-size:14px;outline:none;box-sizing:border-box;font-family:inherit;" class="form-input"/>
+          </div>
+          <div>
+            <label style="color:rgba(255,255,255,0.45);font-size:11px;display:block;margin-bottom:5px;">Telegram</label>
+            <input name="telegram" type="text" placeholder="@username"
+              style="width:100%;background:rgba(0,0,0,0.4);border:1px solid rgba(255,255,255,0.12);border-radius:10px;color:#fff;padding:10px 12px;font-size:14px;outline:none;box-sizing:border-box;font-family:inherit;" class="form-input"/>
+          </div>
+        </div>
+
+        <!-- Ряд 5: Имя -->
+        <div style="margin-bottom:14px;">
+          <label style="color:rgba(255,255,255,0.45);font-size:11px;display:block;margin-bottom:5px;">Ваше имя *</label>
+          <input name="name" type="text" placeholder="Как к вам обращаться" required
+            style="width:100%;background:rgba(0,0,0,0.4);border:1px solid rgba(255,255,255,0.12);border-radius:10px;color:#fff;padding:10px 12px;font-size:14px;outline:none;box-sizing:border-box;font-family:inherit;" class="form-input"/>
+        </div>
+
+        <button type="submit" id="heroSubmitBtn"
+          style="width:100%;background:var(--red);color:#fff;border:none;border-radius:50px;padding:14px;font-size:15px;font-weight:600;cursor:pointer;font-family:inherit;transition:background .2s;">
+          Получить консультацию →
+        </button>
+        <p style="color:rgba(255,255,255,0.25);font-size:11px;text-align:center;margin-top:8px;">Нажимая кнопку, вы соглашаетесь с обработкой персональных данных</p>
+      </form>
+      <div id="heroFormSuccess" style="display:none;text-align:center;padding:24px 0;">
+        <div style="font-size:40px;margin-bottom:10px;">✅</div>
+        <h3 style="color:#fff;font-size:18px;margin-bottom:6px;">Заявка отправлена!</h3>
+        <p style="color:rgba(255,255,255,0.5);font-size:13px;">Свяжемся с вами в течение часа</p>
+      </div>
     </div>
-  </div>
-  <div class="hero-btns">
-    <button class="btn-red" onclick="document.getElementById('contacts').scrollIntoView({behavior:'smooth'})">
-      <svg viewBox="0 0 24 24" fill="white" width="20" height="20"><path d="M6.6 10.8c1.4 2.8 3.8 5.1 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1C10.6 21 3 13.4 3 4c0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.3.2 2.5.6 3.6.1.3 0 .7-.2 1L6.6 10.8z"/></svg>
-      Получить консультацию →
-    </button>
-    <div class="contact-popup" id="heroPopup">
-      <a href="tel:+79140486533" class="cpop-item">
-        <span class="cpop-icon phone-icon"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M6.6 10.8c1.4 2.8 3.8 5.1 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1C10.6 21 3 13.4 3 4c0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.3.2 2.5.6 3.6.1.3 0 .7-.2 1L6.6 10.8z"/></svg></span>
-        <div><div class="cpop-label">Позвонить</div><div class="cpop-val">8 914 048 65 33</div></div>
-      </a>
-      <a href="https://wa.me/79140486533" target="_blank" class="cpop-item">
-        <span class="cpop-icon wa-icon"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg></span>
-        <div><div class="cpop-label">WhatsApp</div><div class="cpop-val">Написать сейчас</div></div>
-      </a>
-      <a href="https://t.me/+79140486533" target="_blank" class="cpop-item">
-        <span class="cpop-icon tg-icon"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"/></svg></span>
-        <div><div class="cpop-label">Telegram</div><div class="cpop-val">Написать сейчас</div></div>
-      </a>
-    </div>
-  </div>
   </div>
 </section>
 
@@ -934,54 +991,9 @@ footer p { font-size: 12px; color: rgba(255,255,255,0.2); }
   </div>
 </section>
 
-<section id="cta-block">
-  <div class="sec-tag">Начать сейчас</div>
-  <h2 class="sec-h2">Оставьте заявку —<br/>консультация <em>бесплатно</em></h2>
-  <p class="sec-sub">Расскажите, какой автомобиль вам нужен. Подберём варианты и покажем, во сколько это реально обойдётся.</p>
-  <div class="cta-btns">
-    <button class="btn-red" onclick="toggleContactPopup(event, 'ctaPopup')">
-      <svg viewBox="0 0 24 24" fill="white" width="20" height="20"><path d="M6.6 10.8c1.4 2.8 3.8 5.1 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1C10.6 21 3 13.4 3 4c0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.3.2 2.5.6 3.6.1.3 0 .7-.2 1L6.6 10.8z"/></svg>
-      Связаться с нами →
-    </button>
-    <div class="contact-popup contact-popup-light" id="ctaPopup">
-      <a href="tel:+79140486533" class="cpop-item">
-        <span class="cpop-icon phone-icon"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M6.6 10.8c1.4 2.8 3.8 5.1 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1C10.6 21 3 13.4 3 4c0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.3.2 2.5.6 3.6.1.3 0 .7-.2 1L6.6 10.8z"/></svg></span>
-        <div><div class="cpop-label">Позвонить</div><div class="cpop-val">8 914 048 65 33</div></div>
-      </a>
-      <a href="https://wa.me/79140486533" target="_blank" class="cpop-item">
-        <span class="cpop-icon wa-icon"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg></span>
-        <div><div class="cpop-label">WhatsApp</div><div class="cpop-val">Написать сейчас</div></div>
-      </a>
-      <a href="https://t.me/+79140486533" target="_blank" class="cpop-item">
-        <span class="cpop-icon tg-icon"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"/></svg></span>
-        <div><div class="cpop-label">Telegram</div><div class="cpop-val">Написать сейчас</div></div>
-      </a>
-    </div>
-  </div>
-</section>
 
-<section id="contacts">
-  <div class="sec-tag">Контакты</div>
-  <h2 class="sec-h2">Свяжитесь<br/><em>с нами</em></h2>
-  <p class="sec-sub">Работаем удалённо и принимаем заявки со всей России. WhatsApp и Telegram — один номер.</p>
-  <div class="contact-cards">
-    <a href="tel:+79140486533" class="contact-card">
-      <div class="contact-card-icon"><svg viewBox="0 0 24 24" fill="white" width="20" height="20"><path d="M6.6 10.8c1.4 2.8 3.8 5.1 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1C10.6 21 3 13.4 3 4c0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.3.2 2.5.6 3.6.1.3 0 .7-.2 1L6.6 10.8z"/></svg></div>
-      <div><div class="contact-label">Телефон</div><div class="contact-value">8 914 048 65 33</div></div>
-      <div class="contact-arrow">→</div>
-    </a>
-    <a href="https://wa.me/79140486533" target="_blank" class="contact-card">
-      <div class="contact-card-icon"><svg viewBox="0 0 24 24" fill="#25D366" width="20" height="20"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg></div>
-      <div><div class="contact-label">WhatsApp</div><div class="contact-value">+7 914 048 65 33</div></div>
-      <div class="contact-arrow">→</div>
-    </a>
-    <a href="https://t.me/+79140486533" target="_blank" class="contact-card">
-      <div class="contact-card-icon"><svg viewBox="0 0 24 24" fill="#229ED9" width="20" height="20"><path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"/></svg></div>
-      <div><div class="contact-label">Telegram</div><div class="contact-value">+7 914 048 65 33</div></div>
-      <div class="contact-arrow">→</div>
-    </a>
-  </div>
-</section>
+
+
 
 <footer>
   <p>© 2024 Import Asia Cars · Авто из Японии, Кореи и Китая под ключ</p>
@@ -1174,6 +1186,49 @@ document.addEventListener('click', function(e) {
   const wrap = document.querySelector('.burger-wrap');
   if (wrap && !wrap.contains(e.target)) closeBurger();
 });
+
+
+
+async function submitHeroForm(e) {
+  e.preventDefault();
+  const form = e.target;
+  const btn = document.getElementById('heroSubmitBtn');
+  const data = new FormData(form);
+
+  const body = {
+    name: data.get('name'),
+    phone: data.get('phone'),
+    telegram: data.get('telegram') || '—',
+    model: data.get('model') || '—',
+    country: data.get('country') || '—',
+    year: data.get('year') || '—',
+    budget: data.get('budget') ? data.get('budget') + ' ₽' : '—',
+    mileage: data.get('mileage') ? data.get('mileage') + ' км' : '—',
+    comment: '—',
+  };
+
+  btn.textContent = 'Отправляем...';
+  btn.disabled = true;
+
+  try {
+    const API = window.IAC_API_BASE || '';
+    const resp = await fetch(API + '/submit', {
+      method: 'POST', headers: {'Content-Type':'application/json'},
+      body: JSON.stringify(body)
+    });
+    if (resp.ok) {
+      form.style.display = 'none';
+      document.getElementById('heroFormSuccess').style.display = 'block';
+    } else throw new Error();
+  } catch {
+    btn.textContent = 'Ошибка — попробуйте ещё раз';
+    btn.disabled = false;
+    btn.style.background = '#8B1A1A';
+  }
+}
+
 </script>
+
+
 </body>
 </html>
