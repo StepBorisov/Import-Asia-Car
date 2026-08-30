@@ -1,0 +1,535 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<meta name="color-scheme" content="dark"/>
+<title>Каталог автомобилей — Import Asia Cars</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital@1&display=swap" rel="stylesheet"/>
+<style>
+:root {
+  --red: #c8102e;
+  --black: #0a0a0a;
+  --white: #ffffff;
+  --gray: #1a1a1a;
+  --border: rgba(255,255,255,0.1);
+}
+* { margin:0; padding:0; box-sizing:border-box; }
+html { scroll-behavior:smooth; overflow-x:hidden; }
+body { font-family:'Inter',sans-serif; background:var(--black); color:var(--white); overflow-x:hidden; }
+
+/* ШАПКА */
+.top-bar {
+  position:fixed; top:0; left:0; right:0; z-index:100;
+  background:#fff; display:flex; align-items:center; justify-content:space-between;
+  padding:10px 20px; border-bottom:1px solid #eee;
+  box-shadow:0 2px 12px rgba(0,0,0,0.08);
+}
+.top-logo img { height:56px; width:56px; border-radius:50%; object-fit:cover; }
+.top-logo a { display:block; }
+.top-contact-btn {
+  background:var(--black); color:#fff; border:none; border-radius:50px;
+  padding:10px 20px; font-size:14px; font-weight:600; cursor:pointer;
+  display:flex; align-items:center; gap:8px;
+}
+.back-link {
+  color:#111; text-decoration:none; font-size:14px; font-weight:500;
+  display:flex; align-items:center; gap:6px;
+}
+.back-link:hover { color:var(--red); }
+
+/* HERO каталога */
+.catalog-hero {
+  padding: 120px 24px 48px;
+  background:var(--black);
+  position:relative; overflow:hidden;
+}
+.catalog-hero::before {
+  content:''; position:absolute; top:-40px; right:-60px;
+  width:320px; height:320px;
+  background:radial-gradient(circle,rgba(200,16,46,0.2) 0%,transparent 70%);
+  pointer-events:none;
+}
+.cat-tag {
+  display:inline-flex; align-items:center; gap:8px;
+  font-size:11px; font-weight:700; letter-spacing:2px; text-transform:uppercase;
+  color:var(--red); margin-bottom:16px;
+}
+.cat-tag::before, .cat-tag::after { content:''; display:block; width:24px; height:1px; background:var(--red); }
+.catalog-hero h1 { font-size:clamp(28px,7vw,52px); font-weight:700; line-height:1.15; margin-bottom:12px; }
+.catalog-hero p { color:rgba(255,255,255,0.55); font-size:15px; line-height:1.7; max-width:480px; }
+
+/* ФИЛЬТРЫ */
+.filter-bar {
+  background:#111; border-bottom:1px solid var(--border);
+  padding:16px 24px; display:flex; flex-wrap:wrap; gap:10px; align-items:center;
+  position:sticky; top:76px; z-index:50;
+}
+.filter-bar input, .filter-bar select {
+  background:#1a1a1a; border:1px solid var(--border); border-radius:10px;
+  color:#fff; padding:9px 14px; font-size:13px; outline:none;
+  font-family:'Inter',sans-serif;
+}
+.filter-bar input::placeholder { color:rgba(255,255,255,0.35); }
+.filter-bar select option { background:#1a1a1a; }
+.filter-bar input[type=text] { width:180px; }
+.filter-bar input[type=number] { width:120px; }
+.btn-filter {
+  background:var(--red); color:#fff; border:none; border-radius:10px;
+  padding:9px 20px; font-size:13px; font-weight:600; cursor:pointer;
+}
+.btn-filter:hover { background:#a00e25; }
+
+/* СЕТКА МАШИН */
+.catalog-section { padding:32px 24px 80px; max-width:1200px; margin:0 auto; }
+.cars-count { color:rgba(255,255,255,0.4); font-size:13px; margin-bottom:24px; }
+.cars-grid {
+  display:grid;
+  grid-template-columns:repeat(auto-fill,minmax(280px,1fr));
+  gap:20px;
+}
+.car-card {
+  background:#111; border:1px solid var(--border); border-radius:16px;
+  overflow:hidden; display:flex; flex-direction:column;
+  transition:border-color .2s, transform .2s;
+  cursor:pointer;
+}
+.car-card:hover { border-color:rgba(200,16,46,0.4); transform:translateY(-2px); }
+.car-card__img {
+  width:100%; aspect-ratio:16/10; object-fit:cover;
+  background:#1a1a1a; display:block;
+}
+.car-card__img-placeholder {
+  width:100%; aspect-ratio:16/10; background:#1a1a1a;
+  display:flex; align-items:center; justify-content:center;
+  color:rgba(255,255,255,0.2); font-size:13px;
+}
+.car-card__body { padding:16px; flex:1; display:flex; flex-direction:column; }
+.car-card__country {
+  font-size:10px; font-weight:700; letter-spacing:1.5px; text-transform:uppercase;
+  color:var(--red); margin-bottom:6px;
+}
+.car-card__title { font-size:15px; font-weight:700; line-height:1.35; margin-bottom:4px; min-height:2.7em; }
+.car-card__year { color:rgba(255,255,255,0.4); font-size:12px; margin-bottom:10px; }
+.car-card__specs { color:rgba(255,255,255,0.55); font-size:12px; line-height:1.7; margin-bottom:12px; }
+.car-card__price { font-size:20px; font-weight:700; color:#fff; margin-bottom:12px; margin-top:auto; }
+.car-card__price span { font-size:12px; font-weight:400; color:rgba(255,255,255,0.4); display:block; margin-bottom:2px; }
+.btn-card {
+  width:100%; background:transparent; border:1px solid var(--red); color:var(--red);
+  border-radius:50px; padding:10px; font-size:13px; font-weight:600; cursor:pointer;
+  transition:background .2s, color .2s; font-family:'Inter',sans-serif;
+}
+.btn-card:hover { background:var(--red); color:#fff; }
+
+/* ПУСТОЙ РЕЗУЛЬТАТ */
+.no-results { color:rgba(255,255,255,0.35); font-size:15px; text-align:center; padding:60px 0; }
+
+/* МОДАЛ */
+#carModal {
+  display:none; position:fixed; inset:0; z-index:200;
+  background:rgba(0,0,0,0.85); backdrop-filter:blur(6px);
+  align-items:center; justify-content:center; padding:16px;
+}
+.car-modal__inner {
+  background:#111; border:1px solid var(--border); border-radius:20px;
+  width:100%; max-width:560px; max-height:90vh; overflow-y:auto;
+  position:relative;
+}
+.car-modal__close {
+  position:sticky; top:0; background:#111; width:100%;
+  padding:14px 20px; display:flex; justify-content:space-between; align-items:center;
+  border-bottom:1px solid var(--border);
+}
+.car-modal__close h3 { font-size:16px; font-weight:700; padding-right:32px; }
+.car-modal__close button {
+  background:none; border:none; color:rgba(255,255,255,0.5);
+  font-size:22px; cursor:pointer; flex-shrink:0;
+}
+.car-modal__gallery { display:flex; gap:8px; overflow-x:auto; padding:16px; scroll-snap-type:x mandatory; }
+.car-modal__gallery img {
+  height:220px; border-radius:10px; object-fit:cover; flex-shrink:0;
+  scroll-snap-align:start;
+}
+.car-modal__info { padding:0 20px 24px; }
+.car-modal__specs { display:grid; grid-template-columns:1fr 1fr; gap:8px; margin-bottom:20px; }
+.car-modal__spec { background:#1a1a1a; border-radius:10px; padding:10px 12px; }
+.car-modal__spec-label { font-size:10px; color:rgba(255,255,255,0.4); text-transform:uppercase; letter-spacing:1px; margin-bottom:4px; }
+.car-modal__spec-val { font-size:14px; font-weight:600; }
+.car-modal__price { font-size:26px; font-weight:700; margin-bottom:16px; }
+.car-modal__price span { font-size:13px; font-weight:400; color:rgba(255,255,255,0.4); display:block; }
+.car-modal__desc { color:rgba(255,255,255,0.55); font-size:13px; line-height:1.7; margin-bottom:20px; }
+.btn-modal {
+  width:100%; background:var(--red); color:#fff; border:none; border-radius:50px;
+  padding:15px; font-size:15px; font-weight:600; cursor:pointer;
+  font-family:'Inter',sans-serif;
+}
+
+/* МОДАЛ ЗАЯВКИ */
+#requestModal {
+  display:none; position:fixed; inset:0; z-index:300;
+  background:rgba(0,0,0,0.8); backdrop-filter:blur(4px);
+  align-items:center; justify-content:center; padding:16px;
+}
+.req-inner {
+  background:#111; border:1px solid rgba(200,16,46,0.3); border-radius:20px;
+  width:100%; max-width:440px; max-height:90vh; overflow-y:auto;
+  padding:28px 24px; position:relative;
+}
+.req-inner h2 { font-size:20px; font-weight:700; margin-bottom:4px; }
+.req-inner p { color:rgba(255,255,255,0.5); font-size:13px; margin-bottom:20px; }
+.req-field { margin-bottom:12px; }
+.req-field label { color:rgba(255,255,255,0.55); font-size:12px; display:block; margin-bottom:6px; }
+.req-field input, .req-field textarea, .req-field select {
+  width:100%; background:#1a1a1a; border:1px solid var(--border); border-radius:10px;
+  color:#fff; padding:10px 12px; font-size:14px; outline:none; font-family:'Inter',sans-serif;
+}
+.req-field textarea { resize:none; }
+.req-row { display:grid; grid-template-columns:1fr 1fr; gap:12px; }
+.btn-req {
+  width:100%; background:var(--red); color:#fff; border:none; border-radius:50px;
+  padding:14px; font-size:15px; font-weight:600; cursor:pointer; margin-top:4px;
+  font-family:'Inter',sans-serif;
+}
+
+@media (max-width:767px) {
+  .filter-bar input[type=text] { width:100%; }
+  .filter-bar input[type=number] { width:calc(50% - 5px); }
+  .cars-grid { grid-template-columns:1fr 1fr; gap:12px; }
+  .car-card__title { font-size:13px; }
+  .car-card__price { font-size:17px; }
+}
+@media (max-width:480px) {
+  .cars-grid { grid-template-columns:1fr 1fr; }
+  .car-card__body { padding:12px; }
+}
+</style>
+</head>
+<body>
+
+<!-- ШАПКА -->
+<div class="top-bar">
+  <a href="import_asia_cars.html" class="back-link">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16"><polyline points="15 18 9 12 15 6"/></svg>
+    Главная
+  </a>
+  <button class="top-contact-btn" onclick="openRequestModal()">
+    <svg viewBox="0 0 24 24" fill="white" width="16" height="16"><path d="M6.6 10.8c1.4 2.8 3.8 5.1 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1C10.6 21 3 13.4 3 4c0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.3.2 2.5.6 3.6.1.3 0 .7-.2 1L6.6 10.8z"/></svg>
+    Оставить заявку
+  </button>
+</div>
+
+<!-- HERO -->
+<section class="catalog-hero">
+  <div class="cat-tag">Import Asia Cars</div>
+  <h1>Каталог<br/>автомобилей</h1>
+  <p>Актуальные предложения из Японии, Кореи и Китая. Все автомобили — под ключ с полной растаможкой.</p>
+</section>
+
+<!-- ФИЛЬТРЫ -->
+<div class="filter-bar">
+  <input type="text" id="searchInput" placeholder="Поиск: Toyota, BMW…"/>
+  <select id="countryFilter">
+    <option value="">Все страны</option>
+    <option value="Япония">Япония 🇯🇵</option>
+    <option value="Корея">Корея 🇰🇷</option>
+    <option value="Китай">Китай 🇨🇳</option>
+  </select>
+  <input type="number" id="yearFilter" placeholder="Год от"/>
+  <input type="number" id="budgetFilter" placeholder="Бюджет до ₽"/>
+  <button class="btn-filter" onclick="applyFilters()">Найти</button>
+</div>
+
+<!-- КАТАЛОГ -->
+<div class="catalog-section">
+  <div class="cars-count" id="carsCount"></div>
+  <div class="cars-grid" id="carsGrid"></div>
+</div>
+
+<!-- МОДАЛ МАШИНЫ -->
+<div id="carModal">
+  <div class="car-modal__inner" id="carModalInner">
+    <div class="car-modal__close">
+      <h3 id="carModalTitle"></h3>
+      <button onclick="closeCarModal()">✕</button>
+    </div>
+    <div class="car-modal__gallery" id="carModalGallery"></div>
+    <div class="car-modal__info">
+      <div class="car-modal__specs" id="carModalSpecs"></div>
+      <div class="car-modal__price" id="carModalPrice"></div>
+      <div class="car-modal__desc" id="carModalDesc"></div>
+      <button class="btn-modal" onclick="openRequestModalFromCar()">Оставить заявку на этот автомобиль</button>
+    </div>
+  </div>
+</div>
+
+<!-- МОДАЛ ЗАЯВКИ -->
+<div id="requestModal">
+  <div class="req-inner">
+    <button onclick="closeRequestModal()" style="position:absolute;top:14px;right:16px;background:none;border:none;color:rgba(255,255,255,0.4);font-size:22px;cursor:pointer;">✕</button>
+    <div style="color:var(--red);font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;margin-bottom:6px;">Заявка</div>
+    <h2>Подберём автомобиль</h2>
+    <p>Свяжемся в течение часа и уточним детали</p>
+
+    <form id="requestForm" onsubmit="submitForm(event)">
+      <div class="req-row" style="margin-bottom:12px;">
+        <div class="req-field" style="margin-bottom:0">
+          <label>Страна</label>
+          <select name="country">
+            <option value="">Любая</option>
+            <option value="Япония">Япония 🇯🇵</option>
+            <option value="Корея">Корея 🇰🇷</option>
+            <option value="Китай">Китай 🇨🇳</option>
+          </select>
+        </div>
+        <div class="req-field" style="margin-bottom:0">
+          <label>Год от</label>
+          <input name="year" type="number" placeholder="2019"/>
+        </div>
+      </div>
+      <div class="req-field">
+        <label>Марка и модель</label>
+        <input name="model" type="text" placeholder="Например: Toyota Camry" id="prefillModel"/>
+      </div>
+      <div class="req-row">
+        <div class="req-field">
+          <label>Бюджет до, ₽</label>
+          <input name="budget" type="number" placeholder="2 500 000"/>
+        </div>
+        <div class="req-field">
+          <label>Пробег до, км</label>
+          <input name="mileage" type="number" placeholder="60 000"/>
+        </div>
+      </div>
+      <div class="req-field">
+        <label>Комментарий</label>
+        <textarea name="comment" rows="2" placeholder="Дополнительные пожелания..."></textarea>
+      </div>
+      <div style="border-top:1px solid var(--border);padding-top:14px;margin-top:4px;">
+        <div class="req-row">
+          <div class="req-field">
+            <label>Имя *</label>
+            <input name="name" type="text" placeholder="Ваше имя" required/>
+          </div>
+          <div class="req-field">
+            <label>Телефон *</label>
+            <input name="phone" type="tel" placeholder="+7..." required/>
+          </div>
+        </div>
+        <div class="req-field">
+          <label>Telegram</label>
+          <input name="telegram" type="text" placeholder="@username"/>
+        </div>
+      </div>
+      <button type="submit" class="btn-req" id="submitBtn">Отправить заявку →</button>
+      <p style="color:rgba(255,255,255,0.3);font-size:11px;text-align:center;margin-top:10px;">Нажимая кнопку, вы соглашаетесь с обработкой персональных данных</p>
+    </form>
+    <div id="formSuccess" style="display:none;text-align:center;padding:30px 0;">
+      <div style="font-size:48px;margin-bottom:12px;">✅</div>
+      <h3 style="font-size:20px;margin-bottom:8px;">Заявка отправлена!</h3>
+      <p style="color:rgba(255,255,255,0.5);font-size:14px;">Свяжемся с вами в течение часа</p>
+    </div>
+  </div>
+</div>
+
+<script>
+// ===== КАТАЛОГ МАШИН =====
+// Формат: {id, brand, model, year, engine, mileage, country, price, images: ['путь1','путь2',...], description}
+// country: 'Япония' | 'Корея' | 'Китай'
+// images: массив путей к фото (относительные или абсолютные)
+// Добавляйте машины сюда:
+window.IAC_CARS = [
+  // Пример (раскомментируйте и заполните):
+  /*
+  {
+    id: 'jp-camry-2020',
+    brand: 'Toyota',
+    model: 'Camry 2.5 Luxe',
+    year: 2020,
+    engine: '2.5L 181hp, бензин',
+    mileage: '45 000 км',
+    country: 'Япония',
+    price: '2 150 000',
+    images: ['images/cars/camry-2020-01.jpg','images/cars/camry-2020-02.jpg'],
+    description: 'Отличное состояние, один владелец, оценка аукциона 4.5. Полный сервисный журнал.'
+  },
+  */
+];
+
+let filteredCars = [...window.IAC_CARS];
+let currentCarModel = '';
+
+function formatPrice(p) {
+  return p.replace(/\B(?=(\d{3})+(?!\d))/g, ' ') + ' ₽';
+}
+
+const countryFlag = {
+  'Япония': '🇯🇵',
+  'Корея': '🇰🇷',
+  'Китай': '🇨🇳',
+};
+
+function renderCards(cars) {
+  const grid = document.getElementById('carsGrid');
+  const count = document.getElementById('carsCount');
+  count.textContent = cars.length
+    ? `Найдено: ${cars.length} авто`
+    : '';
+
+  if (!cars.length) {
+    grid.innerHTML = '<div class="no-results">По вашему запросу ничего не найдено</div>';
+    return;
+  }
+
+  grid.innerHTML = cars.map(car => {
+    const img = car.images && car.images.length
+      ? `<img class="car-card__img" src="${car.images[0]}" alt="${car.brand} ${car.model}" loading="lazy" onerror="this.style.display='none';this.nextSibling.style.display='flex'">`
+        + `<div class="car-card__img-placeholder" style="display:none">Фото скоро</div>`
+      : `<div class="car-card__img-placeholder">Фото скоро</div>`;
+
+    return `
+    <div class="car-card" onclick="openCarModal('${car.id}')">
+      ${img}
+      <div class="car-card__body">
+        <div class="car-card__country">${car.country} ${countryFlag[car.country] || ''}</div>
+        <div class="car-card__title">${car.brand} ${car.model}</div>
+        <div class="car-card__year">${car.year}</div>
+        <div class="car-card__specs">${car.engine} · ${car.mileage}</div>
+        <div class="car-card__price"><span>Под ключ</span>${car.price} ₽</div>
+        <button class="btn-card">Получить расчёт</button>
+      </div>
+    </div>`;
+  }).join('');
+}
+
+function applyFilters() {
+  const search = document.getElementById('searchInput').value.toLowerCase();
+  const country = document.getElementById('countryFilter').value;
+  const year = parseInt(document.getElementById('yearFilter').value) || 0;
+  const budget = parseInt(document.getElementById('budgetFilter').value) || 0;
+
+  filteredCars = window.IAC_CARS.filter(car => {
+    const name = (car.brand + ' ' + car.model).toLowerCase();
+    const priceNum = parseInt(car.price.replace(/\D/g,'')) || 0;
+    if (search && !name.includes(search)) return false;
+    if (country && car.country !== country) return false;
+    if (year && car.year < year) return false;
+    if (budget && priceNum > budget) return false;
+    return true;
+  });
+  renderCards(filteredCars);
+}
+
+// live search
+document.getElementById('searchInput').addEventListener('input', applyFilters);
+document.getElementById('countryFilter').addEventListener('change', applyFilters);
+
+// init
+if (window.IAC_CARS.length) {
+  renderCards(window.IAC_CARS);
+} else {
+  document.getElementById('carsGrid').innerHTML =
+    '<div class="no-results" style="grid-column:1/-1">Каталог пополняется — скоро здесь появятся автомобили.<br/>Оставьте заявку и мы подберём под ваш запрос.</div>';
+}
+
+// ===== МОДАЛ МАШИНЫ =====
+function openCarModal(id) {
+  const car = window.IAC_CARS.find(c => c.id === id);
+  if (!car) return;
+  currentCarModel = car.brand + ' ' + car.model;
+
+  document.getElementById('carModalTitle').textContent = car.brand + ' ' + car.model + ' ' + car.year;
+  document.getElementById('carModalDesc').textContent = car.description || '';
+
+  // gallery
+  const gallery = document.getElementById('carModalGallery');
+  gallery.innerHTML = car.images && car.images.length
+    ? car.images.map(src => `<img src="${src}" alt="${car.brand}" style="height:220px;border-radius:10px;object-fit:cover;flex-shrink:0"/>`).join('')
+    : '<div style="padding:40px;color:rgba(255,255,255,0.3);font-size:13px;">Фото скоро</div>';
+
+  // specs
+  document.getElementById('carModalSpecs').innerHTML = [
+    ['Страна', car.country + ' ' + (countryFlag[car.country] || '')],
+    ['Год', car.year],
+    ['Двигатель', car.engine],
+    ['Пробег', car.mileage],
+  ].map(([l,v]) => `<div class="car-modal__spec"><div class="car-modal__spec-label">${l}</div><div class="car-modal__spec-val">${v}</div></div>`).join('');
+
+  document.getElementById('carModalPrice').innerHTML = `<span>Под ключ</span>${car.price} ₽`;
+
+  const modal = document.getElementById('carModal');
+  modal.style.display = 'flex';
+  document.body.style.overflow = 'hidden';
+}
+
+function closeCarModal() {
+  document.getElementById('carModal').style.display = 'none';
+  document.body.style.overflow = '';
+}
+
+document.getElementById('carModal').addEventListener('click', function(e) {
+  if (e.target === this) closeCarModal();
+});
+
+function openRequestModalFromCar() {
+  closeCarModal();
+  document.getElementById('prefillModel').value = currentCarModel;
+  openRequestModal();
+}
+
+// ===== МОДАЛ ЗАЯВКИ =====
+function openRequestModal() {
+  document.getElementById('requestModal').style.display = 'flex';
+  document.body.style.overflow = 'hidden';
+}
+function closeRequestModal() {
+  document.getElementById('requestModal').style.display = 'none';
+  document.body.style.overflow = '';
+  document.getElementById('requestForm').style.display = 'block';
+  document.getElementById('formSuccess').style.display = 'none';
+  document.getElementById('requestForm').reset();
+}
+document.getElementById('requestModal').addEventListener('click', function(e) {
+  if (e.target === this) closeRequestModal();
+});
+
+async function submitForm(e) {
+  e.preventDefault();
+  const form = e.target;
+  const btn = document.getElementById('submitBtn');
+  const data = new FormData(form);
+
+  const body = {
+    name: data.get('name'),
+    phone: data.get('phone'),
+    telegram: data.get('telegram') || '—',
+    model: data.get('model') || '—',
+    country: data.get('country') || '—',
+    year: data.get('year') || '—',
+    budget: data.get('budget') ? data.get('budget') + ' ₽' : '—',
+    mileage: data.get('mileage') ? data.get('mileage') + ' км' : '—',
+    comment: data.get('comment') || '—',
+  };
+
+  btn.textContent = 'Отправляем...';
+  btn.disabled = true;
+
+  try {
+    const API = window.IAC_API_BASE || '';
+    const resp = await fetch(API + '/submit', {
+      method: 'POST', headers: {'Content-Type':'application/json'},
+      body: JSON.stringify(body)
+    });
+    if (resp.ok) {
+      form.style.display = 'none';
+      document.getElementById('formSuccess').style.display = 'block';
+    } else throw new Error();
+  } catch {
+    btn.textContent = 'Ошибка — попробуйте ещё раз';
+    btn.disabled = false;
+    btn.style.background = '#8B1A1A';
+  }
+}
+</script>
+</body>
+</html>
