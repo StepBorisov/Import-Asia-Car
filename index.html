@@ -686,71 +686,6 @@ footer p { font-size: 12px; color: rgba(255,255,255,0.2); }
 
 /* ===== КАТАЛОГ-СЛАЙДЕР ===== */
 .cat-tab {
-  background:rgba(255,255,255,0.07);border:1px solid rgba(255,255,255,0.12);
-  color:rgba(255,255,255,0.5);border-radius:50px;
-  padding:9px 20px;font-size:13px;font-weight:600;cursor:pointer;
-  font-family:'Inter',sans-serif;transition:all .2s;
-}
-.cat-tab.active { background:var(--red);border-color:var(--red);color:#fff; }
-#catalogSlider::-webkit-scrollbar { display:none; }
-
-.cat-card {
-  background:#fff;color:#111;
-  border-radius:16px;padding:24px 20px;
-  min-width:calc(100vw - 64px);
-  max-width:340px;
-  scroll-snap-align:start;
-  flex-shrink:0;
-  display:flex;flex-direction:column;
-  box-shadow:0 4px 24px rgba(0,0,0,0.25);
-}
-.cat-card__img {
-  width:100%;aspect-ratio:16/10;object-fit:cover;
-  border-radius:10px;margin-bottom:16px;background:#eee;display:block;
-}
-.cat-card__no-img {
-  width:100%;aspect-ratio:16/10;background:#f0f0f0;
-  border-radius:10px;margin-bottom:16px;
-  display:flex;align-items:center;justify-content:center;
-  color:#bbb;font-size:12px;
-}
-.cat-card__badge {
-  display:inline-block;background:var(--red);color:#fff;
-  font-size:10px;font-weight:700;letter-spacing:2px;text-transform:uppercase;
-  padding:4px 12px;border-radius:50px;margin-bottom:14px;
-}
-.cat-card__badge--order {
-  background:rgba(0,0,0,0.07);color:#555;
-}
-.cat-card__title { font-size:20px;font-weight:700;margin-bottom:4px;color:#111; }
-.cat-card__meta  { font-size:13px;color:#777;margin-bottom:16px; }
-.cat-card__price { font-size:26px;font-weight:700;margin-bottom:8px;color:#111; }
-.cat-card__price span { font-size:11px;font-weight:400;color:#999;display:block;margin-bottom:2px; }
-.cat-card__saving {
-  display:inline-block;background:rgba(34,139,34,0.1);color:#228B22;
-  font-size:12px;font-weight:600;padding:4px 12px;border-radius:50px;margin-bottom:14px;
-}
-.cat-card__desc { font-size:13px;color:#555;line-height:1.7;font-weight:300;margin-bottom:16px;flex:1; }
-.cat-card__btn {
-  width:100%;background:var(--red);color:#fff;border:none;
-  border-radius:50px;padding:12px;font-size:13px;font-weight:600;
-  cursor:pointer;font-family:'Inter',sans-serif;transition:background .2s;
-}
-.cat-card__btn:hover { background:#a8001c; }
-.cat-dot {
-  width:6px;height:6px;border-radius:50%;background:rgba(255,255,255,0.2);
-  transition:background .2s,transform .2s;cursor:pointer;
-}
-.cat-dot.active { background:var(--red);transform:scale(1.3); }
-#catPrev:hover,#catNext:hover { background:rgba(255,255,255,0.15); }
-
-#catalogScroll::-webkit-scrollbar { display: none; }
-#catalogScroll.grabbing { cursor: grabbing; }
-
-/* =========================== */
-
-/* ===== КАТАЛОГ-СЛАЙДЕР ===== */
-.cat-tab {
   background:rgba(255,255,255,0.07); border:1px solid rgba(255,255,255,0.12);
   color:rgba(255,255,255,0.5); border-radius:50px;
   padding:8px 18px; font-size:12px; font-weight:600; cursor:pointer;
@@ -790,8 +725,14 @@ footer p { font-size: 12px; color: rgba(255,255,255,0.2); }
 .cat-slide-card__title { font-size:16px; font-weight:700; line-height:1.3; margin-bottom:2px; }
 .cat-slide-card__year  { color:#999; font-size:12px; margin-bottom:10px; }
 .cat-slide-card__specs { color:#666; font-size:12px; line-height:1.65; margin-bottom:12px; flex:1; }
-.cat-slide-card__price { font-size:22px; font-weight:700; margin-bottom:12px; }
+.cat-slide-card__price { font-size:22px; font-weight:700; margin-bottom:2px; }
 .cat-slide-card__price span { font-size:11px; font-weight:400; color:#999; display:block; margin-bottom:2px; }
+.cat-slide-card__market { font-size:13px; color:#999; margin-bottom:8px; }
+.cat-slide-card__market span { font-size:11px; font-weight:400; color:#bbb; display:block; margin-bottom:1px; }
+.cat-slide-card__saving {
+  display:inline-block; background:rgba(34,139,34,0.1); color:#228B22;
+  font-size:12px; font-weight:600; padding:4px 12px; border-radius:50px; margin-bottom:12px;
+}
 .cat-slide-card__desc { color:#888; font-size:12px; line-height:1.6; margin-bottom:14px; }
 .cat-slide-btn {
   width:100%; background:var(--red); color:#fff; border:none;
@@ -805,6 +746,15 @@ footer p { font-size: 12px; color: rgba(255,255,255,0.2); }
 
 #catalogScroll::-webkit-scrollbar { display: none; }
 #catalogScroll.grabbing { cursor: grabbing; }
+
+.cat-all-btn {
+  display:inline-block; background:transparent; color:#fff;
+  border:1px solid rgba(255,255,255,0.25); border-radius:50px;
+  padding:13px 28px; font-size:14px; font-weight:600;
+  font-family:'Inter',sans-serif; text-decoration:none;
+  transition:background .2s, border-color .2s;
+}
+.cat-all-btn:hover { background:var(--red); border-color:var(--red); }
 
 /* =========================== */
 </style>
@@ -1070,6 +1020,10 @@ footer p { font-size: 12px; color: rgba(255,255,255,0.2); }
 
   <div id="catalogEmpty" style="display:none;color:rgba(255,255,255,0.3);font-size:14px;text-align:center;padding:40px 24px;">
     Автомобили скоро появятся — оставьте заявку и мы подберём под ваш запрос
+  </div>
+
+  <div style="padding:28px 24px 0;text-align:center;">
+    <a href="catalog.html" class="cat-all-btn">Смотреть весь каталог →</a>
   </div>
 </section>
 
@@ -1365,105 +1319,7 @@ async function submitHeroForm(e) {
 
 
 // ===== КАТАЛОГ-СЛАЙДЕР =====
-// Формат: { id, type:'arrived'|'order', brand, model, year, engine, mileage, color, price, saving, image, desc }
-window.IAC_CATALOG = [
-  // Пример — раскомментируйте и заполните:
-  /*
-  {
-    id: 'jp-lc200-2018', type: 'arrived',
-    brand: 'Toyota', model: 'Land Cruiser 200', year: 2018,
-    engine: '4.6L 309hp', mileage: '62 000 км', color: 'Чёрный',
-    price: '3 200 000 ₽', saving: 'Экономия ~580 000 ₽',
-    image: 'images/lc200.jpg',
-    desc: 'Комплектация VX. Взяли с аукциона USS в отличном состоянии. Полный комплект документов.'
-  },
-  */
-];
-
-let catTab = 'arrived';
-let catIndex = 0;
-
-function switchCatTab(tab) {
-  catTab = tab;
-  catIndex = 0;
-  document.getElementById('tab-arrived').classList.toggle('active', tab === 'arrived');
-  document.getElementById('tab-order').classList.toggle('active', tab === 'order');
-  renderCatalogSlider();
-}
-
-function renderCatalogSlider() {
-  const slider = document.getElementById('catalogSlider');
-  const empty  = document.getElementById('catalogEmpty');
-  const dots   = document.getElementById('catDots');
-  const cars   = window.IAC_CATALOG.filter(c => c.type === catTab);
-
-  if (!cars.length) {
-    slider.innerHTML = '';
-    dots.innerHTML = '';
-    empty.style.display = 'block';
-    return;
-  }
-  empty.style.display = 'none';
-
-  slider.innerHTML = cars.map((car, i) => {
-    const img = car.image
-      ? `<img class="cat-card__img" src="${car.image}" alt="${car.brand} ${car.model}" loading="lazy" onerror="this.style.display='none'">`
-      : `<div class="cat-card__no-img">Фото скоро</div>`;
-    const badgeClass = car.type === 'arrived' ? '' : 'cat-card__badge--order';
-    const badgeText  = car.type === 'arrived' ? 'Привезён' : 'Под заказ';
-    const saving = car.saving ? `<div class="cat-card__saving">${car.saving}</div>` : '';
-    return `
-    <div class="cat-card" data-index="${i}">
-      ${img}
-      <span class="cat-card__badge ${badgeClass}">${badgeText}</span>
-      <div class="cat-card__title">${car.brand} ${car.model}</div>
-      <div class="cat-card__meta">${car.year} · ${car.mileage}${car.color ? ' · ' + car.color : ''}</div>
-      <div class="cat-card__price"><span>Под ключ</span>${car.price}</div>
-      ${saving}
-      <p class="cat-card__desc">${car.desc || ''}</p>
-      <button class="cat-card__btn" onclick="catRequestCar('${car.brand} ${car.model}')">Узнать детали →</button>
-    </div>`;
-  }).join('');
-
-  // Dots
-  dots.innerHTML = cars.map((_, i) =>
-    `<div class="cat-dot${i === 0 ? ' active' : ''}" onclick="goToCat(${i})"></div>`
-  ).join('');
-
-  catIndex = 0;
-  slider.scrollTo({left: 0});
-}
-
-function slideCat(dir) {
-  const cars = window.IAC_CATALOG.filter(c => c.type === catTab);
-  catIndex = Math.max(0, Math.min(catIndex + dir, cars.length - 1));
-  goToCat(catIndex);
-}
-
-function goToCat(i) {
-  catIndex = i;
-  const slider = document.getElementById('catalogSlider');
-  const card = slider.querySelector(`[data-index="${i}"]`);
-  if (card) card.scrollIntoView({behavior: 'smooth', block: 'nearest', inline: 'start'});
-  document.querySelectorAll('.cat-dot').forEach((d, idx) =>
-    d.classList.toggle('active', idx === i));
-}
-
-function catRequestCar(model) {
-  const form = document.getElementById('heroForm');
-  if (form) {
-    form.scrollIntoView({behavior:'smooth', block:'center'});
-    setTimeout(() => {
-      const inp = document.querySelector('#heroRequestForm [name="model"]');
-      if (inp) { inp.value = model; inp.focus(); }
-    }, 600);
-  }
-}
-
-// ===========================
-
-
-// ===== КАТАЛОГ СЛАЙДЕР =====
+// Формат: { id, type:'arrived'|'order', brand, model, year, engine, mileage, color, price, marketPrice, marketRegion, saving, image, desc }
 window.IAC_CATALOG = [
   {
     id: 'jp-honda-nwgn-2015',
@@ -1472,7 +1328,10 @@ window.IAC_CATALOG = [
     engine: '0.66L Turbo, бензин',
     mileage: '— км',
     color: '—',
-    price: '★★★★★',
+    price: '750 000 ₽',
+    marketPrice: '950 000 ₽',
+    marketRegion: 'Дальний Восток',
+    saving: 'Выгода 200 000 ₽',
     image: '',
     desc: 'Компактный японский кей-кар в отличном состоянии. Экономичный, манёвренный, идеален для города.'
   },
@@ -1483,7 +1342,10 @@ window.IAC_CATALOG = [
     engine: '1.5L Turbo, бензин',
     mileage: '— км',
     color: '—',
-    price: '★★★★★',
+    price: '1 850 000 ₽',
+    marketPrice: '2 300 000 ₽',
+    marketRegion: 'Дальний Восток',
+    saving: 'Выгода 450 000 ₽',
     image: '',
     desc: 'Один из самых популярных семейных минивэнов Японии. Просторный, надёжный, с богатой комплектацией.'
   },
@@ -1494,7 +1356,10 @@ window.IAC_CATALOG = [
     engine: '1.6L 156hp, бензин',
     mileage: '— км',
     color: '—',
-    price: '★★★★★',
+    price: '2 450 000 ₽',
+    marketPrice: '3 050 000 ₽',
+    marketRegion: 'Центральная Россия',
+    saving: 'Выгода 600 000 ₽',
     image: '',
     desc: 'Элегантное купе бизнес-класса. Спортивный дизайн, комфортный салон, динамичный двигатель.'
   },
@@ -1505,11 +1370,71 @@ window.IAC_CATALOG = [
     engine: '1.5L 120hp, бензин',
     mileage: '— км',
     color: '—',
-    price: '★★★★★',
+    price: '1 150 000 ₽',
+    marketPrice: '1 450 000 ₽',
+    marketRegion: 'Дальний Восток',
+    saving: 'Выгода 300 000 ₽',
     image: '',
     desc: 'Японская сборка, строгий контроль качества. Надёжный хэтчбек с отличной управляемостью и экономичным расходом.'
   },
+  {
+    id: 'jp-prado-150-2019',
+    type: 'order',
+    brand: 'Toyota', model: 'Land Cruiser Prado 150', year: 2019,
+    engine: '2.7L 163hp, бензин',
+    mileage: 'под заказ',
+    color: 'на выбор',
+    price: '3 600 000 ₽',
+    marketPrice: '4 400 000 ₽',
+    marketRegion: 'Сибирь и Дальний Восток',
+    saving: 'Выгода 800 000 ₽',
+    image: '',
+    desc: 'Надёжный внедорожник для любых дорог. Подберём конкретный лот на аукционе под ваш бюджет и комплектацию.'
+  },
+  {
+    id: 'jp-forester-2018',
+    type: 'order',
+    brand: 'Subaru', model: 'Forester', year: 2018,
+    engine: '2.0L 150hp, бензин, AWD',
+    mileage: 'под заказ',
+    color: 'на выбор',
+    price: '1 650 000 ₽',
+    marketPrice: '2 050 000 ₽',
+    marketRegion: 'Дальний Восток',
+    saving: 'Выгода 400 000 ₽',
+    image: '',
+    desc: 'Полный привод и просторный салон — универсальный выбор для города и бездорожья. Найдём лот под ваши требования.'
+  },
+  {
+    id: 'jp-lexus-rx300-2019',
+    type: 'order',
+    brand: 'Lexus', model: 'RX 300', year: 2019,
+    engine: '2.0L Turbo 238hp, бензин',
+    mileage: 'под заказ',
+    color: 'на выбор',
+    price: '3 950 000 ₽',
+    marketPrice: '4 850 000 ₽',
+    marketRegion: 'Центральная Россия',
+    saving: 'Выгода 900 000 ₽',
+    image: '',
+    desc: 'Премиальный кроссовер с богатой комплектацией. Подберём авто с нужным пробегом и историей обслуживания.'
+  },
+  {
+    id: 'jp-alphard-2017',
+    type: 'order',
+    brand: 'Toyota', model: 'Alphard', year: 2017,
+    engine: '2.5L 182hp, бензин',
+    mileage: 'под заказ',
+    color: 'на выбор',
+    price: '3 200 000 ₽',
+    marketPrice: '3 950 000 ₽',
+    marketRegion: 'по всей России',
+    saving: 'Выгода 750 000 ₽',
+    image: '',
+    desc: 'Премиальный минивэн для семьи или бизнеса. Просторный салон, богатая комплектация. Подберём лот под ваш запрос.'
+  },
 ];
+
 
 let catCurrentTab = 'arrived';
 let catOffset = 0;
@@ -1582,7 +1507,9 @@ function renderCatalogSlider() {
         <div class="cat-slide-card__title">${car.brand} ${car.model}</div>
         <div class="cat-slide-card__year">${car.year}</div>
         <div class="cat-slide-card__specs">${[car.engine, car.mileage, car.color].filter(Boolean).join(' · ')}</div>
-        <div class="cat-slide-card__price"><span>Под ключ</span>${car.price}</div>
+        <div class="cat-slide-card__price"><span>Под ключ во Владивостоке</span>${car.price}</div>
+        <div class="cat-slide-card__market"><span>Рынок «${car.marketRegion}»</span><s>${car.marketPrice}</s></div>
+        ${car.saving ? `<div class="cat-slide-card__saving">${car.saving}</div>` : ''}
         ${car.desc ? `<div class="cat-slide-card__desc">${car.desc}</div>` : ''}
         <button class="cat-slide-btn" onclick="openRequestModalWithCar('${car.brand} ${car.model}')">Узнать детали</button>
       </div>
