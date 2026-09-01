@@ -734,6 +734,9 @@ footer p { font-size: 12px; color: rgba(255,255,255,0.2); }
   display:inline-block; background:rgba(34,139,34,0.1); color:#228B22;
   font-size:12px; font-weight:600; padding:4px 12px; border-radius:50px; margin-bottom:12px;
 }
+.cat-slide-card__price-note {
+  font-size:11px; color:#999; line-height:1.5; margin-bottom:12px;
+}
 .cat-slide-card__desc { color:#888; font-size:12px; line-height:1.6; margin-bottom:14px; }
 .cat-slide-btn {
   width:100%; background:var(--red); color:#fff; border:none;
@@ -793,6 +796,7 @@ footer p { font-size: 12px; color: rgba(255,255,255,0.2); }
   display:inline-block; background:rgba(34,139,34,0.1); color:#228B22;
   font-size:13px; font-weight:600; padding:5px 14px; border-radius:50px; margin-bottom:20px;
 }
+.cdm-price-note { font-size:12px; color:#999; line-height:1.5; margin-bottom:20px; margin-top:-10px; }
 .cdm-desc { color:#555; font-size:14px; line-height:1.8; margin-bottom:24px; }
 .cdm-btn {
   width:100%; background:var(--red); color:#fff; border:none;
@@ -1047,7 +1051,7 @@ footer p { font-size: 12px; color: rgba(255,255,255,0.2); }
   <div style="padding:0 24px;">
     <div class="sec-tag"><span></span>Каталог<span></span></div>
     <h2 class="sec-h2" style="color:var(--white);">Автомобили из <em style="font-family:'Playfair Display',serif;font-style:italic;color:var(--red);">Японии</em></h2>
-    <p class="sec-sub" style="color:rgba(255,255,255,0.5);margin-bottom:28px;">Уже привезённые авто и примеры того, что можно заказать под ваш запрос</p>
+    <p class="sec-sub" style="color:rgba(255,255,255,0.5);margin-bottom:28px;">Каталог автомобилей — уже привезённых во Владивосток и доступных под заказ с аукционов Японии, Кореи и Китая</p>
 
     <!-- Вкладки + навигация -->
     <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:20px;">
@@ -1155,6 +1159,7 @@ footer p { font-size: 12px; color: rgba(255,255,255,0.2); }
       <div class="cdm-price"><span>Под ключ во Владивостоке</span><b id="cdmPrice"></b></div>
       <div class="cdm-market" id="cdmMarket"></div>
       <div class="cdm-saving" id="cdmSaving"></div>
+      <p class="cdm-price-note" id="cdmPriceNote" style="display:none;">Цена ориентировочная — зависит от курса валют и аукционной стоимости на момент покупки</p>
       <p class="cdm-desc" id="cdmDesc"></p>
       <button class="cdm-btn" id="cdmCtaBtn">Оставить заявку на подбор авто</button>
     </div>
@@ -1593,6 +1598,7 @@ function renderCatalogSlider() {
         <div class="cat-slide-card__price"><span>Под ключ во Владивостоке</span>${car.price}</div>
         <div class="cat-slide-card__market"><span>Рынок «${car.marketRegion}»</span><s>${car.marketPrice}</s></div>
         ${car.saving ? `<div class="cat-slide-card__saving">${car.saving}</div>` : ''}
+        ${car.type === 'order' ? `<div class="cat-slide-card__price-note">Цена ориентировочная — зависит от курса валют и аукционной стоимости на момент покупки</div>` : ''}
         ${car.desc ? `<div class="cat-slide-card__desc">${car.desc}</div>` : ''}
         <button class="cat-slide-btn" onclick="openCarDetailModal('${car.id}')">Узнать детали</button>
       </div>
@@ -1631,6 +1637,7 @@ function openCarDetailModal(id) {
   document.getElementById('cdmMarket').innerHTML = `Рынок «${car.marketRegion}»: <s>${car.marketPrice}</s>`;
   document.getElementById('cdmSaving').textContent = car.saving || '';
   document.getElementById('cdmSaving').style.display = car.saving ? 'inline-block' : 'none';
+  document.getElementById('cdmPriceNote').style.display = car.type === 'order' ? 'block' : 'none';
   document.getElementById('cdmDesc').textContent = car.detail || car.desc || '';
 
   const ctaBtn = document.getElementById('cdmCtaBtn');

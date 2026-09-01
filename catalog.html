@@ -121,6 +121,9 @@ body { font-family:'Inter',sans-serif; background:var(--black); color:var(--whit
   display:inline-block; background:rgba(34,139,34,0.12); color:#3fbf3f;
   font-size:11px; font-weight:600; padding:4px 12px; border-radius:50px; margin-bottom:12px;
 }
+.car-card__price-note {
+  font-size:11px; color:rgba(255,255,255,0.4); line-height:1.5; margin-bottom:12px;
+}
 .car-card__badge {
   display:inline-block; background:var(--red); color:#fff;
   font-size:9px; font-weight:700; letter-spacing:1px; text-transform:uppercase;
@@ -240,18 +243,16 @@ body { font-family:'Inter',sans-serif; background:var(--black); color:var(--whit
 <section class="catalog-hero">
   <div class="cat-tag">Import Asia Cars</div>
   <h1>Каталог<br/>автомобилей</h1>
-  <p>Актуальные предложения из Японии, Кореи и Китая. Все автомобили — под ключ с полной растаможкой.</p>
+  <p>Автомобили уже в наличии во Владивостоке и модели под заказ с аукционов Японии, Кореи и Китая. Все — под ключ с полной растаможкой.</p>
 </section>
 
 <!-- ФИЛЬТРЫ -->
 <div class="filter-bar">
   <input type="text" id="searchInput" placeholder="Поиск: Toyota, BMW…"/>
-  <select id="countryFilter">
-    <option value="">Все страны</option>
-    <option value="Япония">Япония 🇯🇵</option>
-    <option value="Корея">Корея 🇰🇷</option>
-    <option value="Китай">Китай 🇨🇳</option>
-    <option value="Европа">Европа 🇪🇺</option>
+  <select id="typeFilter">
+    <option value="">Все автомобили</option>
+    <option value="arrived">Привезённые</option>
+    <option value="order">Под заказ</option>
   </select>
   <input type="number" id="yearFilter" placeholder="Год от"/>
   <input type="number" id="budgetFilter" placeholder="Бюджет до ₽"/>
@@ -519,6 +520,7 @@ function renderCards(cars) {
         <div class="car-card__price"><span>Под ключ во Владивостоке</span>${car.price} ₽</div>
         ${car.marketPrice ? `<div class="car-card__market"><span>Рынок «${car.marketRegion}»</span><s>${car.marketPrice}</s></div>` : ''}
         ${car.saving ? `<div class="car-card__saving">${car.saving}</div>` : ''}
+        ${car.type === 'order' ? `<div class="car-card__price-note">Цена ориентировочная — зависит от курса валют и аукционной стоимости на момент покупки</div>` : ''}
         <button class="btn-card">Получить расчёт</button>
       </div>
     </div>`;
@@ -527,7 +529,7 @@ function renderCards(cars) {
 
 function applyFilters() {
   const search = document.getElementById('searchInput').value.toLowerCase();
-  const country = document.getElementById('countryFilter').value;
+  const type = document.getElementById('typeFilter').value;
   const year = parseInt(document.getElementById('yearFilter').value) || 0;
   const budget = parseInt(document.getElementById('budgetFilter').value) || 0;
 
@@ -535,7 +537,7 @@ function applyFilters() {
     const name = (car.brand + ' ' + car.model).toLowerCase();
     const priceNum = parseInt(car.price.replace(/\D/g,'')) || 0;
     if (search && !name.includes(search)) return false;
-    if (country && car.country !== country) return false;
+    if (type && car.type !== type) return false;
     if (year && car.year < year) return false;
     if (budget && priceNum > budget) return false;
     return true;
@@ -545,7 +547,7 @@ function applyFilters() {
 
 // live search
 document.getElementById('searchInput').addEventListener('input', applyFilters);
-document.getElementById('countryFilter').addEventListener('change', applyFilters);
+document.getElementById('typeFilter').addEventListener('change', applyFilters);
 
 // init
 if (window.IAC_CARS.length) {
@@ -582,6 +584,7 @@ function openCarModal(id) {
     <div><span>Под ключ во Владивостоке</span>${car.price} ₽</div>
     ${car.marketPrice ? `<div style="font-size:14px;font-weight:400;color:rgba(255,255,255,0.4);margin-top:6px;">Рынок «${car.marketRegion}»: <s>${car.marketPrice}</s></div>` : ''}
     ${car.saving ? `<div class="car-card__saving" style="margin-top:8px;">${car.saving}</div>` : ''}
+    ${car.type === 'order' ? `<div class="car-card__price-note" style="margin-top:8px;">Цена ориентировочная — зависит от курса валют и аукционной стоимости на момент покупки автомобиля</div>` : ''}
   `;
 
   const modal = document.getElementById('carModal');
