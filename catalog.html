@@ -59,6 +59,7 @@ body { font-family:'Inter',sans-serif; background:var(--black); color:var(--whit
 .cat-tag::before, .cat-tag::after { content:''; display:block; width:24px; height:1px; background:var(--red); }
 .catalog-hero h1 { font-size:clamp(28px,7vw,52px); font-weight:700; line-height:1.15; margin-bottom:12px; }
 .catalog-hero p { color:rgba(255,255,255,0.55); font-size:15px; line-height:1.7; max-width:480px; }
+.cat-price-note { color:rgba(255,255,255,0.35) !important; font-size:12px !important; margin-top:10px; }
 
 /* ФИЛЬТРЫ */
 .filter-bar {
@@ -242,8 +243,9 @@ body { font-family:'Inter',sans-serif; background:var(--black); color:var(--whit
 <!-- HERO -->
 <section class="catalog-hero">
   <div class="cat-tag">Import Asia Cars</div>
-  <h1>Каталог<br/>автомобилей</h1>
-  <p>Автомобили уже в наличии во Владивостоке и модели под заказ с аукционов Японии, Кореи и Китая. Все — под ключ с полной растаможкой.</p>
+  <h1>Каталог автомобилей</h1>
+  <p>Автомобили уже привезенные клиентам и модели под заказ с аукционов Японии.</p>
+  <p class="cat-price-note">Цены на автомобили под заказ ориентировочные — точная цена зависит от многих факторов, уточняйте у менеджера.</p>
 </section>
 
 <!-- ФИЛЬТРЫ -->
@@ -360,80 +362,318 @@ body { font-family:'Inter',sans-serif; background:var(--black); color:var(--whit
 // Добавляйте машины сюда:
 window.IAC_CARS = [
   {
-    id: 'jp-honda-nwgn-2015',
-    type: 'arrived',
-    brand: 'Honda', model: 'N-WGN', year: 2015,
-    engine: '0.66L Turbo, бензин',
-    mileage: '— км',
-    country: 'Япония',
-    price: '750 000',
-    marketPrice: '950 000 ₽',
-    marketRegion: 'Дальний Восток',
-    saving: 'Выгода 200 000 ₽',
-    images: [],
-    description: 'Компактный японский кей-кар в отличном состоянии. Экономичный расход топлива, лёгкое управление на узких городских улицах, минимальный налог и страховка за счёт малого объёма двигателя. Кузов без коррозии, салон в хорошем состоянии. Отличный вариант первого или второго автомобиля в семью.'
-  },
-  {
-    id: 'jp-honda-stepwgn-2020',
-    type: 'arrived',
-    brand: 'Honda', model: 'Step Wgn', year: 2020,
-    engine: '1.5L Turbo, бензин',
-    mileage: '— км',
+    id: 'jp-toyota-chr-2018',
+    type: 'order',
+    brand: 'Toyota', model: 'C-HR', year: 2018,
+    engine: '1.2L Turbo / 1.8L Hybrid, бензин',
+    mileage: 'под заказ',
     country: 'Япония',
     price: '1 850 000',
     marketPrice: '2 300 000 ₽',
     marketRegion: 'Дальний Восток',
     saving: 'Выгода 450 000 ₽',
     images: [],
-    description: 'Один из самых популярных семейных минивэнов Японии. Просторный салон на 6–7 мест, продуманная эргономика, богатая шумоизоляция. Турбированный двигатель тянет уверенно даже с полной загрузкой. Отличный выбор для семьи или частного извоза — надёжность и ремонтопригодность подтверждены годами эксплуатации на рынке.'
+    description: 'Компактный кроссовер с запоминающимся купеобразным дизайном. Уверенная управляемость, экономичный мотор (в т.ч. гибридная версия), хорошая шумоизоляция. Подберём лот под ваш бюджет и комплектацию.'
   },
   {
-    id: 'eu-mercedes-c180-2017',
-    type: 'arrived',
-    brand: 'Mercedes-Benz', model: 'C 180 Coupe', year: 2017,
-    engine: '1.6L 156hp, бензин',
-    mileage: '— км',
+    id: 'eu-vw-tcross-2021',
+    type: 'order',
+    brand: 'Volkswagen', model: 'T-Cross', year: 2021,
+    engine: '1.0–1.5L TSI Turbo, бензин',
+    mileage: 'под заказ',
     country: 'Европа',
-    price: '2 450 000',
-    marketPrice: '3 050 000 ₽',
+    price: '1 750 000',
+    marketPrice: '2 200 000 ₽',
     marketRegion: 'Центральная Россия',
-    saving: 'Выгода 600 000 ₽',
+    saving: 'Выгода 450 000 ₽',
     images: [],
-    description: 'Элегантное купе бизнес-класса из Европы. Спортивный силуэт, качественные материалы отделки салона, отзывчивый турбомотор. Хорошо держит цену на вторичном рынке и выделяется на фоне типичных седанов представительского класса. Подходит и для города, и для дальних поездок.'
+    description: 'Компактный городской кроссовер немецкой сборки. Качественные материалы салона, отзывчивый турбомотор, продуманная эргономика. Хороший баланс комфорта и практичности для города.'
   },
   {
-    id: 'jp-mazda3-2016',
-    type: 'arrived',
-    brand: 'Mazda', model: '3', year: 2016,
-    engine: '1.5L 120hp, бензин',
-    mileage: '— км',
+    id: 'jp-toyota-passo-2021',
+    type: 'order',
+    brand: 'Toyota', model: 'Passo', year: 2021,
+    engine: '1.0L, бензин',
+    mileage: 'под заказ',
     country: 'Япония',
     price: '1 150 000',
     marketPrice: '1 450 000 ₽',
     marketRegion: 'Дальний Восток',
     saving: 'Выгода 300 000 ₽',
     images: [],
-    description: 'Японская сборка, строгий контроль качества на всех этапах производства. Надёжный компактный хэтчбек с отличной управляемостью, экономичным расходом топлива и невысокой стоимостью обслуживания. Хороший баланс цены, качества и характеристик для повседневной эксплуатации в городе.'
+    description: 'Компактный городской хэтчбек с экономичным мотором и небольшими габаритами — удобен для плотного городского трафика и парковки. Невысокая стоимость обслуживания и владения.'
   },
   {
-    id: 'jp-prado-150-2019',
+    id: 'jp-honda-nbox-2022',
     type: 'order',
-    brand: 'Toyota', model: 'Land Cruiser Prado 150', year: 2019,
-    engine: '2.7L 163hp, бензин',
+    brand: 'Honda', model: 'N-BOX', year: 2022,
+    engine: '0.66L Turbo, бензин',
     mileage: 'под заказ',
     country: 'Япония',
-    price: '3 600 000',
-    marketPrice: '4 400 000 ₽',
-    marketRegion: 'Сибирь и Дальний Восток',
-    saving: 'Выгода 800 000 ₽',
+    price: '950 000',
+    marketPrice: '1 200 000 ₽',
+    marketRegion: 'Дальний Восток',
+    saving: 'Выгода 250 000 ₽',
     images: [],
-    description: 'Надёжный полноразмерный внедорожник для любых дорог и климата — от города до бездорожья. Проверенная временем платформа, простое и недорогое обслуживание, высокая ремонтопригодность даже в отдалённых регионах. Подберём конкретный лот на аукционе в Японии под ваш бюджет, комплектацию и цвет кузова.'
+    description: 'Самый продаваемый кей-кар Японии. Просторный салон для своего класса за счёт высокого кузова, минимальные расходы на владение — низкий налог и дешёвая страховка.'
   },
   {
-    id: 'jp-forester-2018',
+    id: 'jp-suzuki-jimny-sierra-2022',
     type: 'order',
-    brand: 'Subaru', model: 'Forester', year: 2018,
-    engine: '2.0L 150hp, бензин, AWD',
+    brand: 'Suzuki', model: 'Jimny Sierra', year: 2022,
+    engine: '1.5L, бензин, 4WD',
+    mileage: 'под заказ',
+    country: 'Япония',
+    price: '2 650 000',
+    marketPrice: '3 300 000 ₽',
+    marketRegion: 'по всей России',
+    saving: 'Выгода 650 000 ₽',
+    images: [],
+    description: 'Широкая экспортная версия культового Jimny с настоящим полным приводом и понижающей передачей. Стабильно высокий спрос и ликвидность на вторичном рынке по всей России.'
+  },
+  {
+    id: 'jp-toyota-raize-2022',
+    type: 'order',
+    brand: 'Toyota', model: 'Raize', year: 2022,
+    engine: '1.0L Turbo, бензин',
+    mileage: 'под заказ',
+    country: 'Япония',
+    price: '1 550 000',
+    marketPrice: '1 950 000 ₽',
+    marketRegion: 'Дальний Восток',
+    saving: 'Выгода 400 000 ₽',
+    images: [],
+    description: 'Компактный SUV с современным дизайном и доступным полным приводом. Экономичный турбомотор, хорошая манёвренность в городе и уверенное поведение за его пределами.'
+  },
+  {
+    id: 'jp-nissan-dayz-2022',
+    type: 'order',
+    brand: 'Nissan', model: 'Dayz', year: 2022,
+    engine: '0.66L Turbo, бензин',
+    mileage: 'под заказ',
+    country: 'Япония',
+    price: '900 000',
+    marketPrice: '1 150 000 ₽',
+    marketRegion: 'Дальний Восток',
+    saving: 'Выгода 250 000 ₽',
+    images: [],
+    description: 'Компактный кей-кар с современной мультимедиа и системами помощи водителю. Минимальные расходы на владение, удобен для повседневных городских поездок.'
+  },
+  {
+    id: 'jp-suzuki-swift-2023',
+    type: 'order',
+    brand: 'Suzuki', model: 'Swift', year: 2023,
+    engine: '1.2L, бензин',
+    mileage: 'под заказ',
+    country: 'Япония',
+    price: '1 350 000',
+    marketPrice: '1 700 000 ₽',
+    marketRegion: 'Дальний Восток',
+    saving: 'Выгода 350 000 ₽',
+    images: [],
+    description: 'Лёгкий и манёвренный хэтчбек с отзывчивым управлением. Экономичный расход топлива, невысокая стоимость обслуживания, узнаваемый динамичный дизайн.'
+  },
+  {
+    id: 'jp-daihatsu-miraes-2022',
+    type: 'order',
+    brand: 'Daihatsu', model: 'Mira e:S', year: 2022,
+    engine: '0.66L, бензин',
+    mileage: 'под заказ',
+    country: 'Япония',
+    price: '800 000',
+    marketPrice: '1 000 000 ₽',
+    marketRegion: 'Дальний Восток',
+    saving: 'Выгода 200 000 ₽',
+    images: [],
+    description: 'Один из самых экономичных кей-каров на рынке. Минимальный расход топлива, низкий налог и страховка — оптимальный вариант для города с минимальными расходами на содержание.'
+  },
+  {
+    id: 'jp-suzuki-solio-2022',
+    type: 'order',
+    brand: 'Suzuki', model: 'Solio', year: 2022,
+    engine: '1.2L Mild Hybrid, бензин',
+    mileage: 'под заказ',
+    country: 'Япония',
+    price: '1 250 000',
+    marketPrice: '1 550 000 ₽',
+    marketRegion: 'Дальний Восток',
+    saving: 'Выгода 300 000 ₽',
+    images: [],
+    description: 'Компактный вэн с высоким кузовом и мягкой гибридной установкой. Просторный салон для своего класса, удобные сдвижные двери, экономичный расход топлива.'
+  },
+  {
+    id: 'jp-suzuki-ignis-2023',
+    type: 'order',
+    brand: 'Suzuki', model: 'Ignis', year: 2023,
+    engine: '1.2L Mild Hybrid, бензин',
+    mileage: 'под заказ',
+    country: 'Япония',
+    price: '1 300 000',
+    marketPrice: '1 650 000 ₽',
+    marketRegion: 'Дальний Восток',
+    saving: 'Выгода 350 000 ₽',
+    images: [],
+    description: 'Компактный кроссхэтчбек с необычным дизайном и лёгкой гибридной установкой. Доступен полный привод, хорошая манёвренность и обзорность в городе.'
+  },
+  {
+    id: 'jp-toyota-yariscross-2023',
+    type: 'order',
+    brand: 'Toyota', model: 'Yaris Cross', year: 2023,
+    engine: '1.5L Hybrid, бензин',
+    mileage: 'под заказ',
+    country: 'Япония',
+    price: '1 950 000',
+    marketPrice: '2 450 000 ₽',
+    marketRegion: 'Дальний Восток',
+    saving: 'Выгода 500 000 ₽',
+    images: [],
+    description: 'Субкомпактный гибридный кроссовер с современным дизайном и низким расходом топлива. Хорошая шумоизоляция и богатая заводская комплектация для своего класса.'
+  },
+  {
+    id: 'jp-daihatsu-move-2022',
+    type: 'order',
+    brand: 'Daihatsu', model: 'Move', year: 2022,
+    engine: '0.66L Turbo, бензин',
+    mileage: 'под заказ',
+    country: 'Япония',
+    price: '850 000',
+    marketPrice: '1 100 000 ₽',
+    marketRegion: 'Дальний Восток',
+    saving: 'Выгода 250 000 ₽',
+    images: [],
+    description: 'Кей-кар с высоким кузовом и просторным для своего класса салоном. Экономичный турбомотор, минимальные расходы на владение, удобен для города.'
+  },
+  {
+    id: 'jp-honda-fitshuttle-2012',
+    type: 'order',
+    brand: 'Honda', model: 'Fit Shuttle', year: 2012,
+    engine: '1.5L, бензин',
+    mileage: 'под заказ',
+    country: 'Япония',
+    price: '950 000',
+    marketPrice: '1 200 000 ₽',
+    marketRegion: 'Дальний Восток',
+    saving: 'Выгода 250 000 ₽',
+    images: [],
+    description: 'Универсал на базе Honda Fit с вместительным багажником и низким полом загрузки. Надёжный и экономичный мотор, невысокая стоимость обслуживания.'
+  },
+  {
+    id: 'eu-peugeot-208-2023',
+    type: 'order',
+    brand: 'Peugeot', model: '208', year: 2023,
+    engine: '1.2L Turbo, бензин',
+    mileage: 'под заказ',
+    country: 'Европа',
+    price: '1 850 000',
+    marketPrice: '2 350 000 ₽',
+    marketRegion: 'Центральная Россия',
+    saving: 'Выгода 500 000 ₽',
+    images: [],
+    description: 'Стильный европейский супермини с ярким дизайном интерьера и качественной сборкой. Отзывчивый турбомотор, современные системы безопасности и мультимедиа.'
+  },
+  {
+    id: 'jp-nissan-roox-2022',
+    type: 'order',
+    brand: 'Nissan', model: 'Roox', year: 2022,
+    engine: '0.66L Turbo, бензин',
+    mileage: 'под заказ',
+    country: 'Япония',
+    price: '950 000',
+    marketPrice: '1 200 000 ₽',
+    marketRegion: 'Дальний Восток',
+    saving: 'Выгода 250 000 ₽',
+    images: [],
+    description: 'Кей-кар с высоким кузовом и раздвижными дверями — удобен для семьи с детьми. Просторный салон для своего класса, экономичный турбомотор.'
+  },
+  {
+    id: 'jp-daihatsu-taft-2022',
+    type: 'order',
+    brand: 'Daihatsu', model: 'Taft', year: 2022,
+    engine: '1.0L Turbo, бензин, 4WD',
+    mileage: 'под заказ',
+    country: 'Япония',
+    price: '1 450 000',
+    marketPrice: '1 850 000 ₽',
+    marketRegion: 'Дальний Восток',
+    saving: 'Выгода 400 000 ₽',
+    images: [],
+    description: 'Компактный SUV с квадратным «внедорожным» дизайном и доступным полным приводом. Хорошая обзорность, манёвренность в городе и уверенное поведение на бездорожье.'
+  },
+  {
+    id: 'jp-honda-stepwgn-2015',
+    type: 'arrived',
+    brand: 'Honda', model: 'Step Wgn', year: '2015–2022',
+    engine: '1.5L Turbo / 2.0L, бензин',
+    mileage: 'уточняется',
+    country: 'Япония',
+    price: '1 750 000',
+    marketPrice: '2 150 000 ₽',
+    marketRegion: 'Дальний Восток',
+    saving: 'Выгода 400 000 ₽',
+    images: [],
+    description: 'Один из самых популярных семейных минивэнов Японии. Просторный салон на 6–7 мест, продуманная эргономика, богатая шумоизоляция. Турбированные версии тянут уверенно даже с полной загрузкой. Надёжность и ремонтопригодность подтверждены годами эксплуатации на рынке.'
+  },
+  {
+    id: 'jp-mazda3-2018',
+    type: 'arrived',
+    brand: 'Mazda', model: '3', year: '2018–2023',
+    engine: '1.5–2.0L, бензин',
+    mileage: 'уточняется',
+    country: 'Япония',
+    price: '1 450 000',
+    marketPrice: '1 800 000 ₽',
+    marketRegion: 'Дальний Восток',
+    saving: 'Выгода 350 000 ₽',
+    images: [],
+    description: 'Японская сборка, строгий контроль качества на всех этапах производства. Плавный ход, точная управляемость и качественные материалы салона — Mazda 3 стабильно входит в число самых надёжных хэтчбеков своего класса. Экономичный расход и невысокая стоимость обслуживания.'
+  },
+  {
+    id: 'jp-honda-nwgn-2013',
+    type: 'arrived',
+    brand: 'Honda', model: 'N-WGN', year: '2013–2019',
+    engine: '0.66L Turbo, бензин',
+    mileage: 'уточняется',
+    country: 'Япония',
+    price: '750 000',
+    marketPrice: '950 000 ₽',
+    marketRegion: 'Дальний Восток',
+    saving: 'Выгода 200 000 ₽',
+    images: [],
+    description: 'Компактный японский кей-кар с минимальными расходами на владение — низкий налог, дешёвая страховка, экономичный расход топлива. Лёгкое управление на узких городских улицах и простая парковка. Отличный вариант первого или второго автомобиля в семью.'
+  },
+  {
+    id: 'eu-mercedes-c180-2014',
+    type: 'arrived',
+    brand: 'Mercedes-Benz', model: 'C 180 Coupe', year: '2014–2019',
+    engine: '1.6L Turbo, бензин',
+    mileage: 'уточняется',
+    country: 'Япония',
+    price: '2 150 000',
+    marketPrice: '2 700 000 ₽',
+    marketRegion: 'Центральная Россия',
+    saving: 'Выгода 550 000 ₽',
+    images: [],
+    description: 'Элегантное купе бизнес-класса. Спортивный силуэт, качественные материалы отделки салона, отзывчивый турбомотор. Хорошо держит цену на вторичном рынке и выделяется на фоне типичных седанов представительского класса. Подходит и для города, и для дальних поездок.'
+  },
+  {
+    id: 'jp-honda-freed-2020',
+    type: 'arrived',
+    brand: 'Honda', model: 'Freed', year: '2020–2023',
+    engine: '1.5L, бензин',
+    mileage: 'уточняется',
+    country: 'Япония',
+    price: '1 700 000',
+    marketPrice: '2 100 000 ₽',
+    marketRegion: 'Дальний Восток',
+    saving: 'Выгода 400 000 ₽',
+    images: [],
+    description: 'Компактный семейный минивэн с гибкой трансформацией салона под пассажиров или груз. Лёгкий в управлении, хорошо подходит для города, экономичный расход топлива. Отличный выбор для семьи, которой нужна практичность без габаритов большого минивэна.'
+  },
+  {
+    id: 'jp-toyota-corolla-2019',
+    type: 'order',
+    brand: 'Toyota', model: 'Corolla', year: '2019–2023',
+    engine: '1.2T / 1.8L Hybrid, бензин',
     mileage: 'под заказ',
     country: 'Япония',
     price: '1 650 000',
@@ -441,35 +681,63 @@ window.IAC_CARS = [
     marketRegion: 'Дальний Восток',
     saving: 'Выгода 400 000 ₽',
     images: [],
-    description: 'Полный привод и просторный салон делают эту модель универсальным выбором для города и лёгкого бездорожья. Хорошая проходимость, надёжная трансмиссия, невысокая стоимость владения. Найдём конкретный лот на японских аукционах под ваши требования по пробегу, году и комплектации.'
+    description: 'Эталон надёжности среди компактных седанов и хэтчбеков. Доступное обслуживание практически в любом сервисе, экономичный расход топлива (в т.ч. гибридная версия), высокая остаточная стоимость на вторичном рынке. Подберём конкретный лот под ваш бюджет и комплектацию.'
   },
   {
-    id: 'jp-lexus-rx300-2019',
+    id: 'jp-honda-vezel-2021',
     type: 'order',
-    brand: 'Lexus', model: 'RX 300', year: 2019,
-    engine: '2.0L Turbo 238hp, бензин',
+    brand: 'Honda', model: 'Vezel', year: '2021–2023',
+    engine: '1.5L Hybrid e:HEV, бензин',
     mileage: 'под заказ',
     country: 'Япония',
-    price: '3 950 000',
-    marketPrice: '4 850 000 ₽',
-    marketRegion: 'Центральная Россия',
-    saving: 'Выгода 900 000 ₽',
+    price: '2 150 000',
+    marketPrice: '2 650 000 ₽',
+    marketRegion: 'Дальний Восток и Сибирь',
+    saving: 'Выгода 500 000 ₽',
     images: [],
-    description: 'Премиальный кроссовер с богатой заводской комплектацией — кожаный салон, продвинутая мультимедиа, современные системы безопасности. Плавный ход, тихий салон, узнаваемое качество сборки Lexus. Подберём конкретный автомобиль с нужным пробегом, историей обслуживания и результатом аукционной оценки.'
+    description: 'Гибридный кроссовер с современным дизайном и высоким клиренсом — уверенно чувствует себя и в городе, и за его пределами. Экономичный расход за счёт гибридной силовой установки, богатая заводская комплектация. Подберём лот с нужным годом и комплектацией под ваш запрос.'
   },
   {
-    id: 'jp-alphard-2017',
+    id: 'jp-suzuki-jimny-2018',
     type: 'order',
-    brand: 'Toyota', model: 'Alphard', year: 2017,
-    engine: '2.5L 182hp, бензин',
+    brand: 'Suzuki', model: 'Jimny', year: '2018–2023',
+    engine: '1.5L, бензин, 4WD',
     mileage: 'под заказ',
     country: 'Япония',
-    price: '3 200 000',
-    marketPrice: '3 950 000 ₽',
+    price: '2 450 000',
+    marketPrice: '3 050 000 ₽',
     marketRegion: 'по всей России',
-    saving: 'Выгода 750 000 ₽',
+    saving: 'Выгода 600 000 ₽',
     images: [],
-    description: 'Премиальный минивэн для семьи или бизнеса — эталон комфорта в своём классе. Просторный салон с раздельными регулируемыми креслами, богатая шумоизоляция, продуманная эргономика для дальних поездок. Подберём конкретный лот под ваш запрос по году, пробегу и комплектации.'
+    description: 'Культовый компактный внедорожник с настоящим полным приводом и понижающей передачей. Один из немногих доступных по-настоящему внедорожных автомобилей в компактном кузове — стабильно высокий спрос и ликвидность на вторичном рынке по всей России. Подберём лот под ваш бюджет и комплектацию.'
+  },
+  {
+    id: 'jp-toyota-prius-2018',
+    type: 'order',
+    brand: 'Toyota', model: 'Prius', year: '2018–2023',
+    engine: '1.8L Hybrid, бензин',
+    mileage: 'под заказ',
+    country: 'Япония',
+    price: '1 750 000',
+    marketPrice: '2 150 000 ₽',
+    marketRegion: 'Дальний Восток',
+    saving: 'Выгода 400 000 ₽',
+    images: [],
+    description: 'Гибридный седан с одним из самых низких расходов топлива в своём классе. Проверенная временем гибридная система Toyota — надёжная и ремонтопригодная, низкая стоимость обслуживания и владения. Хороший выбор для города и частого использования, в т.ч. для такси.'
+  },
+  {
+    id: 'jp-toyota-tank-2020',
+    type: 'order',
+    brand: 'Toyota', model: 'Tank', year: '2020–2023',
+    engine: '1.0L Turbo, бензин',
+    mileage: 'под заказ',
+    country: 'Япония',
+    price: '1 350 000',
+    marketPrice: '1 700 000 ₽',
+    marketRegion: 'Дальний Восток',
+    saving: 'Выгода 350 000 ₽',
+    images: [],
+    description: 'Компактный вэн с высоким кузовом и электрическими сдвижными дверями. Простой и экономичный турбомотор, лёгкая парковка за счёт компактных габаритов, вместительный салон для своего класса. Хороший вариант городского семейного авто с невысокой стоимостью владения.'
   },
 ];
 
@@ -517,10 +785,9 @@ function renderCards(cars) {
         <div class="car-card__title">${car.brand} ${car.model}</div>
         <div class="car-card__year">${car.year}</div>
         <div class="car-card__specs">${car.engine} · ${car.mileage}</div>
-        <div class="car-card__price"><span>Под ключ во Владивостоке</span>${car.price} ₽</div>
-        ${car.marketPrice ? `<div class="car-card__market"><span>Рынок «${car.marketRegion}»</span><s>${car.marketPrice}</s></div>` : ''}
-        ${car.saving ? `<div class="car-card__saving">${car.saving}</div>` : ''}
-        ${car.type === 'order' ? `<div class="car-card__price-note">Цена ориентировочная — зависит от курса валют и аукционной стоимости на момент покупки</div>` : ''}
+        <div class="car-card__price"><span>Под ключ во Владивостоке</span>${car.type === 'order' ? 'От ' + car.price : car.price} ₽</div>
+        ${car.type === 'arrived' && car.marketPrice ? `<div class="car-card__market"><span>Рынок «${car.marketRegion}»</span><s>${car.marketPrice}</s></div>` : ''}
+        ${car.type === 'arrived' && car.saving ? `<div class="car-card__saving">${car.saving}</div>` : ''}
         <button class="btn-card">Получить расчёт</button>
       </div>
     </div>`;
@@ -581,10 +848,10 @@ function openCarModal(id) {
   ].map(([l,v]) => `<div class="car-modal__spec"><div class="car-modal__spec-label">${l}</div><div class="car-modal__spec-val">${v}</div></div>`).join('');
 
   document.getElementById('carModalPrice').innerHTML = `
-    <div><span>Под ключ во Владивостоке</span>${car.price} ₽</div>
-    ${car.marketPrice ? `<div style="font-size:14px;font-weight:400;color:rgba(255,255,255,0.4);margin-top:6px;">Рынок «${car.marketRegion}»: <s>${car.marketPrice}</s></div>` : ''}
-    ${car.saving ? `<div class="car-card__saving" style="margin-top:8px;">${car.saving}</div>` : ''}
-    ${car.type === 'order' ? `<div class="car-card__price-note" style="margin-top:8px;">Цена ориентировочная — зависит от курса валют и аукционной стоимости на момент покупки автомобиля</div>` : ''}
+    <div><span>Под ключ во Владивостоке</span>${car.type === 'order' ? 'От ' + car.price : car.price} ₽</div>
+    ${car.type === 'arrived' && car.marketPrice ? `<div style="font-size:14px;font-weight:400;color:rgba(255,255,255,0.4);margin-top:6px;">Рынок «${car.marketRegion}»: <s>${car.marketPrice}</s></div>` : ''}
+    ${car.type === 'arrived' && car.saving ? `<div class="car-card__saving" style="margin-top:8px;">${car.saving}</div>` : ''}
+    ${car.type === 'order' ? `<div class="car-card__price-note" style="margin-top:8px;">Цены ориентировочные, точная цена машины зависит от многих факторов, уточняйте у менеджера</div>` : ''}
   `;
 
   const modal = document.getElementById('carModal');
