@@ -114,8 +114,8 @@ body { font-family:'Inter',sans-serif; background:var(--black); color:var(--whit
 .car-card__title { font-size:15px; font-weight:700; line-height:1.35; margin-bottom:4px; min-height:2.7em; }
 .car-card__year { color:rgba(255,255,255,0.4); font-size:12px; margin-bottom:10px; }
 .car-card__specs { color:rgba(255,255,255,0.55); font-size:12px; line-height:1.7; margin-bottom:12px; }
-.car-card__price { font-size:20px; font-weight:700; color:#fff; margin-bottom:2px; margin-top:auto; }
-.car-card__price span { font-size:12px; font-weight:400; color:rgba(255,255,255,0.4); display:block; margin-bottom:2px; }
+.car-card__price { font-size:20px; font-weight:700; color:#fff; margin-bottom:10px; margin-top:auto; }
+.car-card__price span { font-size:12px; font-weight:400; color:rgba(255,255,255,0.4); display:block; margin-bottom:10px; }
 .car-card__market { font-size:12px; color:rgba(255,255,255,0.4); margin-bottom:8px; }
 .car-card__market span { font-size:10px; font-weight:400; color:rgba(255,255,255,0.3); display:block; margin-bottom:1px; }
 .car-card__saving {
@@ -133,7 +133,7 @@ body { font-family:'Inter',sans-serif; background:var(--black); color:var(--whit
 .car-card__badge--order { background:rgba(255,255,255,0.1); color:rgba(255,255,255,0.6); }
 .btn-card {
   width:100%; background:transparent; border:1px solid var(--red); color:var(--red);
-  border-radius:50px; padding:10px; font-size:13px; font-weight:600; cursor:pointer;
+  border-radius:50px; padding:7px; font-size:12px; font-weight:600; cursor:pointer;
   transition:background .2s, color .2s; font-family:'Inter',sans-serif;
 }
 .btn-card:hover { background:var(--red); color:#fff; }
@@ -784,7 +784,7 @@ function renderCards(cars) {
         <div class="car-card__title">${car.brand} ${car.model}</div>
         <div class="car-card__year">${car.year}</div>
         <div class="car-card__specs">${car.engine} · ${car.mileage}</div>
-        <div class="car-card__price"><span>Под ключ во Владивостоке</span>${car.type === 'order' ? 'От ' + car.price : car.price} ₽</div>
+        <div class="car-card__price"><span>Цена во Владивостоке</span>${car.type === 'order' ? 'От ' + car.price : car.price} ₽</div>
         ${car.type === 'arrived' && car.marketPrice ? `<div class="car-card__market"><span>Рынок «${car.marketRegion}»</span><s>${car.marketPrice}</s></div>` : ''}
         ${car.type === 'arrived' && car.saving ? `<div class="car-card__saving">${car.saving}</div>` : ''}
         <button class="btn-card">Получить расчёт</button>
@@ -847,7 +847,7 @@ function openCarModal(id) {
   ].map(([l,v]) => `<div class="car-modal__spec"><div class="car-modal__spec-label">${l}</div><div class="car-modal__spec-val">${v}</div></div>`).join('');
 
   document.getElementById('carModalPrice').innerHTML = `
-    <div><span>Под ключ во Владивостоке</span>${car.type === 'order' ? 'От ' + car.price : car.price} ₽</div>
+    <div><span>Цена во Владивостоке</span>${car.type === 'order' ? 'От ' + car.price : car.price} ₽</div>
     ${car.type === 'arrived' && car.marketPrice ? `<div style="font-size:14px;font-weight:400;color:rgba(255,255,255,0.4);margin-top:6px;">Рынок «${car.marketRegion}»: <s>${car.marketPrice}</s></div>` : ''}
     ${car.type === 'arrived' && car.saving ? `<div class="car-card__saving" style="margin-top:8px;">${car.saving}</div>` : ''}
     ${car.type === 'order' ? `<div class="car-card__price-note" style="margin-top:8px;">Цены ориентировочные, точная цена машины зависит от многих факторов, уточняйте у менеджера</div>` : ''}
