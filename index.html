@@ -220,18 +220,19 @@ body { font-family: 'Inter', sans-serif; background: var(--black); color: var(--
 .adv-card h3 { font-size: 15px; font-weight: 600; margin-bottom: 6px; }
 .adv-card p { font-size: 13px; color: var(--gray); line-height: 1.65; font-weight: 300; }
 
-#how { background: var(--dark); }
+#how { background: var(--white); color: var(--black); }
+#how .sec-sub { color: #555; }
 .steps-list { display:flex; flex-direction:column; gap:0; margin-top:40px; }
 .step-row {
   display: flex; gap: 20px; padding: 24px 0;
-  border-bottom: 1px solid var(--border-dark);
+  border-bottom: 1px solid var(--border-light);
   opacity: 0; transform: translateY(16px);
   transition: opacity .5s, transform .5s;
 }
 .step-row.visible { opacity:1; transform:translateY(0); }
 .step-num { font-size: 13px; font-weight: 700; color: var(--red); letter-spacing: 1px; flex-shrink:0; padding-top:2px; min-width: 28px; }
 .step-content h3 { font-size: 16px; font-weight: 600; margin-bottom: 6px; }
-.step-content p { font-size: 13px; color: var(--gray); line-height: 1.65; font-weight: 300; }
+.step-content p { font-size: 13px; color: #555; line-height: 1.65; font-weight: 300; }
 
 #services { background: var(--white); color: var(--black); }
 #services .sec-sub { color: #555; }
@@ -472,8 +473,8 @@ footer .footer-credit { margin-top: 6px; font-size: 11px; color: rgba(255,255,25
 
   /* Шаги — 2 колонки */
   .steps-list { display: grid; grid-template-columns: 1fr 1fr; gap: 0; }
-  .step-row { padding: 28px 32px 28px 0; border-bottom: 1px solid var(--border-dark); }
-  .step-row:nth-child(odd) { padding-right: 40px; border-right: 1px solid var(--border-dark); }
+  .step-row { padding: 28px 32px 28px 0; border-bottom: 1px solid var(--border-light); }
+  .step-row:nth-child(odd) { padding-right: 40px; border-right: 1px solid var(--border-light); }
   .step-row:nth-child(even) { padding-left: 40px; border-left: none; }
   .step-row:nth-last-child(1),
   .step-row:nth-last-child(2) { border-bottom: none; }
@@ -889,15 +890,15 @@ footer .footer-credit { margin-top: 6px; font-size: 11px; color: rgba(255,255,25
   <div style="position:absolute;bottom:60px;right:5%;width:300px;height:300px;background:radial-gradient(circle,rgba(200,16,46,0.20) 0%,transparent 65%);pointer-events:none;z-index:0;"></div>
 
   <div class="hero-tag" style="position:relative;z-index:1;display:block;margin:0 0 24px 0!important;padding:0!important;">Import Asia Cars</div>
-  <h1 class="hero-h1" style="position:relative;z-index:1;display:block;margin:0 0 0 0!important;padding:0 0 24px 0!important;">Авто из Японии —<br/>без <em>переплат</em><br/>и сюрпризов</h1>
-  <p class="hero-sub" style="position:relative;z-index:1;display:block;margin:0 0 24px 0!important;padding:0!important;">Работаем напрямую с японскими аукционами. Вы видите каждый этап сделки и знаете, за что платите. Никаких скрытых комиссий.</p>
+  <h1 class="hero-h1" style="position:relative;z-index:1;display:block;margin:0 0 0 0!important;padding:0 0 54px 0!important;">Авто из Японии —<br/>без <em>переплат</em><br/>и сюрпризов</h1>
+  <p class="hero-sub" style="position:relative;z-index:1;display:block;margin:0 0 54px 0!important;padding:0!important;">Работаем напрямую с японскими аукционами. Вы видите каждый этап сделки и знаете, за что платите. Никаких скрытых комиссий.</p>
   <!-- Форма заявки в hero -->
   <div id="heroForm" style="margin-top:0;padding-bottom:0;">
 
     <!-- Статы -->
-    <div style="display:flex;gap:48px;padding:0 0 36px;justify-content:flex-start;align-items:center;">
+    <div style="display:flex;gap:48px;padding:0 0 106px;justify-content:flex-start;align-items:center;">
       <div style="text-align:left;">
-        <div class="hero-stat-num" id="stat-cars">100<span>+</span></div>
+        <div class="hero-stat-num" id="stat-cars">600<span>+</span></div>
         <div class="hero-stat-label">Авто доставлено</div>
       </div>
       <div style="text-align:left;">
@@ -1114,7 +1115,7 @@ footer .footer-credit { margin-top: 6px; font-size: 11px; color: rgba(255,255,25
   <div class="reviews-list">
     <div class="review-card">
       <div class="review-media">
-        <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA0MDAgMzAwIj4KPHJlY3Qgd2lkdGg9IjQwMCIgaGVpZ2h0PSIzMDAiIGZpbGw9IiNDODEwMkUiLz4KPGNpcmNsZSBjeD0iMjAwIiBjeT0iMTE4IiByPSI0NiIgZmlsbD0icmdiYSgyNTUsMjU1LDI1NSwwLjE4KSIvPgo8dGV4dCB4PSIyMDAiIHk9IjEzMiIgZm9udC1mYW1pbHk9IkFyaWFsLCBzYW5zLXNlcmlmIiBmb250LXNpemU9IjM0IiBmb250LXdlaWdodD0iNzAwIiBmaWxsPSIjZmZmIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIj7QkNCaPC90ZXh0Pgo8cGF0aCBkPSJNMTEwIDIzNSBMMTMwIDE5MCBRMTQwIDE3OCAxNjAgMTc4IEwyNDAgMTc4IFEyNjAgMTc4IDI3MCAxOTAgTDI5MCAyMzUgWiIgZmlsbD0icmdiYSgyNTUsMjU1LDI1NSwwLjIyKSIvPgo8cmVjdCB4PSI5NSIgeT0iMjMwIiB3aWR0aD0iMjEwIiBoZWlnaHQ9IjE2IiByeD0iOCIgZmlsbD0icmdiYSgyNTUsMjU1LDI1NSwwLjIyKSIvPgo8Y2lyY2xlIGN4PSIxMzAiIGN5PSIyNDYiIHI9IjEyIiBmaWxsPSJyZ2JhKDI1NSwyNTUsMjU1LDAuMzUpIi8+CjxjaXJjbGUgY3g9IjI3MCIgY3k9IjI0NiIgcj0iMTIiIGZpbGw9InJnYmEoMjU1LDI1NSwyNTUsMC4zNSkiLz4KPHRleHQgeD0iMjAwIiB5PSIyNzIiIGZvbnQtZmFtaWx5PSJBcmlhbCwgc2Fucy1zZXJpZiIgZm9udC1zaXplPSIxMiIgZmlsbD0icmdiYSgyNTUsMjU1LDI1NSwwLjc1KSIgdGV4dC1hbmNob3I9Im1pZGRsZSI+0KTQvtGC0L4g0LrQu9C40LXQvdGC0LAg0YEg0LDQstGC0L4gKNC30LDQs9C70YPRiNC60LApPC90ZXh0Pgo8L3N2Zz4=" alt="Алексей К. с автомобилем"/>
+        <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA0MDAgMzAwIj4KPHJlY3Qgd2lkdGg9IjQwMCIgaGVpZ2h0PSIzMDAiIGZpbGw9IiNkOWQ5ZDkiLz4KPHRleHQgeD0iMjAwIiB5PSIxNTUiIGZvbnQtZmFtaWx5PSJBcmlhbCwgc2Fucy1zZXJpZiIgZm9udC1zaXplPSIxNiIgZmlsbD0iIzg4OCIgdGV4dC1hbmNob3I9Im1pZGRsZSI+0KTQvtGC0L4g0LrQu9C40LXQvdGC0LAg0YEg0LzQsNGI0LjQvdC+0Lk8L3RleHQ+Cjwvc3ZnPg==" alt="Алексей К. с автомобилем"/>
         <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA0MDAgMzAwIj4KPHJlY3Qgd2lkdGg9IjQwMCIgaGVpZ2h0PSIzMDAiIGZpbGw9IiNmMGYwZjAiLz4KPHJlY3QgeD0iMCIgeT0iMCIgd2lkdGg9IjQwMCIgaGVpZ2h0PSIzMCIgZmlsbD0iI0M4MTAyRSIvPgo8dGV4dCB4PSIxNiIgeT0iMjAiIGZvbnQtZmFtaWx5PSJBcmlhbCwgc2Fucy1zZXJpZiIgZm9udC1zaXplPSIxMyIgZm9udC13ZWlnaHQ9IjYwMCIgZmlsbD0iI2ZmZiI+0J/QtdGA0LXQv9C40YHQutCwPC90ZXh0Pgo8cmVjdCB4PSIyMCIgeT0iNDYiIHdpZHRoPSIyMjAiIGhlaWdodD0iMTgiIHJ4PSI5IiBmaWxsPSIjZTJlMmUyIi8+CjxyZWN0IHg9IjIwIiB5PSI3MCIgd2lkdGg9IjE3MCIgaGVpZ2h0PSIxOCIgcng9IjkiIGZpbGw9IiNlMmUyZTIiLz4KPHJlY3QgeD0iMTYwIiB5PSIxMDIiIHdpZHRoPSIyMjAiIGhlaWdodD0iMTgiIHJ4PSI5IiBmaWxsPSIjQzgxMDJFIiBvcGFjaXR5PSIwLjI1Ii8+CjxyZWN0IHg9IjIxMCIgeT0iMTI2IiB3aWR0aD0iMTcwIiBoZWlnaHQ9IjE4IiByeD0iOSIgZmlsbD0iI0M4MTAyRSIgb3BhY2l0eT0iMC4yNSIvPgo8cmVjdCB4PSIyMCIgeT0iMTU4IiB3aWR0aD0iMjQwIiBoZWlnaHQ9IjE4IiByeD0iOSIgZmlsbD0iI2UyZTJlMiIvPgo8cmVjdCB4PSIyMCIgeT0iMTgyIiB3aWR0aD0iMTIwIiBoZWlnaHQ9IjE4IiByeD0iOSIgZmlsbD0iI2UyZTJlMiIvPgo8dGV4dCB4PSIyMDAiIHk9IjI3MCIgZm9udC1mYW1pbHk9IkFyaWFsLCBzYW5zLXNlcmlmIiBmb250LXNpemU9IjEyIiBmaWxsPSIjOTk5IiB0ZXh0LWFuY2hvcj0ibWlkZGxlIj7QodC60YDQuNC90YjQvtGCINC/0LXRgNC10L/QuNGB0LrQuCDRgSDQvtGC0LfRi9Cy0L7QvCAo0LfQsNCz0LvRg9GI0LrQsCk8L3RleHQ+Cjwvc3ZnPg==" alt="Скриншот переписки с отзывом"/>
       </div>
       <div class="review-swipe-hint">Сдвиньте в бок, чтобы посмотреть оригинал отзыва</div>
@@ -1125,7 +1126,7 @@ footer .footer-credit { margin-top: 6px; font-size: 11px; color: rgba(255,255,25
     </div>
     <div class="review-card">
       <div class="review-media">
-        <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA0MDAgMzAwIj4KPHJlY3Qgd2lkdGg9IjQwMCIgaGVpZ2h0PSIzMDAiIGZpbGw9IiM3YzNhZWQiLz4KPGNpcmNsZSBjeD0iMjAwIiBjeT0iMTE4IiByPSI0NiIgZmlsbD0icmdiYSgyNTUsMjU1LDI1NSwwLjE4KSIvPgo8dGV4dCB4PSIyMDAiIHk9IjEzMiIgZm9udC1mYW1pbHk9IkFyaWFsLCBzYW5zLXNlcmlmIiBmb250LXNpemU9IjM0IiBmb250LXdlaWdodD0iNzAwIiBmaWxsPSIjZmZmIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIj7QlNCcPC90ZXh0Pgo8cGF0aCBkPSJNMTEwIDIzNSBMMTMwIDE5MCBRMTQwIDE3OCAxNjAgMTc4IEwyNDAgMTc4IFEyNjAgMTc4IDI3MCAxOTAgTDI5MCAyMzUgWiIgZmlsbD0icmdiYSgyNTUsMjU1LDI1NSwwLjIyKSIvPgo8cmVjdCB4PSI5NSIgeT0iMjMwIiB3aWR0aD0iMjEwIiBoZWlnaHQ9IjE2IiByeD0iOCIgZmlsbD0icmdiYSgyNTUsMjU1LDI1NSwwLjIyKSIvPgo8Y2lyY2xlIGN4PSIxMzAiIGN5PSIyNDYiIHI9IjEyIiBmaWxsPSJyZ2JhKDI1NSwyNTUsMjU1LDAuMzUpIi8+CjxjaXJjbGUgY3g9IjI3MCIgY3k9IjI0NiIgcj0iMTIiIGZpbGw9InJnYmEoMjU1LDI1NSwyNTUsMC4zNSkiLz4KPHRleHQgeD0iMjAwIiB5PSIyNzIiIGZvbnQtZmFtaWx5PSJBcmlhbCwgc2Fucy1zZXJpZiIgZm9udC1zaXplPSIxMiIgZmlsbD0icmdiYSgyNTUsMjU1LDI1NSwwLjc1KSIgdGV4dC1hbmNob3I9Im1pZGRsZSI+0KTQvtGC0L4g0LrQu9C40LXQvdGC0LAg0YEg0LDQstGC0L4gKNC30LDQs9C70YPRiNC60LApPC90ZXh0Pgo8L3N2Zz4=" alt="Дмитрий М. с автомобилем"/>
+        <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA0MDAgMzAwIj4KPHJlY3Qgd2lkdGg9IjQwMCIgaGVpZ2h0PSIzMDAiIGZpbGw9IiNkOWQ5ZDkiLz4KPHRleHQgeD0iMjAwIiB5PSIxNTUiIGZvbnQtZmFtaWx5PSJBcmlhbCwgc2Fucy1zZXJpZiIgZm9udC1zaXplPSIxNiIgZmlsbD0iIzg4OCIgdGV4dC1hbmNob3I9Im1pZGRsZSI+0KTQvtGC0L4g0LrQu9C40LXQvdGC0LAg0YEg0LzQsNGI0LjQvdC+0Lk8L3RleHQ+Cjwvc3ZnPg==" alt="Дмитрий М. с автомобилем"/>
         <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA0MDAgMzAwIj4KPHJlY3Qgd2lkdGg9IjQwMCIgaGVpZ2h0PSIzMDAiIGZpbGw9IiNmMGYwZjAiLz4KPHJlY3QgeD0iMCIgeT0iMCIgd2lkdGg9IjQwMCIgaGVpZ2h0PSIzMCIgZmlsbD0iIzdjM2FlZCIvPgo8dGV4dCB4PSIxNiIgeT0iMjAiIGZvbnQtZmFtaWx5PSJBcmlhbCwgc2Fucy1zZXJpZiIgZm9udC1zaXplPSIxMyIgZm9udC13ZWlnaHQ9IjYwMCIgZmlsbD0iI2ZmZiI+0J/QtdGA0LXQv9C40YHQutCwPC90ZXh0Pgo8cmVjdCB4PSIyMCIgeT0iNDYiIHdpZHRoPSIyMjAiIGhlaWdodD0iMTgiIHJ4PSI5IiBmaWxsPSIjZTJlMmUyIi8+CjxyZWN0IHg9IjIwIiB5PSI3MCIgd2lkdGg9IjE3MCIgaGVpZ2h0PSIxOCIgcng9IjkiIGZpbGw9IiNlMmUyZTIiLz4KPHJlY3QgeD0iMTYwIiB5PSIxMDIiIHdpZHRoPSIyMjAiIGhlaWdodD0iMTgiIHJ4PSI5IiBmaWxsPSIjN2MzYWVkIiBvcGFjaXR5PSIwLjI1Ii8+CjxyZWN0IHg9IjIxMCIgeT0iMTI2IiB3aWR0aD0iMTcwIiBoZWlnaHQ9IjE4IiByeD0iOSIgZmlsbD0iIzdjM2FlZCIgb3BhY2l0eT0iMC4yNSIvPgo8cmVjdCB4PSIyMCIgeT0iMTU4IiB3aWR0aD0iMjQwIiBoZWlnaHQ9IjE4IiByeD0iOSIgZmlsbD0iI2UyZTJlMiIvPgo8cmVjdCB4PSIyMCIgeT0iMTgyIiB3aWR0aD0iMTIwIiBoZWlnaHQ9IjE4IiByeD0iOSIgZmlsbD0iI2UyZTJlMiIvPgo8dGV4dCB4PSIyMDAiIHk9IjI3MCIgZm9udC1mYW1pbHk9IkFyaWFsLCBzYW5zLXNlcmlmIiBmb250LXNpemU9IjEyIiBmaWxsPSIjOTk5IiB0ZXh0LWFuY2hvcj0ibWlkZGxlIj7QodC60YDQuNC90YjQvtGCINC/0LXRgNC10L/QuNGB0LrQuCDRgSDQvtGC0LfRi9Cy0L7QvCAo0LfQsNCz0LvRg9GI0LrQsCk8L3RleHQ+Cjwvc3ZnPg==" alt="Скриншот переписки с отзывом"/>
       </div>
       <div class="review-swipe-hint">Сдвиньте в бок, чтобы посмотреть оригинал отзыва</div>
@@ -1136,7 +1137,7 @@ footer .footer-credit { margin-top: 6px; font-size: 11px; color: rgba(255,255,25
     </div>
     <div class="review-card">
       <div class="review-media">
-        <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA0MDAgMzAwIj4KPHJlY3Qgd2lkdGg9IjQwMCIgaGVpZ2h0PSIzMDAiIGZpbGw9IiMwNTk2NjkiLz4KPGNpcmNsZSBjeD0iMjAwIiBjeT0iMTE4IiByPSI0NiIgZmlsbD0icmdiYSgyNTUsMjU1LDI1NSwwLjE4KSIvPgo8dGV4dCB4PSIyMDAiIHk9IjEzMiIgZm9udC1mYW1pbHk9IkFyaWFsLCBzYW5zLXNlcmlmIiBmb250LXNpemU9IjM0IiBmb250LXdlaWdodD0iNzAwIiBmaWxsPSIjZmZmIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIj7QndCSPC90ZXh0Pgo8cGF0aCBkPSJNMTEwIDIzNSBMMTMwIDE5MCBRMTQwIDE3OCAxNjAgMTc4IEwyNDAgMTc4IFEyNjAgMTc4IDI3MCAxOTAgTDI5MCAyMzUgWiIgZmlsbD0icmdiYSgyNTUsMjU1LDI1NSwwLjIyKSIvPgo8cmVjdCB4PSI5NSIgeT0iMjMwIiB3aWR0aD0iMjEwIiBoZWlnaHQ9IjE2IiByeD0iOCIgZmlsbD0icmdiYSgyNTUsMjU1LDI1NSwwLjIyKSIvPgo8Y2lyY2xlIGN4PSIxMzAiIGN5PSIyNDYiIHI9IjEyIiBmaWxsPSJyZ2JhKDI1NSwyNTUsMjU1LDAuMzUpIi8+CjxjaXJjbGUgY3g9IjI3MCIgY3k9IjI0NiIgcj0iMTIiIGZpbGw9InJnYmEoMjU1LDI1NSwyNTUsMC4zNSkiLz4KPHRleHQgeD0iMjAwIiB5PSIyNzIiIGZvbnQtZmFtaWx5PSJBcmlhbCwgc2Fucy1zZXJpZiIgZm9udC1zaXplPSIxMiIgZmlsbD0icmdiYSgyNTUsMjU1LDI1NSwwLjc1KSIgdGV4dC1hbmNob3I9Im1pZGRsZSI+0KTQvtGC0L4g0LrQu9C40LXQvdGC0LAg0YEg0LDQstGC0L4gKNC30LDQs9C70YPRiNC60LApPC90ZXh0Pgo8L3N2Zz4=" alt="Наталья В. с автомобилем"/>
+        <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA0MDAgMzAwIj4KPHJlY3Qgd2lkdGg9IjQwMCIgaGVpZ2h0PSIzMDAiIGZpbGw9IiNkOWQ5ZDkiLz4KPHRleHQgeD0iMjAwIiB5PSIxNTUiIGZvbnQtZmFtaWx5PSJBcmlhbCwgc2Fucy1zZXJpZiIgZm9udC1zaXplPSIxNiIgZmlsbD0iIzg4OCIgdGV4dC1hbmNob3I9Im1pZGRsZSI+0KTQvtGC0L4g0LrQu9C40LXQvdGC0LAg0YEg0LzQsNGI0LjQvdC+0Lk8L3RleHQ+Cjwvc3ZnPg==" alt="Наталья В. с автомобилем"/>
         <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA0MDAgMzAwIj4KPHJlY3Qgd2lkdGg9IjQwMCIgaGVpZ2h0PSIzMDAiIGZpbGw9IiNmMGYwZjAiLz4KPHJlY3QgeD0iMCIgeT0iMCIgd2lkdGg9IjQwMCIgaGVpZ2h0PSIzMCIgZmlsbD0iIzA1OTY2OSIvPgo8dGV4dCB4PSIxNiIgeT0iMjAiIGZvbnQtZmFtaWx5PSJBcmlhbCwgc2Fucy1zZXJpZiIgZm9udC1zaXplPSIxMyIgZm9udC13ZWlnaHQ9IjYwMCIgZmlsbD0iI2ZmZiI+0J/QtdGA0LXQv9C40YHQutCwPC90ZXh0Pgo8cmVjdCB4PSIyMCIgeT0iNDYiIHdpZHRoPSIyMjAiIGhlaWdodD0iMTgiIHJ4PSI5IiBmaWxsPSIjZTJlMmUyIi8+CjxyZWN0IHg9IjIwIiB5PSI3MCIgd2lkdGg9IjE3MCIgaGVpZ2h0PSIxOCIgcng9IjkiIGZpbGw9IiNlMmUyZTIiLz4KPHJlY3QgeD0iMTYwIiB5PSIxMDIiIHdpZHRoPSIyMjAiIGhlaWdodD0iMTgiIHJ4PSI5IiBmaWxsPSIjMDU5NjY5IiBvcGFjaXR5PSIwLjI1Ii8+CjxyZWN0IHg9IjIxMCIgeT0iMTI2IiB3aWR0aD0iMTcwIiBoZWlnaHQ9IjE4IiByeD0iOSIgZmlsbD0iIzA1OTY2OSIgb3BhY2l0eT0iMC4yNSIvPgo8cmVjdCB4PSIyMCIgeT0iMTU4IiB3aWR0aD0iMjQwIiBoZWlnaHQ9IjE4IiByeD0iOSIgZmlsbD0iI2UyZTJlMiIvPgo8cmVjdCB4PSIyMCIgeT0iMTgyIiB3aWR0aD0iMTIwIiBoZWlnaHQ9IjE4IiByeD0iOSIgZmlsbD0iI2UyZTJlMiIvPgo8dGV4dCB4PSIyMDAiIHk9IjI3MCIgZm9udC1mYW1pbHk9IkFyaWFsLCBzYW5zLXNlcmlmIiBmb250LXNpemU9IjEyIiBmaWxsPSIjOTk5IiB0ZXh0LWFuY2hvcj0ibWlkZGxlIj7QodC60YDQuNC90YjQvtGCINC/0LXRgNC10L/QuNGB0LrQuCDRgSDQvtGC0LfRi9Cy0L7QvCAo0LfQsNCz0LvRg9GI0LrQsCk8L3RleHQ+Cjwvc3ZnPg==" alt="Скриншот переписки с отзывом"/>
       </div>
       <div class="review-swipe-hint">Сдвиньте в бок, чтобы посмотреть оригинал отзыва</div>
@@ -1327,8 +1328,8 @@ const statsObserver = new IntersectionObserver((entries) => {
       const nums = entry.target.querySelectorAll('.hero-stat-num');
       nums.forEach(num => {
         const text = num.textContent.trim();
-        if (text.includes('100')) {
-          animateCounter(num, 100, 1200, '<span>+</span>');
+        if (text.includes('600')) {
+          animateCounter(num, 600, 1200, '<span>+</span>');
         } else if (text.includes('3')) {
           animateCounter(num, 3, 600, ' <span>года</span>');
         }
@@ -1349,7 +1350,7 @@ window.addEventListener('load', () => {
   setTimeout(() => {
     const carsStat = document.getElementById('stat-cars');
     const yearsStat = document.getElementById('stat-years');
-    if (carsStat) animateCounter(carsStat, 100, 1100, '<span>+</span>');
+    if (carsStat) animateCounter(carsStat, 600, 1100, '<span>+</span>');
     if (yearsStat) animateCounter(yearsStat, 3, 900, ' <span>года</span>');
   }, 500);
 });
