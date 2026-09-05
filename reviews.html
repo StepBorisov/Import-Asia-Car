@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<meta name="color-scheme" content="dark"/>
+<title>Отзывы клиентов — Import Asia Cars</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital@1&display=swap" rel="stylesheet"/>
+<style>
+:root {
+  --red: #c8102e;
+  --black: #0a0a0a;
+  --white: #ffffff;
+  --gray: #1a1a1a;
+  --light-gray: #f5f5f3;
+  --border: rgba(255,255,255,0.1);
+  --border-light: #e8e8e6;
+}
+* { margin:0; padding:0; box-sizing:border-box; }
+html { scroll-behavior:smooth; overflow-x:hidden; }
+body { font-family:'Inter',sans-serif; background:var(--black); color:var(--white); overflow-x:hidden; }
+
+/* ШАПКА */
+.top-bar {
+  position:fixed; top:0; left:0; right:0; z-index:100;
+  background:#fff; display:flex; align-items:center; justify-content:space-between;
+  padding:10px 20px; border-bottom:1px solid #eee;
+  box-shadow:0 2px 12px rgba(0,0,0,0.08);
+}
+.back-link {
+  color:#111; text-decoration:none; font-size:14px; font-weight:500;
+  display:flex; align-items:center; gap:6px;
+}
+.back-link:hover { color:var(--red); }
+.top-contact-btn {
+  background:var(--black); color:#fff; border:none; border-radius:50px;
+  padding:10px 20px; font-size:14px; font-weight:600; cursor:pointer;
+  text-decoration:none;
+  display:flex; align-items:center; gap:8px;
+}
+
+/* HERO */
+.reviews-hero {
+  padding: 120px 24px 48px;
+  background: var(--black);
+  position: relative; overflow: hidden;
+}
+.reviews-hero::before {
+  content:''; position:absolute; top:-40px; right:-60px;
+  width:320px; height:320px;
+  background: radial-gradient(circle, rgba(200,16,46,0.25) 0%, transparent 68%);
+  pointer-events:none;
+}
+.rev-tag {
+  font-size: 11px; font-weight: 600; letter-spacing: 4px; text-transform: uppercase;
+  color: var(--red); margin-bottom: 16px; position:relative; z-index:1;
+}
+.reviews-hero h1 {
+  font-size: clamp(28px, 6vw, 44px); font-weight: 700; line-height: 1.15;
+  margin-bottom: 14px; position:relative; z-index:1;
+}
+.reviews-hero p {
+  font-size: 14px; color: rgba(255,255,255,0.55); max-width: 480px; line-height: 1.7;
+  position:relative; z-index:1;
+}
+
+/* СПИСОК ОТЗЫВОВ */
+#reviewsSection { background: var(--light-gray); color: var(--black); padding: 40px 24px 80px; }
+.reviews-grid { display:flex; flex-direction:column; gap:16px; max-width: 1100px; margin: 0 auto; }
+.review-card {
+  background: white; border-radius: 12px; overflow: hidden;
+}
+.review-media {
+  display: flex; overflow-x: auto; scroll-snap-type: x mandatory;
+  -webkit-overflow-scrolling: touch; scrollbar-width: none;
+}
+.review-media::-webkit-scrollbar { display: none; }
+.review-media img {
+  width: 100%; flex: 0 0 100%; scroll-snap-align: start;
+  aspect-ratio: 4/3; object-fit: cover; display: block;
+}
+.review-swipe-hint {
+  font-size: 11px; color: #999; text-align: center;
+  padding: 8px 20px 0;
+}
+.review-body { padding: 12px 20px 24px; }
+.review-text {
+  font-size: 14px; line-height: 1.75; color: #333; font-weight: 300; margin-bottom: 16px;
+}
+.review-text.clamp {
+  display: -webkit-box; -webkit-line-clamp: 4; -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+.review-text.clampable { cursor: pointer; }
+.review-more-hint { color: var(--red); font-weight: 600; white-space: nowrap; }
+.review-name { font-size: 14px; font-weight: 600; }
+.review-city { font-size: 12px; color: #888; }
+
+@media (min-width: 768px) {
+  .reviews-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+  .reviews-hero { padding: 140px 48px 60px; }
+  #reviewsSection { padding: 48px 48px 100px; }
+}
+</style>
+</head>
+<body>
+
+<!-- ШАПКА -->
+<div class="top-bar">
+  <a href="index.html" class="back-link">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16"><polyline points="15 18 9 12 15 6"/></svg>
+    Главная
+  </a>
+  <a href="index.html#heroForm" class="top-contact-btn">
+    <svg viewBox="0 0 24 24" fill="white" width="16" height="16"><path d="M6.6 10.8c1.4 2.8 3.8 5.1 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1C10.6 21 3 13.4 3 4c0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.3.2 2.5.6 3.6.1.3 0 .7-.2 1L6.6 10.8z"/></svg>
+    Оставить заявку
+  </a>
+</div>
+
+<!-- HERO -->
+<section class="reviews-hero">
+  <div class="rev-tag">Import Asia Cars</div>
+  <h1>Отзывы клиентов</h1>
+  <p>Лучшая оценка — когда человек возвращается за вторым автомобилем. Все отзывы — от реальных клиентов, с фото и оригиналом переписки.</p>
+</section>
+
+<!-- СПИСОК ОТЗЫВОВ -->
+<section id="reviewsSection">
+  <div class="reviews-grid" id="reviewsGrid">
+
+    <div class="review-card">
+      <div class="review-media">
+        <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA0MDAgMzAwIj4KPHJlY3Qgd2lkdGg9IjQwMCIgaGVpZ2h0PSIzMDAiIGZpbGw9IiNkOWQ5ZDkiLz4KPHRleHQgeD0iMjAwIiB5PSIxNTUiIGZvbnQtZmFtaWx5PSJBcmlhbCwgc2Fucy1zZXJpZiIgZm9udC1zaXplPSIxNiIgZmlsbD0iIzg4OCIgdGV4dC1hbmNob3I9Im1pZGRsZSI+0KTQvtGC0L4g0LrQu9C40LXQvdGC0LAg0YEg0LzQsNGI0LjQvdC+0Lk8L3RleHQ+Cjwvc3ZnPg==" alt="Алексей К. с автомобилем"/>
+        <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA0MDAgMzAwIj4KPHJlY3Qgd2lkdGg9IjQwMCIgaGVpZ2h0PSIzMDAiIGZpbGw9IiNmMGYwZjAiLz4KPHJlY3QgeD0iMCIgeT0iMCIgd2lkdGg9IjQwMCIgaGVpZ2h0PSIzMCIgZmlsbD0iI0M4MTAyRSIvPgo8dGV4dCB4PSIxNiIgeT0iMjAiIGZvbnQtZmFtaWx5PSJBcmlhbCwgc2Fucy1zZXJpZiIgZm9udC1zaXplPSIxMyIgZm9udC13ZWlnaHQ9IjYwMCIgZmlsbD0iI2ZmZiI+0J/QtdGA0LXQv9C40YHQutCwPC90ZXh0Pgo8cmVjdCB4PSIyMCIgeT0iNDYiIHdpZHRoPSIyMjAiIGhlaWdodD0iMTgiIHJ4PSI5IiBmaWxsPSIjZTJlMmUyIi8+CjxyZWN0IHg9IjIwIiB5PSI3MCIgd2lkdGg9IjE3MCIgaGVpZ2h0PSIxOCIgcng9IjkiIGZpbGw9IiNlMmUyZTIiLz4KPHJlY3QgeD0iMTYwIiB5PSIxMDIiIHdpZHRoPSIyMjAiIGhlaWdodD0iMTgiIHJ4PSI5IiBmaWxsPSIjQzgxMDJFIiBvcGFjaXR5PSIwLjI1Ii8+CjxyZWN0IHg9IjIxMCIgeT0iMTI2IiB3aWR0aD0iMTcwIiBoZWlnaHQ9IjE4IiByeD0iOSIgZmlsbD0iI0M4MTAyRSIgb3BhY2l0eT0iMC4yNSIvPgo8cmVjdCB4PSIyMCIgeT0iMTU4IiB3aWR0aD0iMjQwIiBoZWlnaHQ9IjE4IiByeD0iOSIgZmlsbD0iI2UyZTJlMiIvPgo8cmVjdCB4PSIyMCIgeT0iMTgyIiB3aWR0aD0iMTIwIiBoZWlnaHQ9IjE4IiByeD0iOSIgZmlsbD0iI2UyZTJlMiIvPgo8dGV4dCB4PSIyMDAiIHk9IjI3MCIgZm9udC1mYW1pbHk9IkFyaWFsLCBzYW5zLXNlcmlmIiBmb250LXNpemU9IjEyIiBmaWxsPSIjOTk5IiB0ZXh0LWFuY2hvcj0ibWlkZGxlIj7QodC60YDQuNC90YjQvtGCINC/0LXRgNC10L/QuNGB0LrQuCDRgSDQvtGC0LfRi9Cy0L7QvCAo0LfQsNCz0LvRg9GI0LrQsCk8L3RleHQ+Cjwvc3ZnPg==" alt="Скриншот переписки с отзывом"/>
+      </div>
+      <div class="review-swipe-hint">Сдвиньте в бок, чтобы посмотреть оригинал отзыва</div>
+      <div class="review-body">
+        <p class="review-text">Брал Honda Vezel для жены. Всё объяснили, каждый этап был понятен. Показывали аукционные фото до покупки. Никаких сюрпризов — получили именно то, что выбирали.</p>
+        <div><div class="review-name">Алексей К.</div><div class="review-city">Благовещенск</div></div>
+      </div>
+    </div>
+
+    <div class="review-card">
+      <div class="review-media">
+        <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA0MDAgMzAwIj4KPHJlY3Qgd2lkdGg9IjQwMCIgaGVpZ2h0PSIzMDAiIGZpbGw9IiNkOWQ5ZDkiLz4KPHRleHQgeD0iMjAwIiB5PSIxNTUiIGZvbnQtZmFtaWx5PSJBcmlhbCwgc2Fucy1zZXJpZiIgZm9udC1zaXplPSIxNiIgZmlsbD0iIzg4OCIgdGV4dC1hbmNob3I9Im1pZGRsZSI+0KTQvtGC0L4g0LrQu9C40LXQvdGC0LAg0YEg0LzQsNGI0LjQvdC+0Lk8L3RleHQ+Cjwvc3ZnPg==" alt="Дмитрий М. с автомобилем"/>
+        <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA0MDAgMzAwIj4KPHJlY3Qgd2lkdGg9IjQwMCIgaGVpZ2h0PSIzMDAiIGZpbGw9IiNmMGYwZjAiLz4KPHJlY3QgeD0iMCIgeT0iMCIgd2lkdGg9IjQwMCIgaGVpZ2h0PSIzMCIgZmlsbD0iIzdjM2FlZCIvPgo8dGV4dCB4PSIxNiIgeT0iMjAiIGZvbnQtZmFtaWx5PSJBcmlhbCwgc2Fucy1zZXJpZiIgZm9udC1zaXplPSIxMyIgZm9udC13ZWlnaHQ9IjYwMCIgZmlsbD0iI2ZmZiI+0J/QtdGA0LXQv9C40YHQutCwPC90ZXh0Pgo8cmVjdCB4PSIyMCIgeT0iNDYiIHdpZHRoPSIyMjAiIGhlaWdodD0iMTgiIHJ4PSI5IiBmaWxsPSIjZTJlMmUyIi8+CjxyZWN0IHg9IjIwIiB5PSI3MCIgd2lkdGg9IjE3MCIgaGVpZ2h0PSIxOCIgcng9IjkiIGZpbGw9IiNlMmUyZTIiLz4KPHJlY3QgeD0iMTYwIiB5PSIxMDIiIHdpZHRoPSIyMjAiIGhlaWdodD0iMTgiIHJ4PSI5IiBmaWxsPSIjN2MzYWVkIiBvcGFjaXR5PSIwLjI1Ii8+CjxyZWN0IHg9IjIxMCIgeT0iMTI2IiB3aWR0aD0iMTcwIiBoZWlnaHQ9IjE4IiByeD0iOSIgZmlsbD0iIzdjM2FlZCIgb3BhY2l0eT0iMC4yNSIvPgo8cmVjdCB4PSIyMCIgeT0iMTU4IiB3aWR0aD0iMjQwIiBoZWlnaHQ9IjE4IiByeD0iOSIgZmlsbD0iI2UyZTJlMiIvPgo8cmVjdCB4PSIyMCIgeT0iMTgyIiB3aWR0aD0iMTIwIiBoZWlnaHQ9IjE4IiByeD0iOSIgZmlsbD0iI2UyZTJlMiIvPgo8dGV4dCB4PSIyMDAiIHk9IjI3MCIgZm9udC1mYW1pbHk9IkFyaWFsLCBzYW5zLXNlcmlmIiBmb250LXNpemU9IjEyIiBmaWxsPSIjOTk5IiB0ZXh0LWFuY2hvcj0ibWlkZGxlIj7QodC60YDQuNC90YjQvtGCINC/0LXRgNC10L/QuNGB0LrQuCDRgSDQvtGC0LfRi9Cy0L7QvCAo0LfQsNCz0LvRg9GI0LrQsCk8L3RleHQ+Cjwvc3ZnPg==" alt="Скриншот переписки с отзывом"/>
+      </div>
+      <div class="review-swipe-hint">Сдвиньте в бок, чтобы посмотреть оригинал отзыва</div>
+      <div class="review-body">
+        <p class="review-text">Уже второй раз заказываю. Первый раз взял Land Cruiser Prado, сейчас Alphard. Комиссия реально ниже, чем у конкурентов — проверил, прежде чем обратиться. Рекомендую.</p>
+        <div><div class="review-name">Дмитрий М.</div><div class="review-city">Хабаровск</div></div>
+      </div>
+    </div>
+
+    <div class="review-card">
+      <div class="review-media">
+        <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA0MDAgMzAwIj4KPHJlY3Qgd2lkdGg9IjQwMCIgaGVpZ2h0PSIzMDAiIGZpbGw9IiNkOWQ5ZDkiLz4KPHRleHQgeD0iMjAwIiB5PSIxNTUiIGZvbnQtZmFtaWx5PSJBcmlhbCwgc2Fucy1zZXJpZiIgZm9udC1zaXplPSIxNiIgZmlsbD0iIzg4OCIgdGV4dC1hbmNob3I9Im1pZGRsZSI+0KTQvtGC0L4g0LrQu9C40LXQvdGC0LAg0YEg0LzQsNGI0LjQvdC+0Lk8L3RleHQ+Cjwvc3ZnPg==" alt="Наталья В. с автомобилем"/>
+        <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA0MDAgMzAwIj4KPHJlY3Qgd2lkdGg9IjQwMCIgaGVpZ2h0PSIzMDAiIGZpbGw9IiNmMGYwZjAiLz4KPHJlY3QgeD0iMCIgeT0iMCIgd2lkdGg9IjQwMCIgaGVpZ2h0PSIzMCIgZmlsbD0iIzA1OTY2OSIvPgo8dGV4dCB4PSIxNiIgeT0iMjAiIGZvbnQtZmFtaWx5PSJBcmlhbCwgc2Fucy1zZXJpZiIgZm9udC1zaXplPSIxMyIgZm9udC13ZWlnaHQ9IjYwMCIgZmlsbD0iI2ZmZiI+0J/QtdGA0LXQv9C40YHQutCwPC90ZXh0Pgo8cmVjdCB4PSIyMCIgeT0iNDYiIHdpZHRoPSIyMjAiIGhlaWdodD0iMTgiIHJ4PSI5IiBmaWxsPSIjZTJlMmUyIi8+CjxyZWN0IHg9IjIwIiB5PSI3MCIgd2lkdGg9IjE3MCIgaGVpZ2h0PSIxOCIgcng9IjkiIGZpbGw9IiNlMmUyZTIiLz4KPHJlY3QgeD0iMTYwIiB5PSIxMDIiIHdpZHRoPSIyMjAiIGhlaWdodD0iMTgiIHJ4PSI5IiBmaWxsPSIjMDU5NjY5IiBvcGFjaXR5PSIwLjI1Ii8+CjxyZWN0IHg9IjIxMCIgeT0iMTI2IiB3aWR0aD0iMTcwIiBoZWlnaHQ9IjE4IiByeD0iOSIgZmlsbD0iIzA1OTY2OSIgb3BhY2l0eT0iMC4yNSIvPgo8cmVjdCB4PSIyMCIgeT0iMTU4IiB3aWR0aD0iMjQwIiBoZWlnaHQ9IjE4IiByeD0iOSIgZmlsbD0iI2UyZTJlMiIvPgo8cmVjdCB4PSIyMCIgeT0iMTgyIiB3aWR0aD0iMTIwIiBoZWlnaHQ9IjE4IiByeD0iOSIgZmlsbD0iI2UyZTJlMiIvPgo8dGV4dCB4PSIyMDAiIHk9IjI3MCIgZm9udC1mYW1pbHk9IkFyaWFsLCBzYW5zLXNlcmlmIiBmb250LXNpemU9IjEyIiBmaWxsPSIjOTk5IiB0ZXh0LWFuY2hvcj0ibWlkZGxlIj7QodC60YDQuNC70YjQvtGCINC/0LXRgNC10L/QuNGB0LrQuCDRgSDQvtGC0LfRi9Cy0L7QvCAo0LfQsNCz0LvRg9GI0LrQsCk8L3RleHQ+Cjwvc3ZnPg==" alt="Скриншот переписки с отзывом"/>
+      </div>
+      <div class="review-swipe-hint">Сдвиньте в бок, чтобы посмотреть оригинал отзыва</div>
+      <div class="review-body">
+        <p class="review-text">Боялась мошенников — в этой сфере их хватает. Здесь всё прозрачно: договор, чеки, фото с аукциона. Машину привезли в срок, никаких лишних трат.</p>
+        <div><div class="review-name">Наталья В.</div><div class="review-city">Владивосток</div></div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<script>
+// Обрезаем длинные отзывы до 4 строк, кликом по тексту (не по кнопке) — разворачиваем полностью
+document.querySelectorAll('.review-text').forEach(function(p) {
+  p.classList.add('clamp');
+  requestAnimationFrame(function() {
+    if (p.scrollHeight > p.clientHeight + 2) {
+      p.classList.add('clampable');
+      var hint = document.createElement('span');
+      hint.className = 'review-more-hint';
+      hint.textContent = ' Читать полностью';
+      p.appendChild(hint);
+      p.addEventListener('click', function() {
+        var expanded = p.classList.toggle('expanded');
+        p.classList.toggle('clamp', !expanded);
+        hint.textContent = expanded ? ' Свернуть' : ' Читать полностью';
+      });
+    } else {
+      p.classList.remove('clamp');
+    }
+  });
+});
+</script>
+
+</body>
+</html>
