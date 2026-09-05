@@ -335,11 +335,14 @@ footer {
   text-align: center;
 }
 footer p { font-size: 12px; color: rgba(255,255,255,0.2); }
-footer .footer-credit {
-  margin-top: 6px; font-size: 11px; color: rgba(255,255,255,0.15);
-  display: flex; align-items: center; justify-content: center; gap: 5px;
+footer .footer-credit { margin-top: 6px; font-size: 11px; color: rgba(255,255,255,0.2); }
+footer .footer-credit-link {
+  display: inline-flex; align-items: center; justify-content: center; gap: 5px;
+  color: rgba(255,255,255,0.38); text-decoration: underline; text-decoration-color: rgba(255,255,255,0.22); text-underline-offset: 2px;
+  transition: color .2s;
 }
-footer .footer-credit svg { width: 12px; height: 12px; flex-shrink: 0; }
+footer .footer-credit-link:hover { color: var(--red); }
+footer .footer-credit-link svg { width: 13px; height: 13px; flex-shrink: 0; }
 
 /* ── CONTACT POPUP ── */
 .contact-popup-wrap { position: relative; }
@@ -910,11 +913,11 @@ footer .footer-credit svg { width: 12px; height: 12px; flex-shrink: 0; }
     <!-- Статы -->
     <div style="display:flex;gap:48px;padding:0 0 106px;justify-content:flex-start;align-items:center;">
       <div style="text-align:left;">
-        <div class="hero-stat-num" id="stat-cars">600<span>+</span></div>
+        <div class="hero-stat-num" id="stat-cars">100<span>+</span></div>
         <div class="hero-stat-label">Авто доставлено</div>
       </div>
       <div style="text-align:left;">
-        <div class="hero-stat-num" id="stat-years">3 <span>года</span></div>
+        <div class="hero-stat-num" id="stat-years">2 <span>года</span></div>
         <div class="hero-stat-label">Опыт на рынке</div>
       </div>
     </div>
@@ -1173,7 +1176,10 @@ footer .footer-credit svg { width: 12px; height: 12px; flex-shrink: 0; }
 
 <footer>
   <p>© 2023 Import Asia Cars — авто с аукционов Японии</p>
-  <p class="footer-credit">Сайт разработал <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg> step.borisov</p>
+  <p class="footer-credit">Сайт разработал <a class="footer-credit-link" href="https://t.me/step_b9" target="_blank" rel="noopener">
+    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M9.78 18.65l.28-4.23 7.68-6.92c.34-.31-.07-.46-.52-.19L7.74 13.3 3.64 12c-.88-.25-.89-.86.2-1.3l15.97-6.16c.73-.33 1.43.18 1.15 1.3l-2.72 12.81c-.19.91-.74 1.13-1.5.71l-4.14-3.05-2 1.92c-.22.21-.42.4-.82.4z"/></svg>
+    step_b9
+  </a></p>
 </footer>
 
 <!-- КАРТОЧКА АВТОМОБИЛЯ (полноэкранная) -->
@@ -1343,10 +1349,10 @@ const statsObserver = new IntersectionObserver((entries) => {
       const nums = entry.target.querySelectorAll('.hero-stat-num');
       nums.forEach(num => {
         const text = num.textContent.trim();
-        if (text.includes('600')) {
-          animateCounter(num, 600, 1200, '<span>+</span>');
-        } else if (text.includes('3')) {
-          animateCounter(num, 3, 600, ' <span>года</span>');
+        if (text.includes('100')) {
+          animateCounter(num, 100, 1200, '<span>+</span>');
+        } else if (text.includes('2')) {
+          animateCounter(num, 2, 600, ' <span>года</span>');
         }
       });
       statsObserver.disconnect();
@@ -1365,8 +1371,8 @@ window.addEventListener('load', () => {
   setTimeout(() => {
     const carsStat = document.getElementById('stat-cars');
     const yearsStat = document.getElementById('stat-years');
-    if (carsStat) animateCounter(carsStat, 600, 1100, '<span>+</span>');
-    if (yearsStat) animateCounter(yearsStat, 3, 900, ' <span>года</span>');
+    if (carsStat) animateCounter(carsStat, 100, 1100, '<span>+</span>');
+    if (yearsStat) animateCounter(yearsStat, 2, 900, ' <span>года</span>');
   }, 500);
 });
 
