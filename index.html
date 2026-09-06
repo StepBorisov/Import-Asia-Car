@@ -1408,8 +1408,13 @@ async function submitHeroForm(e) {
   const form = e.target;
   const btn = document.getElementById('heroSubmitBtn');
   const data = new FormData(form);
+  const params = new URLSearchParams(window.location.search);
+  const source = params.get('source') === 'telegram_channel'
+    ? 'telegram_channel'
+    : 'website';
 
   const body = {
+    source: source,
     name: data.get('name'),
     phone: data.get('phone'),
     telegram: data.get('telegram') || '—',
