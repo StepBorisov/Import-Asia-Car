@@ -941,12 +941,12 @@ footer .footer-credit-link svg { width: 13px; height: 13px; flex-shrink: 0; }
         <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:10px;">
           <div>
             <label style="color:rgba(255,255,255,0.6);font-size:11px;display:block;margin-bottom:5px;">Бюджет до, ₽</label>
-            <input name="budget" type="number" placeholder="2 500 000"
+            <input name="budget" type="text" inputmode="numeric" placeholder="2.500.000" oninput="formatBudgetInput(this)"
               style="width:100%;background:rgba(0,0,0,0.4);border:1px solid rgba(255,255,255,0.12);border-radius:10px;color:#fff;padding:10px 12px;font-size:16px;outline:none;box-sizing:border-box;font-family:inherit;" class="form-input"/>
           </div>
           <div>
             <label style="color:rgba(255,255,255,0.6);font-size:11px;display:block;margin-bottom:5px;">Год (от–до)</label>
-            <input name="year" type="number" placeholder="2020–2026"
+            <input name="year" type="text" inputmode="numeric" placeholder="2020–2026" maxlength="9" oninput="formatYearInput(this)"
               style="width:100%;background:rgba(0,0,0,0.4);border:1px solid rgba(255,255,255,0.12);border-radius:10px;color:#fff;padding:10px 12px;font-size:16px;outline:none;box-sizing:border-box;font-family:inherit;" class="form-input"/>
           </div>
         </div>
@@ -1187,7 +1187,7 @@ footer .footer-credit-link svg { width: 13px; height: 13px; flex-shrink: 0; }
   <p>© 2023 Import Asia Cars — авто с аукционов Японии</p>
   <p class="footer-credit">Сайт разработал <a class="footer-credit-link" href="https://t.me/step_b9" target="_blank" rel="noopener">
     <svg viewBox="0 0 24 24" fill="currentColor"><path d="M9.78 18.65l.28-4.23 7.68-6.92c.34-.31-.07-.46-.52-.19L7.74 13.3 3.64 12c-.88-.25-.89-.86.2-1.3l15.97-6.16c.73-.33 1.43.18 1.15 1.3l-2.72 12.81c-.19.91-.74 1.13-1.5.71l-4.14-3.05-2 1.92c-.22.21-.42.4-.82.4z"/></svg>
-    step_b9
+    step b9 (ссылка)
   </a></p>
 </footer>
 
@@ -1402,6 +1402,20 @@ document.addEventListener('click', function(e) {
 });
 
 
+
+function formatYearInput(input) {
+  let digits = input.value.replace(/\D/g, '').slice(0, 8);
+  if (digits.length > 4) {
+    input.value = digits.slice(0, 4) + '-' + digits.slice(4);
+  } else {
+    input.value = digits;
+  }
+}
+
+function formatBudgetInput(input) {
+  let digits = input.value.replace(/\D/g, '');
+  input.value = digits ? Number(digits).toLocaleString('ru-RU').replace(/\u00A0/g, '.') : '';
+}
 
 async function submitHeroForm(e) {
   e.preventDefault();
