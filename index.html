@@ -988,7 +988,7 @@ footer .footer-credit-link svg { width: 13px; height: 13px; flex-shrink: 0; }
         <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:14px;">
           <div>
             <label style="color:rgba(255,255,255,0.6);font-size:11px;display:block;margin-bottom:5px;">Телефон *</label>
-            <input name="phone" type="tel" placeholder="+7 000 000-00-00" required
+            <input name="phone" type="tel" inputmode="numeric" placeholder="8 (900) 000 00 00" required oninput="formatPhoneInput(this)"
               style="width:100%;background:rgba(0,0,0,0.4);border:1px solid rgba(255,255,255,0.12);border-radius:10px;color:#fff;padding:10px 12px;font-size:16px;outline:none;box-sizing:border-box;font-family:inherit;" class="form-input"/>
           </div>
           <div>
@@ -1437,6 +1437,19 @@ document.addEventListener('click', function(e) {
 });
 
 
+
+function formatPhoneInput(input) {
+  let digits = input.value.replace(/\D/g, '');
+  if (digits.startsWith('7') || digits.startsWith('8')) digits = digits.slice(1);
+  digits = digits.slice(0, 10);
+  let result = '8';
+  if (digits.length > 0) result += ' (' + digits.slice(0, 3);
+  if (digits.length >= 3) result += ')';
+  if (digits.length > 3) result += ' ' + digits.slice(3, 6);
+  if (digits.length > 6) result += ' ' + digits.slice(6, 8);
+  if (digits.length > 8) result += ' ' + digits.slice(8, 10);
+  input.value = result;
+}
 
 function formatYearInput(input) {
   let digits = input.value.replace(/\D/g, '').slice(0, 8);
