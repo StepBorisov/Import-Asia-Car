@@ -232,6 +232,53 @@ body { font-family:'Inter',sans-serif; background:var(--black); color:var(--whit
   .cars-grid { grid-template-columns:1fr 1fr; }
   .car-card__body { padding:12px; }
 }
+
+/* ===== СВЕТЛАЯ ТЕМА ===== */
+.top-contact-btn { background:#111; color:#fff; }
+:root { --black:#ffffff; --white:#111111; --gray:#f5f5f5; --border:rgba(0,0,0,0.12); }
+body { background:#fff; color:#111; }
+.catalog-hero { background:#fff; }
+.catalog-hero::before { background:radial-gradient(circle,rgba(200,16,46,0.08) 0%,transparent 70%); }
+.catalog-hero p { color:#555; }
+.cat-price-note { color:#888 !important; }
+.filter-bar { background:#fff; border-bottom:1px solid #e5e5e5; box-shadow:0 2px 10px rgba(0,0,0,0.04); }
+.filter-bar input, .filter-bar select { background:#f5f5f5; border:1px solid #ddd; color:#111; }
+.filter-bar input::placeholder { color:#999; }
+.filter-bar select option { background:#fff; }
+.type-tab { background:#f5f5f5; border:1px solid #ddd; color:#555; }
+.type-tab.active { background:var(--red); border-color:var(--red); color:#fff; }
+.cars-count { color:#888; }
+.car-card { background:#fff; border:1px solid #e5e5e5; box-shadow:0 2px 10px rgba(0,0,0,0.05); }
+.car-card:hover { border-color:rgba(200,16,46,0.45); }
+.car-card__img { aspect-ratio:4/3; object-fit:contain; background:#f2f2f2; }
+.car-card__img-placeholder { aspect-ratio:4/3; background:#f2f2f2; color:#aaa; }
+.car-card__title { color:#111; }
+.car-card__year { color:#888; }
+.car-card__specs { color:#555; }
+.car-card__price { color:#111; }
+.car-card__price span { color:#888; }
+.car-card__market { color:#888; }
+.car-card__market span { color:#999; }
+.car-card__saving { background:rgba(34,139,34,0.10); color:#1f8a1f; }
+.car-card__price-note { color:#777; }
+.car-card__badge--order { background:rgba(0,0,0,0.08); color:#666; }
+.no-results { color:#888; }
+#carModal { background:rgba(0,0,0,0.55); }
+.car-modal__inner { background:#fff; border:1px solid #e5e5e5; color:#111; }
+.car-modal__close { background:#fff; border-bottom:1px solid #e5e5e5; }
+.car-modal__close button { color:#666; }
+.car-modal__gallery { gap:0; padding:0; background:#f2f2f2; overscroll-behavior-x:contain; }
+.car-modal__gallery img { width:100%; flex:0 0 100%; height:auto; aspect-ratio:4/3; object-fit:contain; border-radius:0; scroll-snap-align:center; }
+.car-modal__info { padding-top:18px; }
+.car-modal__spec { background:#f5f5f5; }
+.car-modal__spec-label { color:#888; }
+.car-modal__price span { color:#888; }
+.car-modal__desc { color:#555; }
+#requestModal { background:rgba(0,0,0,0.55); }
+.req-inner { background:#fff; border:1px solid rgba(200,16,46,0.3); color:#111; }
+.req-inner p { color:#666; }
+.req-field label { color:#666; }
+.req-field input, .req-field textarea, .req-field select { background:#f5f5f5; border:1px solid #ddd; color:#111; }
 </style>
 </head>
 <body>
@@ -295,7 +342,7 @@ body { font-family:'Inter',sans-serif; background:var(--black); color:var(--whit
 <!-- МОДАЛ ЗАЯВКИ -->
 <div id="requestModal">
   <div class="req-inner">
-    <button onclick="closeRequestModal()" style="position:absolute;top:14px;right:16px;background:none;border:none;color:rgba(255,255,255,0.4);font-size:22px;cursor:pointer;">✕</button>
+    <button onclick="closeRequestModal()" style="position:absolute;top:14px;right:16px;background:none;border:none;color:#777;font-size:22px;cursor:pointer;">✕</button>
     <div style="color:var(--red);font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;margin-bottom:6px;">Заявка</div>
     <h2>Подберём автомобиль</h2>
     <p>Свяжемся в течение часа и уточним детали</p>
@@ -352,11 +399,11 @@ body { font-family:'Inter',sans-serif; background:var(--black); color:var(--whit
         </div>
       </div>
       <button type="submit" class="btn-req" id="submitBtn">Отправить заявку →</button>
-      <p style="color:rgba(255,255,255,0.3);font-size:11px;text-align:center;margin-top:10px;">Нажимая кнопку, вы соглашаетесь с обработкой персональных данных</p>
+      <p style="color:#888;font-size:11px;text-align:center;margin-top:10px;">Нажимая кнопку, вы соглашаетесь с обработкой персональных данных</p>
     </form>
     <div id="formSuccess" style="display:none;text-align:center;padding:30px 0;">
       <h3 style="font-size:20px;margin-bottom:8px;">Заявка отправлена!</h3>
-      <p style="color:rgba(255,255,255,0.5);font-size:14px;margin:0;">Свяжемся с вами в ближайшее время</p>
+      <p style="color:#666;font-size:14px;margin:0;">Свяжемся с вами в ближайшее время</p>
     </div>
   </div>
 </div>
@@ -427,8 +474,8 @@ window.IAC_CARS = [
   {
     id: 'jp-honda-freed-2020',
     type: 'arrived',
-    brand: 'Honda', model: 'Freed', year: '2020–2023', yearTo: 2023,
-    engine: '1.5L, бензин, 4WD',
+    brand: 'Honda', model: 'Freed', year: '06.2016', yearTo: 2016,
+    engine: '1.5L (1 500 см³), бензин, 4WD',
     mileage: '140 971 км',
     grade: '3.5',
     country: 'Япония',
@@ -436,8 +483,8 @@ window.IAC_CARS = [
     marketPrice: '2 100 000 ₽',
     marketRegion: 'Дальний Восток',
     saving: 'Выгода 400 000 ₽',
-    images: ['photos/jp-honda-freed-2020/1.jpg', 'photos/jp-honda-freed-2020/2.jpg', 'photos/jp-honda-freed-2020/3.jpg', 'photos/jp-honda-freed-2020/4.jpg', 'photos/jp-honda-freed-2020/5.jpg', 'photos/jp-honda-freed-2020/6.jpg', 'photos/jp-honda-freed-2020/7.jpg', 'photos/jp-honda-freed-2020/8.jpg', 'photos/jp-honda-freed-2020/9.jpg'],
-    description: 'Компактный семейный минивэн с гибкой трансформацией салона под пассажиров или груз. Полный привод 4WD, 7 мест, двигатель 1.5L, автоматическая коробка. Пробег 140 971 км, аукционная оценка 3.5. Лёгкий в управлении, хорошо подходит для города, экономичный расход топлива.'
+    images: ['photos/jp-honda-freed-2020/1.jpg', 'photos/jp-honda-freed-2020/2.jpg', 'photos/jp-honda-freed-2020/3.jpg', 'photos/jp-honda-freed-2020/4.jpg', 'photos/jp-honda-freed-2020/5.jpg', 'photos/jp-honda-freed-2020/6.jpg', 'photos/jp-honda-freed-2020/7.jpg', 'photos/jp-honda-freed-2020/8.jpg', 'photos/jp-honda-freed-2020/9.jpg', 'photos/jp-honda-freed-2020/10.jpg'],
+    description: 'Компактный семейный минивэн с гибкой трансформацией салона под пассажиров или груз. Honda Freed 4WD, комплектация G Premium Edition, 7 мест. Первая регистрация 06.2016, пробег 140 971 км, аукционная оценка 3.5. Двигатель 1.5L (1 500 см³), автоматическая коробка, полный привод. Лёгкий в управлении, подходит для города. Аукционный лист — на последнем фото.'
   },
   {
     id: 'toyota-c-hr-2016',
@@ -1345,8 +1392,8 @@ function openCarModal(id) {
   // gallery
   const gallery = document.getElementById('carModalGallery');
   gallery.innerHTML = car.images && car.images.length
-    ? car.images.map(src => `<img src="${src}" alt="${car.brand}" style="height:220px;border-radius:10px;object-fit:cover;flex-shrink:0"/>`).join('')
-    : '<div style="padding:40px;color:rgba(255,255,255,0.3);font-size:13px;">Фото скоро</div>';
+    ? car.images.map(src => `<img src="${src}" alt="${car.brand}" loading="lazy"/>`).join('')
+    : '<div style="padding:40px;color:#999;font-size:13px;">Фото скоро</div>';
 
   // specs
   document.getElementById('carModalSpecs').innerHTML = [
@@ -1359,7 +1406,7 @@ function openCarModal(id) {
 
   document.getElementById('carModalPrice').innerHTML = `
     <div><span>Цена во Владивостоке</span>${car.type === 'order' ? 'От ' + car.price : car.price} ₽</div>
-    ${car.type === 'arrived' && car.marketPrice ? `<div style="font-size:14px;font-weight:400;color:rgba(255,255,255,0.4);margin-top:6px;">Рынок «${car.marketRegion}»: <s>${car.marketPrice}</s></div>` : ''}
+    ${car.type === 'arrived' && car.marketPrice ? `<div style="font-size:14px;font-weight:400;color:#777;margin-top:6px;">Рынок «${car.marketRegion}»: <s>${car.marketPrice}</s></div>` : ''}
     ${car.type === 'arrived' && car.saving ? `<div class="car-card__saving" style="margin-top:8px;">${car.saving}</div>` : ''}
     ${car.type === 'order' ? `<div class="car-card__price-note" style="margin-top:8px;">Цены ориентировочные, точная цена машины зависит от многих факторов, уточняйте у менеджера</div>` : ''}
   `;

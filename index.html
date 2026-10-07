@@ -728,14 +728,15 @@ footer .footer-credit-link svg { width: 13px; height: 13px; flex-shrink: 0; }
   overflow:hidden; display:flex; flex-direction:column;
   scroll-snap-align:center;
 }
-.cat-slide-card__img {
-  width:100%; aspect-ratio:16/10; object-fit:cover;
-  background:#eee; display:block;
-}
+.cat-slide-gal { position:relative; background:#f2f2f2; cursor:pointer; }
+.cat-slide-gal__track { display:flex; overflow-x:auto; scroll-snap-type:x mandatory; scrollbar-width:none; -webkit-overflow-scrolling:touch; }
+.cat-slide-gal__track::-webkit-scrollbar { display:none; }
+.cat-slide-gal__track img { flex:0 0 100%; width:100%; aspect-ratio:4/3; object-fit:contain; scroll-snap-align:center; display:block; background:#f2f2f2; -webkit-user-drag:none; user-select:none; }
+.cat-slide-gal__count { position:absolute; right:10px; bottom:10px; background:rgba(0,0,0,0.6); color:#fff; font-size:11px; padding:3px 9px; border-radius:12px; pointer-events:none; }
 .cat-slide-card__no-img {
-  width:100%; aspect-ratio:16/10; background:#f0f0f0;
+  width:100%; aspect-ratio:4/3; background:#f0f0f0;
   display:flex; align-items:center; justify-content:center;
-  color:#bbb; font-size:12px;
+  color:#bbb; font-size:12px; cursor:pointer;
 }
 .cat-slide-card__body { padding:18px; flex:1; display:flex; flex-direction:column; }
 .cat-slide-badge {
@@ -812,12 +813,15 @@ footer .footer-credit-link svg { width: 13px; height: 13px; flex-shrink: 0; }
   padding:5px 14px; border-radius:20px;
 }
 .cdm-badge.cdm-badge--order { background:rgba(0,0,0,0.08); color:#555; }
-.cdm-img-wrap { width:100%; aspect-ratio:16/10; background:#eee; overflow:hidden; }
-.cdm-img-wrap img { width:100%; height:100%; object-fit:cover; display:block; }
+.cdm-img-wrap { width:100%; aspect-ratio:4/3; background:#f2f2f2; overflow:hidden; position:relative; }
+.cdm-gal { display:flex; width:100%; height:100%; overflow-x:auto; scroll-snap-type:x mandatory; scrollbar-width:none; -webkit-overflow-scrolling:touch; overscroll-behavior-x:contain; }
+.cdm-gal::-webkit-scrollbar { display:none; }
+.cdm-gal img { flex:0 0 100%; width:100%; height:100%; object-fit:contain; scroll-snap-align:center; display:block; -webkit-user-drag:none; user-select:none; }
+.cdm-count { position:absolute; right:12px; bottom:12px; background:rgba(0,0,0,0.6); color:#fff; font-size:12px; padding:4px 10px; border-radius:14px; pointer-events:none; }
 .cdm-img-wrap.cdm-img-wrap--empty { display:flex; align-items:center; justify-content:center; color:#bbb; font-size:14px; }
-.cdm-thumbs { display:flex; gap:8px; padding:10px 12px; overflow-x:auto; background:#f5f5f5; scrollbar-width:none; }
+.cdm-thumbs { position:relative; display:flex; gap:8px; padding:10px 12px; overflow-x:auto; background:#f5f5f5; scrollbar-width:none; }
 .cdm-thumbs::-webkit-scrollbar { display:none; }
-.cdm-thumbs img { height:56px; width:auto; aspect-ratio:4/3; object-fit:cover; border-radius:6px; flex-shrink:0; cursor:pointer; opacity:.6; border:2px solid transparent; }
+.cdm-thumbs img { height:56px; width:auto; aspect-ratio:4/3; object-fit:contain; background:#fff; border-radius:6px; flex-shrink:0; cursor:pointer; opacity:.6; border:2px solid transparent; }
 .cdm-thumbs img.active { opacity:1; border-color:#c8102e; }
 .cdm-body { padding:24px 20px 40px; max-width:640px; margin:0 auto; }
 .cdm-body h3 { font-size:24px; font-weight:700; margin-bottom:4px; }
@@ -840,7 +844,7 @@ footer .footer-credit-link svg { width: 13px; height: 13px; flex-shrink: 0; }
 @media (min-width:768px) {
   .cdm-inner { max-width:900px; margin:24px auto; border-radius:20px; overflow:hidden; min-height:0; }
   #carDetailModal { padding:24px; }
-  .cdm-img-wrap { aspect-ratio:16/8; }
+  .cdm-img-wrap { aspect-ratio:16/10; }
 }
 
 /* =========================== */
@@ -1583,8 +1587,8 @@ window.IAC_CATALOG = [
   {
     id: 'jp-honda-freed-2020',
     type: 'arrived',
-    brand: 'Honda', model: 'Freed', year: '2020–2023',
-    engine: '1.5L, бензин, 4WD',
+    brand: 'Honda', model: 'Freed', year: '06.2016',
+    engine: '1.5L (1 500 см³), бензин, 4WD',
     mileage: '140 971 км',
     color: 'белый перламутр',
     grade: '3.5',
@@ -1593,9 +1597,9 @@ window.IAC_CATALOG = [
     marketRegion: 'Дальний Восток',
     saving: 'Выгода 400 000 ₽',
     image: '',
-    images: ['photos/jp-honda-freed-2020/1.jpg', 'photos/jp-honda-freed-2020/2.jpg', 'photos/jp-honda-freed-2020/3.jpg', 'photos/jp-honda-freed-2020/4.jpg', 'photos/jp-honda-freed-2020/5.jpg', 'photos/jp-honda-freed-2020/6.jpg', 'photos/jp-honda-freed-2020/7.jpg', 'photos/jp-honda-freed-2020/8.jpg', 'photos/jp-honda-freed-2020/9.jpg'],
+    images: ['photos/jp-honda-freed-2020/1.jpg', 'photos/jp-honda-freed-2020/2.jpg', 'photos/jp-honda-freed-2020/3.jpg', 'photos/jp-honda-freed-2020/4.jpg', 'photos/jp-honda-freed-2020/5.jpg', 'photos/jp-honda-freed-2020/6.jpg', 'photos/jp-honda-freed-2020/7.jpg', 'photos/jp-honda-freed-2020/8.jpg', 'photos/jp-honda-freed-2020/9.jpg', 'photos/jp-honda-freed-2020/10.jpg'],
     desc: 'Компактный семейный минивэн. Лёгкий в управлении, вместительный салон, экономичный.',
-    detail: 'Компактный семейный минивэн с гибкой трансформацией салона под пассажиров или груз. Полный привод 4WD, 7 мест, двигатель 1.5L, автоматическая коробка. Пробег 140 971 км, аукционная оценка 3.5. Лёгкий в управлении, хорошо подходит для города, экономичный расход топлива.'
+    detail: 'Компактный семейный минивэн с гибкой трансформацией салона под пассажиров или груз. Honda Freed 4WD, комплектация G Premium Edition, 7 мест. Первая регистрация 06.2016, пробег 140 971 км, аукционная оценка 3.5. Двигатель 1.5L (1 500 см³), автоматическая коробка, полный привод. Лёгкий в управлении, подходит для города. Аукционный лист — на последнем фото.'
   },
   {
     id: 'jp-mazda-cx3-2014',
@@ -1724,10 +1728,10 @@ function renderCatalogSlider() {
   empty.style.display = 'none';
 
   track.innerHTML = cars.map(car => {
-    const cover = (car.images && car.images[0]) || car.image;
-    const img = cover
-      ? `<img class="cat-slide-card__img" src="${cover}" alt="${car.brand} ${car.model}" loading="lazy" onerror="this.style.display='none'">`
-      : `<div class="cat-slide-card__no-img">Фото скоро</div>`;
+    const imgs = (car.images && car.images.length) ? car.images : (car.image ? [car.image] : []);
+    const img = imgs.length
+      ? `<div class="cat-slide-gal" onclick="openCarDetailModal('${car.id}')"><div class="cat-slide-gal__track">${imgs.map(src => `<img src="${src}" alt="${car.brand} ${car.model}" loading="lazy" draggable="false" onerror="this.style.visibility='hidden'">`).join('')}</div>${imgs.length > 1 ? `<div class="cat-slide-gal__count">1 / ${imgs.length}</div>` : ''}</div>`
+      : `<div class="cat-slide-card__no-img" onclick="openCarDetailModal('${car.id}')">Фото скоро</div>`;
     const badgeClass = car.type === 'arrived' ? 'cat-slide-badge--arrived' : 'cat-slide-badge--order';
     const badgeText = car.type === 'arrived' ? 'Привезён' : 'Под заказ';
     return `
@@ -1759,6 +1763,15 @@ function openRequestModalWithCar(model) {
   }
 }
 
+// счётчик фото при свайпе внутри карточки
+document.getElementById('catalogTrack').addEventListener('scroll', function (e) {
+  const t = e.target;
+  if (!t.classList || !t.classList.contains('cat-slide-gal__track')) return;
+  const i = Math.round(t.scrollLeft / t.clientWidth);
+  const c = t.parentElement.querySelector('.cat-slide-gal__count');
+  if (c) c.textContent = (i + 1) + ' / ' + t.children.length;
+}, true);
+
 // ===== КАРТОЧКА АВТОМОБИЛЯ (полноэкранная) =====
 function openCarDetailModal(id) {
   const car = window.IAC_CATALOG.find(c => c.id === id);
@@ -1769,14 +1782,18 @@ function openCarDetailModal(id) {
   badge.className = 'cdm-badge' + (car.type === 'order' ? ' cdm-badge--order' : '');
 
   const imgs = (car.images && car.images.length) ? car.images : (car.image ? [car.image] : []);
-  document.getElementById('cdmImgWrap').innerHTML = imgs.length
-    ? `<img id="cdmMainImg" src="${imgs[0]}" alt="${car.brand} ${car.model}" onerror="this.parentElement.classList.add('cdm-img-wrap--empty');this.remove()">`
+  const wrap = document.getElementById('cdmImgWrap');
+  wrap.innerHTML = imgs.length
+    ? `<div class="cdm-gal" id="cdmGal">${imgs.map((src, i) => `<img src="${src}" alt="${car.brand} ${car.model} — фото ${i + 1}" draggable="false" onerror="this.style.visibility='hidden'">`).join('')}</div>${imgs.length > 1 ? `<div class="cdm-count" id="cdmCount">1 / ${imgs.length}</div>` : ''}`
     : `<div class="cdm-img-wrap--empty" style="width:100%;height:100%;display:flex;align-items:center;justify-content:center;">Фото скоро</div>`;
+  const gal = document.getElementById('cdmGal');
+  if (gal) gal.addEventListener('scroll', onCdmScroll, { passive: true });
   const thumbs = document.getElementById('cdmThumbs');
   thumbs.innerHTML = imgs.length > 1
-    ? imgs.map((src, i) => `<img src="${src}" alt="Фото ${i + 1}" class="${i === 0 ? 'active' : ''}" onclick="setCdmImg(this)" loading="lazy">`).join('')
+    ? imgs.map((src, i) => `<img src="${src}" alt="Фото ${i + 1}" class="${i === 0 ? 'active' : ''}" onclick="goCdmImg(${i})" loading="lazy">`).join('')
     : '';
   thumbs.style.display = imgs.length > 1 ? 'flex' : 'none';
+  thumbs.scrollLeft = 0;
 
   document.getElementById('cdmTitle').textContent = `${car.brand} ${car.model}`;
   document.getElementById('cdmYear').textContent = car.year;
@@ -1799,10 +1816,22 @@ function openCarDetailModal(id) {
   document.body.style.overflow = 'hidden';
 }
 
-function setCdmImg(el) {
-  const main = document.getElementById('cdmMainImg');
-  if (main) main.src = el.src;
-  document.querySelectorAll('#cdmThumbs img').forEach(i => i.classList.toggle('active', i === el));
+function onCdmScroll(e) {
+  const g = e.currentTarget;
+  setCdmActive(Math.round(g.scrollLeft / g.clientWidth));
+}
+function setCdmActive(i) {
+  const list = document.querySelectorAll('#cdmThumbs img');
+  list.forEach((t, k) => t.classList.toggle('active', k === i));
+  const g = document.getElementById('cdmGal');
+  const c = document.getElementById('cdmCount');
+  if (c && g) c.textContent = (i + 1) + ' / ' + g.children.length;
+  const t = list[i], strip = document.getElementById('cdmThumbs');
+  if (t && strip) strip.scrollTo({ left: t.offsetLeft - (strip.clientWidth - t.clientWidth) / 2, behavior: 'smooth' });
+}
+function goCdmImg(i) {
+  const g = document.getElementById('cdmGal');
+  if (g) g.scrollTo({ left: i * g.clientWidth, behavior: 'smooth' });
 }
 
 function closeCarDetailModal() {
