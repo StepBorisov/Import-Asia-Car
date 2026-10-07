@@ -815,6 +815,10 @@ footer .footer-credit-link svg { width: 13px; height: 13px; flex-shrink: 0; }
 .cdm-img-wrap { width:100%; aspect-ratio:16/10; background:#eee; overflow:hidden; }
 .cdm-img-wrap img { width:100%; height:100%; object-fit:cover; display:block; }
 .cdm-img-wrap.cdm-img-wrap--empty { display:flex; align-items:center; justify-content:center; color:#bbb; font-size:14px; }
+.cdm-thumbs { display:flex; gap:8px; padding:10px 12px; overflow-x:auto; background:#f5f5f5; scrollbar-width:none; }
+.cdm-thumbs::-webkit-scrollbar { display:none; }
+.cdm-thumbs img { height:56px; width:auto; aspect-ratio:4/3; object-fit:cover; border-radius:6px; flex-shrink:0; cursor:pointer; opacity:.6; border:2px solid transparent; }
+.cdm-thumbs img.active { opacity:1; border-color:#c8102e; }
 .cdm-body { padding:24px 20px 40px; max-width:640px; margin:0 auto; }
 .cdm-body h3 { font-size:24px; font-weight:700; margin-bottom:4px; }
 .cdm-year { color:#999; font-size:14px; margin-bottom:16px; }
@@ -1234,6 +1238,7 @@ footer .footer-credit-link svg { width: 13px; height: 13px; flex-shrink: 0; }
       <button onclick="closeCarDetailModal()" aria-label="Закрыть">✕</button>
     </div>
     <div class="cdm-img-wrap" id="cdmImgWrap"></div>
+    <div class="cdm-thumbs" id="cdmThumbs" style="display:none;"></div>
     <div class="cdm-body">
       <h3 id="cdmTitle"></h3>
       <div class="cdm-year" id="cdmYear"></div>
@@ -1579,16 +1584,18 @@ window.IAC_CATALOG = [
     id: 'jp-honda-freed-2020',
     type: 'arrived',
     brand: 'Honda', model: 'Freed', year: '2020–2023',
-    engine: '1.5L, бензин',
-    mileage: 'уточняется',
-    color: 'уточняется',
+    engine: '1.5L, бензин, 4WD',
+    mileage: '140 971 км',
+    color: 'белый перламутр',
+    grade: '3.5',
     price: '1 700 000 ₽',
     marketPrice: '2 100 000 ₽',
     marketRegion: 'Дальний Восток',
     saving: 'Выгода 400 000 ₽',
     image: '',
+    images: ['photos/jp-honda-freed-2020/1.jpg', 'photos/jp-honda-freed-2020/2.jpg', 'photos/jp-honda-freed-2020/3.jpg', 'photos/jp-honda-freed-2020/4.jpg', 'photos/jp-honda-freed-2020/5.jpg', 'photos/jp-honda-freed-2020/6.jpg', 'photos/jp-honda-freed-2020/7.jpg', 'photos/jp-honda-freed-2020/8.jpg', 'photos/jp-honda-freed-2020/9.jpg'],
     desc: 'Компактный семейный минивэн. Лёгкий в управлении, вместительный салон, экономичный.',
-    detail: 'Компактный семейный минивэн с гибкой трансформацией салона под пассажиров или груз. Лёгкий в управлении, хорошо подходит для города, экономичный расход топлива. Отличный выбор для семьи, которой нужна практичность без габаритов большого минивэна.'
+    detail: 'Компактный семейный минивэн с гибкой трансформацией салона под пассажиров или груз. Полный привод 4WD, 7 мест, двигатель 1.5L, автоматическая коробка. Пробег 140 971 км, аукционная оценка 3.5. Лёгкий в управлении, хорошо подходит для города, экономичный расход топлива.'
   },
   {
     id: 'jp-mazda-cx3-2014',
@@ -1717,8 +1724,9 @@ function renderCatalogSlider() {
   empty.style.display = 'none';
 
   track.innerHTML = cars.map(car => {
-    const img = car.image
-      ? `<img class="cat-slide-card__img" src="${car.image}" alt="${car.brand} ${car.model}" loading="lazy" onerror="this.style.display='none'">`
+    const cover = (car.images && car.images[0]) || car.image;
+    const img = cover
+      ? `<img class="cat-slide-card__img" src="${cover}" alt="${car.brand} ${car.model}" loading="lazy" onerror="this.style.display='none'">`
       : `<div class="cat-slide-card__no-img">Фото скоро</div>`;
     const badgeClass = car.type === 'arrived' ? 'cat-slide-badge--arrived' : 'cat-slide-badge--order';
     const badgeText = car.type === 'arrived' ? 'Привезён' : 'Под заказ';
@@ -1729,7 +1737,7 @@ function renderCatalogSlider() {
         <span class="cat-slide-badge ${badgeClass}">${badgeText}</span>
         <div class="cat-slide-card__title">${car.brand} ${car.model}</div>
         <div class="cat-slide-card__year">${car.year}</div>
-        <div class="cat-slide-card__specs">${[car.engine, car.mileage, car.color].filter(Boolean).join(' · ')}</div>
+        <div class="cat-slide-card__specs">${[car.engine, car.mileage, car.color, car.grade ? 'оценка ' + car.grade : ''].filter(Boolean).join(' · ')}</div>
         <div class="cat-slide-card__price"><span>Цена во Владивостоке</span>${car.type === 'order' ? 'От ' + car.price : car.price}</div>
         ${car.type === 'arrived' ? `<div class="cat-slide-card__market"><span>Рынок «${car.marketRegion}»</span><s>${car.marketPrice}</s></div>` : ''}
         ${car.type === 'arrived' && car.saving ? `<div class="cat-slide-card__saving">${car.saving}</div>` : ''}
@@ -1760,13 +1768,19 @@ function openCarDetailModal(id) {
   badge.textContent = car.type === 'arrived' ? 'Привезён' : 'Под заказ';
   badge.className = 'cdm-badge' + (car.type === 'order' ? ' cdm-badge--order' : '');
 
-  document.getElementById('cdmImgWrap').innerHTML = car.image
-    ? `<img src="${car.image}" alt="${car.brand} ${car.model}" onerror="this.parentElement.classList.add('cdm-img-wrap--empty');this.remove()">`
+  const imgs = (car.images && car.images.length) ? car.images : (car.image ? [car.image] : []);
+  document.getElementById('cdmImgWrap').innerHTML = imgs.length
+    ? `<img id="cdmMainImg" src="${imgs[0]}" alt="${car.brand} ${car.model}" onerror="this.parentElement.classList.add('cdm-img-wrap--empty');this.remove()">`
     : `<div class="cdm-img-wrap--empty" style="width:100%;height:100%;display:flex;align-items:center;justify-content:center;">Фото скоро</div>`;
+  const thumbs = document.getElementById('cdmThumbs');
+  thumbs.innerHTML = imgs.length > 1
+    ? imgs.map((src, i) => `<img src="${src}" alt="Фото ${i + 1}" class="${i === 0 ? 'active' : ''}" onclick="setCdmImg(this)" loading="lazy">`).join('')
+    : '';
+  thumbs.style.display = imgs.length > 1 ? 'flex' : 'none';
 
   document.getElementById('cdmTitle').textContent = `${car.brand} ${car.model}`;
   document.getElementById('cdmYear').textContent = car.year;
-  document.getElementById('cdmSpecs').textContent = [car.engine, car.mileage, car.color].filter(Boolean).join(' · ');
+  document.getElementById('cdmSpecs').textContent = [car.engine, car.mileage, car.color, car.grade ? 'оценка ' + car.grade : ''].filter(Boolean).join(' · ');
   document.getElementById('cdmPrice').textContent = car.type === 'order' ? 'От ' + car.price : car.price;
   document.getElementById('cdmMarket').innerHTML = `Рынок «${car.marketRegion}»: <s>${car.marketPrice}</s>`;
   document.getElementById('cdmMarket').style.display = car.type === 'arrived' ? 'block' : 'none';
@@ -1783,6 +1797,12 @@ function openCarDetailModal(id) {
 
   document.getElementById('carDetailModal').style.display = 'block';
   document.body.style.overflow = 'hidden';
+}
+
+function setCdmImg(el) {
+  const main = document.getElementById('cdmMainImg');
+  if (main) main.src = el.src;
+  document.querySelectorAll('#cdmThumbs img').forEach(i => i.classList.toggle('active', i === el));
 }
 
 function closeCarDetailModal() {

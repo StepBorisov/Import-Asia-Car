@@ -76,6 +76,14 @@ body { font-family:'Inter',sans-serif; background:var(--black); color:var(--whit
 .filter-bar select option { background:#1a1a1a; }
 .filter-bar input[type=text] { width:180px; }
 .filter-bar input[type=number] { width:120px; }
+.type-tabs { display:flex; gap:8px; width:100%; }
+.type-tab {
+  flex:1; background:#1a1a1a; border:1px solid var(--border); border-radius:10px;
+  color:rgba(255,255,255,0.6); padding:10px 16px; font-size:14px; font-weight:600;
+  cursor:pointer; font-family:'Inter',sans-serif;
+}
+.type-tab.active { background:var(--red); border-color:var(--red); color:#fff; }
+@media (min-width:700px) { .type-tab { flex:none; min-width:170px; } }
 .btn-filter {
   background:var(--red); color:#fff; border:none; border-radius:10px;
   padding:9px 20px; font-size:13px; font-weight:600; cursor:pointer;
@@ -251,11 +259,11 @@ body { font-family:'Inter',sans-serif; background:var(--black); color:var(--whit
 <!-- ФИЛЬТРЫ -->
 <div class="filter-bar">
   <input type="text" id="searchInput" placeholder="Поиск: Toyota, BMW…"/>
-  <select id="typeFilter">
-    <option value="">Все автомобили</option>
-    <option value="arrived">Привезённые</option>
-    <option value="order">Под заказ</option>
-  </select>
+  <div class="type-tabs">
+    <button type="button" class="type-tab active" data-type="arrived">Привезённые</button>
+    <button type="button" class="type-tab" data-type="order">Под заказ</button>
+  </div>
+  <input type="hidden" id="typeFilter" value="arrived"/>
   <input type="number" id="yearFilter" placeholder="Год от"/>
   <input type="number" id="budgetFilter" placeholder="Бюджет до ₽"/>
   <button class="btn-filter" onclick="applyFilters()">Найти</button>
@@ -360,6 +368,77 @@ body { font-family:'Inter',sans-serif; background:var(--black); color:var(--whit
 // images: массив путей к фото (относительные или абсолютные)
 // Добавляйте машины сюда:
 window.IAC_CARS = [
+  {
+    id: 'jp-honda-stepwgn-2015',
+    type: 'arrived',
+    brand: 'Honda', model: 'STEP-WGN', year: '2015–2022', yearTo: 2022,
+    engine: '1.5L Turbo / 2.0L, бензин',
+    mileage: 'уточняется',
+    country: 'Япония',
+    price: '1 750 000',
+    marketPrice: '2 150 000 ₽',
+    marketRegion: 'Дальний Восток',
+    saving: 'Выгода 400 000 ₽',
+    images: [],
+    description: 'Один из самых популярных семейных минивэнов Японии. Просторный салон на 6–7 мест, продуманная эргономика, богатая шумоизоляция. Турбированные версии тянут уверенно даже с полной загрузкой. Надёжность и ремонтопригодность подтверждены годами эксплуатации на рынке.'
+  },
+  {
+    id: 'jp-mazda3-2018',
+    type: 'arrived',
+    brand: 'Mazda', model: '3', year: '2018–2023', yearTo: 2023,
+    engine: '1.5–2.0L, бензин',
+    mileage: 'уточняется',
+    country: 'Япония',
+    price: '1 450 000',
+    marketPrice: '1 800 000 ₽',
+    marketRegion: 'Дальний Восток',
+    saving: 'Выгода 350 000 ₽',
+    images: [],
+    description: 'Японская сборка, строгий контроль качества на всех этапах производства. Плавный ход, точная управляемость и качественные материалы салона — Mazda 3 стабильно входит в число самых надёжных хэтчбеков своего класса. Экономичный расход и невысокая стоимость обслуживания.'
+  },
+  {
+    id: 'jp-honda-nwgn-2013',
+    type: 'arrived',
+    brand: 'Honda', model: 'N-WGN', year: '2013–2019', yearTo: 2019,
+    engine: '0.66L Turbo, бензин',
+    mileage: 'уточняется',
+    country: 'Япония',
+    price: '750 000',
+    marketPrice: '950 000 ₽',
+    marketRegion: 'Дальний Восток',
+    saving: 'Выгода 200 000 ₽',
+    images: [],
+    description: 'Компактный японский кей-кар с минимальными расходами на владение — низкий налог, дешёвая страховка, экономичный расход топлива. Лёгкое управление на узких городских улицах и простая парковка. Отличный вариант первого или второго автомобиля в семью.'
+  },
+  {
+    id: 'eu-mercedes-c180-2014',
+    type: 'arrived',
+    brand: 'Mercedes-Benz', model: 'C 180 Coupe', year: '2014–2019', yearTo: 2019,
+    engine: '1.6L Turbo, бензин',
+    mileage: 'уточняется',
+    country: 'Европа',
+    price: '2 150 000',
+    marketPrice: '2 700 000 ₽',
+    marketRegion: 'Центральная Россия',
+    saving: 'Выгода 550 000 ₽',
+    images: [],
+    description: 'Элегантное купе бизнес-класса. Спортивный силуэт, качественные материалы отделки салона, отзывчивый турбомотор. Хорошо держит цену на вторичном рынке и выделяется на фоне типичных седанов представительского класса. Подходит и для города, и для дальних поездок.'
+  },
+  {
+    id: 'jp-honda-freed-2020',
+    type: 'arrived',
+    brand: 'Honda', model: 'Freed', year: '2020–2023', yearTo: 2023,
+    engine: '1.5L, бензин, 4WD',
+    mileage: '140 971 км',
+    grade: '3.5',
+    country: 'Япония',
+    price: '1 700 000',
+    marketPrice: '2 100 000 ₽',
+    marketRegion: 'Дальний Восток',
+    saving: 'Выгода 400 000 ₽',
+    images: ['photos/jp-honda-freed-2020/1.jpg', 'photos/jp-honda-freed-2020/2.jpg', 'photos/jp-honda-freed-2020/3.jpg', 'photos/jp-honda-freed-2020/4.jpg', 'photos/jp-honda-freed-2020/5.jpg', 'photos/jp-honda-freed-2020/6.jpg', 'photos/jp-honda-freed-2020/7.jpg', 'photos/jp-honda-freed-2020/8.jpg', 'photos/jp-honda-freed-2020/9.jpg'],
+    description: 'Компактный семейный минивэн с гибкой трансформацией салона под пассажиров или груз. Полный привод 4WD, 7 мест, двигатель 1.5L, автоматическая коробка. Пробег 140 971 км, аукционная оценка 3.5. Лёгкий в управлении, хорошо подходит для города, экономичный расход топлива.'
+  },
   {
     id: 'toyota-c-hr-2016',
     type: 'order',
@@ -1208,7 +1287,7 @@ function renderCards(cars) {
         </div>
         <div class="car-card__title">${car.brand} ${car.model}</div>
         <div class="car-card__year">${car.year}</div>
-        <div class="car-card__specs">${car.engine} · ${car.mileage}</div>
+        <div class="car-card__specs">${[car.engine, car.mileage, car.grade ? 'оценка ' + car.grade : ''].filter(Boolean).join(' · ')}</div>
         <div class="car-card__price"><span>Цена во Владивостоке</span>${car.type === 'order' ? 'От ' + car.price : car.price} ₽</div>
         ${car.type === 'arrived' && car.marketPrice ? `<div class="car-card__market"><span>Рынок «${car.marketRegion}»</span><s>${car.marketPrice}</s></div>` : ''}
         ${car.type === 'arrived' && car.saving ? `<div class="car-card__saving">${car.saving}</div>` : ''}
@@ -1238,11 +1317,17 @@ function applyFilters() {
 
 // live search
 document.getElementById('searchInput').addEventListener('input', applyFilters);
-document.getElementById('typeFilter').addEventListener('change', applyFilters);
+document.querySelectorAll('.type-tab').forEach(btn => {
+  btn.addEventListener('click', () => {
+    document.getElementById('typeFilter').value = btn.dataset.type;
+    document.querySelectorAll('.type-tab').forEach(b => b.classList.toggle('active', b === btn));
+    applyFilters();
+  });
+});
 
 // init
 if (window.IAC_CARS.length) {
-  renderCards(window.IAC_CARS);
+  applyFilters();
 } else {
   document.getElementById('carsGrid').innerHTML =
     '<div class="no-results" style="grid-column:1/-1">Каталог пополняется — скоро здесь появятся автомобили.<br/>Оставьте заявку и мы подберём под ваш запрос.</div>';
@@ -1269,6 +1354,7 @@ function openCarModal(id) {
     ['Год', car.year],
     ['Двигатель', car.engine],
     ['Пробег', car.mileage],
+    ...(car.grade ? [['Аукционная оценка', car.grade]] : []),
   ].map(([l,v]) => `<div class="car-modal__spec"><div class="car-modal__spec-label">${l}</div><div class="car-modal__spec-val">${v}</div></div>`).join('');
 
   document.getElementById('carModalPrice').innerHTML = `
