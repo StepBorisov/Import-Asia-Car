@@ -119,7 +119,8 @@ body { font-family:'Inter',sans-serif; background:var(--black); color:var(--whit
   font-size:10px; font-weight:700; letter-spacing:1.5px; text-transform:uppercase;
   color:var(--red); margin-bottom:6px;
 }
-.car-card__title { font-size:15px; font-weight:700; line-height:1.35; margin-bottom:4px; min-height:2.7em; }
+.car-card__title { font-size:15px; font-weight:700; line-height:1.35; margin-bottom:4px; }
+.car-card__sub { font-size:12px; color:#666; line-height:1.35; margin-bottom:8px; }
 .car-card__year { color:rgba(255,255,255,0.4); font-size:12px; margin-bottom:10px; }
 .car-card__specs { color:rgba(255,255,255,0.55); font-size:12px; line-height:1.7; margin-bottom:12px; }
 .car-card__price { font-size:20px; font-weight:700; color:#fff; margin-bottom:10px; margin-top:auto; }
@@ -416,22 +417,9 @@ body { background:#fff; color:#111; }
 // Добавляйте машины сюда:
 window.IAC_CARS = [
   {
-    id: 'jp-honda-stepwgn-2015',
-    type: 'arrived',
-    brand: 'Honda', model: 'STEP-WGN', year: '2015–2022', yearTo: 2022,
-    engine: '1.5L Turbo / 2.0L, бензин',
-    mileage: 'уточняется',
-    country: 'Япония',
-    price: '1 750 000',
-    marketPrice: '2 150 000 ₽',
-    marketRegion: 'Дальний Восток',
-    saving: 'Выгода 400 000 ₽',
-    images: [],
-    description: 'Один из самых популярных семейных минивэнов Японии. Просторный салон на 6–7 мест, продуманная эргономика, богатая шумоизоляция. Турбированные версии тянут уверенно даже с полной загрузкой. Надёжность и ремонтопригодность подтверждены годами эксплуатации на рынке.'
-  },
-  {
     id: 'jp-honda-step-wgn-2020',
     type: 'arrived',
+    sub: 'кузов RP3 · Spada Honda Sensing',
     brand: 'Honda', model: 'STEP-WGN', year: '03.2020', yearTo: 2020,
     engine: '1.5L (1 500 см³), бензин',
     mileage: '29 960 км',
@@ -445,50 +433,9 @@ window.IAC_CARS = [
     description: 'Honda STEP-WGN, кузов RP3, комплектация Spada Honda Sensing. Первая регистрация 03.2020, пробег 29 960 км, аукционная оценка 4.5. Двигатель 1.5L (1 500 см³), бензин. Аукционный лист — на последнем фото.'
   },
   {
-    id: 'jp-mazda3-2018',
-    type: 'arrived',
-    brand: 'Mazda', model: '3', year: '2018–2023', yearTo: 2023,
-    engine: '1.5–2.0L, бензин',
-    mileage: 'уточняется',
-    country: 'Япония',
-    price: '1 450 000',
-    marketPrice: '1 800 000 ₽',
-    marketRegion: 'Дальний Восток',
-    saving: 'Выгода 350 000 ₽',
-    images: [],
-    description: 'Японская сборка, строгий контроль качества на всех этапах производства. Плавный ход, точная управляемость и качественные материалы салона — Mazda 3 стабильно входит в число самых надёжных хэтчбеков своего класса. Экономичный расход и невысокая стоимость обслуживания.'
-  },
-  {
-    id: 'jp-honda-nwgn-2013',
-    type: 'arrived',
-    brand: 'Honda', model: 'N-WGN', year: '2013–2019', yearTo: 2019,
-    engine: '0.66L Turbo, бензин',
-    mileage: 'уточняется',
-    country: 'Япония',
-    price: '750 000',
-    marketPrice: '950 000 ₽',
-    marketRegion: 'Дальний Восток',
-    saving: 'Выгода 200 000 ₽',
-    images: [],
-    description: 'Компактный японский кей-кар с минимальными расходами на владение — низкий налог, дешёвая страховка, экономичный расход топлива. Лёгкое управление на узких городских улицах и простая парковка. Отличный вариант первого или второго автомобиля в семью.'
-  },
-  {
-    id: 'eu-mercedes-c180-2014',
-    type: 'arrived',
-    brand: 'Mercedes-Benz', model: 'C 180 Coupe', year: '2014–2019', yearTo: 2019,
-    engine: '1.6L Turbo, бензин',
-    mileage: 'уточняется',
-    country: 'Европа',
-    price: '2 150 000',
-    marketPrice: '2 700 000 ₽',
-    marketRegion: 'Центральная Россия',
-    saving: 'Выгода 550 000 ₽',
-    images: [],
-    description: 'Элегантное купе бизнес-класса. Спортивный силуэт, качественные материалы отделки салона, отзывчивый турбомотор. Хорошо держит цену на вторичном рынке и выделяется на фоне типичных седанов представительского класса. Подходит и для города, и для дальних поездок.'
-  },
-  {
     id: 'jp-mercedes-c180-coupe-2016',
     type: 'arrived',
+    sub: 'кузов C205 · Sports',
     brand: 'Mercedes-Benz', model: 'C 180 Coupe', year: '03.2016', yearTo: 2016,
     engine: '1.6L (1 600 см³), бензин',
     mileage: '40 180 км',
@@ -504,6 +451,7 @@ window.IAC_CARS = [
   {
     id: 'jp-honda-freed-2020',
     type: 'arrived',
+    sub: 'кузов GB4 · G Premium Edition',
     brand: 'Honda', model: 'Freed', year: '06.2016', yearTo: 2016,
     engine: '1.5L (1 500 см³), бензин, 4WD',
     mileage: '140 971 км',
@@ -519,6 +467,7 @@ window.IAC_CARS = [
   {
     id: 'jp-honda-freed-plus-2022',
     type: 'arrived',
+    sub: 'кузов GB5 · G Honda Sensing',
     brand: 'Honda', model: 'Freed+', year: '01.2022', yearTo: 2022,
     engine: '1.5L (1 500 см³), бензин',
     mileage: '30 026 км',
@@ -534,6 +483,7 @@ window.IAC_CARS = [
   {
     id: 'jp-honda-vezel-2016',
     type: 'arrived',
+    sub: 'кузов RU1 · X Honda Sensing',
     brand: 'Honda', model: 'Vezel', year: '06.2016', yearTo: 2016,
     engine: '1.5L (1 490 см³), бензин',
     mileage: '52 581 км',
@@ -549,6 +499,7 @@ window.IAC_CARS = [
   {
     id: 'jp-honda-fit-2014',
     type: 'arrived',
+    sub: 'кузов GK3 · 13G S Package',
     brand: 'Honda', model: 'Fit', year: '07.2014', yearTo: 2014,
     engine: '1.3L (1 300 см³), бензин, 2WD',
     mileage: '120 708 км',
@@ -564,6 +515,7 @@ window.IAC_CARS = [
   {
     id: 'jp-honda-cr-v-2020',
     type: 'arrived',
+    sub: 'кузов RW1 · EX Masterpiece',
     brand: 'Honda', model: 'CR-V', year: '01.2020', yearTo: 2020,
     engine: '1.5L (1 500 см³), бензин, 2WD',
     mileage: '50 465 км',
@@ -579,6 +531,7 @@ window.IAC_CARS = [
   {
     id: 'jp-suzuki-solio-bandit-2020',
     type: 'arrived',
+    sub: 'кузов MA36S · Hybrid MV',
     brand: 'Suzuki', model: 'Solio Bandit Hybrid', year: '03.2020', yearTo: 2020,
     engine: '1.2L (1 200 см³), бензин, Hybrid',
     mileage: '83 382 км',
@@ -1451,6 +1404,7 @@ function renderCards(cars) {
           <span class="car-card__badge ${badgeClass}">${badgeText}</span>
         </div>
         <div class="car-card__title">${car.brand} ${car.model}</div>
+        ${car.sub ? `<div class="car-card__sub">${car.sub}</div>` : ''}
         <div class="car-card__year">${car.year}</div>
         <div class="car-card__specs">${[car.engine, car.mileage, car.grade ? 'оценка ' + car.grade : ''].filter(Boolean).join(' · ')}</div>
         <div class="car-card__price"><span>Цена во Владивостоке</span>${car.type === 'order' ? 'От ' + car.price + ' ₽' : (/\d/.test(car.price) ? car.price + ' ₽' : car.price)}</div>
