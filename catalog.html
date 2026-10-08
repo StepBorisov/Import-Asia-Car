@@ -1313,6 +1313,19 @@ function formatPrice(p) {
   return p.replace(/\B(?=(\d{3})+(?!\d))/g, ' ') + ' ₽';
 }
 
+function imgFallback(el, onFail) {
+  // подбирает расширение файла: .jpg, .JPG, .jpeg, .JPEG, .png, .PNG
+  const src = el.getAttribute('src') || '';
+  const base = src.replace(/\.[A-Za-z]+$/, '');
+  const cur = src.slice(base.length);
+  const tried = (el.dataset.tried || '').split(',').filter(Boolean);
+  tried.push(cur);
+  const next = ['.jpg', '.JPG', '.jpeg', '.JPEG', '.png', '.PNG'].find(e => !tried.includes(e));
+  if (next) { el.dataset.tried = tried.join(','); el.src = base + next; }
+  else if (onFail) onFail();
+  else el.style.visibility = 'hidden';
+}
+
 const countryFlag = {
   'Япония': '🇯🇵',
   'Корея': '🇰🇷',
@@ -1334,7 +1347,7 @@ function renderCards(cars) {
 
   grid.innerHTML = cars.map(car => {
     const img = car.images && car.images.length
-      ? `<img class="car-card__img" src="${car.images[0]}" alt="${car.brand} ${car.model}" loading="lazy" onerror="this.style.display='none';this.nextSibling.style.display='flex'">`
+      ? `<img class="car-card__img" src="${car.images[0]}" alt="${car.brand} ${car.model}" loading="lazy" onerror="imgFallback(this,()=>{this.style.display='none';this.nextSibling.style.display='flex'})">`
         + `<div class="car-card__img-placeholder" style="display:none">Фото скоро</div>`
       : `<div class="car-card__img-placeholder">Фото скоро</div>`;
     const badgeClass = car.type === 'order' ? 'car-card__badge--order' : '';
@@ -1407,12 +1420,11 @@ function openCarModal(id) {
   // gallery
   const gallery = document.getElementById('carModalGallery');
   gallery.innerHTML = car.images && car.images.length
-    ? car.images.map(src => `<img src="${src}" alt="${car.brand}" loading="lazy"/>`).join('')
+    ? car.images.map(src => `<img src="${src}" alt="${car.brand}" loading="lazy" onerror="imgFallback(this)"/>`).join('')
     : '<div style="padding:40px;color:#999;font-size:13px;">Фото скоро</div>';
 
   // specs
   document.getElementById('carModalSpecs').innerHTML = [
-    ['Страна', car.country + ' ' + (countryFlag[car.country] || '')],
     ['Год', car.year],
     ['Двигатель', car.engine],
     ['Пробег', car.mileage],

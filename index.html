@@ -1745,7 +1745,7 @@ function renderCatalogSlider() {
   track.innerHTML = cars.map(car => {
     const imgs = (car.images && car.images.length) ? car.images : (car.image ? [car.image] : []);
     const img = imgs.length
-      ? `<div class="cat-slide-gal" onclick="openCarDetailModal('${car.id}')"><div class="cat-slide-gal__track">${imgs.map(src => `<img src="${src}" alt="${car.brand} ${car.model}" loading="lazy" draggable="false" onerror="this.style.visibility='hidden'">`).join('')}</div>${imgs.length > 1 ? `<div class="cat-slide-gal__count">1 / ${imgs.length}</div>` : ''}</div>`
+      ? `<div class="cat-slide-gal" onclick="openCarDetailModal('${car.id}')"><div class="cat-slide-gal__track">${imgs.map(src => `<img src="${src}" alt="${car.brand} ${car.model}" loading="lazy" draggable="false" onerror="imgFallback(this)">`).join('')}</div>${imgs.length > 1 ? `<div class="cat-slide-gal__count">1 / ${imgs.length}</div>` : ''}</div>`
       : `<div class="cat-slide-card__no-img" onclick="openCarDetailModal('${car.id}')">Фото скоро</div>`;
     const badgeClass = car.type === 'arrived' ? 'cat-slide-badge--arrived' : 'cat-slide-badge--order';
     const badgeText = car.type === 'arrived' ? 'Привезён' : 'Под заказ';
@@ -1778,6 +1778,19 @@ function openRequestModalWithCar(model) {
   }
 }
 
+function imgFallback(el, onFail) {
+  // подбирает расширение файла: .jpg, .JPG, .jpeg, .JPEG, .png, .PNG
+  const src = el.getAttribute('src') || '';
+  const base = src.replace(/\.[A-Za-z]+$/, '');
+  const cur = src.slice(base.length);
+  const tried = (el.dataset.tried || '').split(',').filter(Boolean);
+  tried.push(cur);
+  const next = ['.jpg', '.JPG', '.jpeg', '.JPEG', '.png', '.PNG'].find(e => !tried.includes(e));
+  if (next) { el.dataset.tried = tried.join(','); el.src = base + next; }
+  else if (onFail) onFail();
+  else el.style.visibility = 'hidden';
+}
+
 // счётчик фото при свайпе внутри карточки
 document.getElementById('catalogTrack').addEventListener('scroll', function (e) {
   const t = e.target;
@@ -1799,13 +1812,13 @@ function openCarDetailModal(id) {
   const imgs = (car.images && car.images.length) ? car.images : (car.image ? [car.image] : []);
   const wrap = document.getElementById('cdmImgWrap');
   wrap.innerHTML = imgs.length
-    ? `<div class="cdm-gal" id="cdmGal">${imgs.map((src, i) => `<img src="${src}" alt="${car.brand} ${car.model} — фото ${i + 1}" draggable="false" onerror="this.style.visibility='hidden'">`).join('')}</div>${imgs.length > 1 ? `<div class="cdm-count" id="cdmCount">1 / ${imgs.length}</div>` : ''}`
+    ? `<div class="cdm-gal" id="cdmGal">${imgs.map((src, i) => `<img src="${src}" alt="${car.brand} ${car.model} — фото ${i + 1}" draggable="false" onerror="imgFallback(this)">`).join('')}</div>${imgs.length > 1 ? `<div class="cdm-count" id="cdmCount">1 / ${imgs.length}</div>` : ''}`
     : `<div class="cdm-img-wrap--empty" style="width:100%;height:100%;display:flex;align-items:center;justify-content:center;">Фото скоро</div>`;
   const gal = document.getElementById('cdmGal');
   if (gal) gal.addEventListener('scroll', onCdmScroll, { passive: true });
   const thumbs = document.getElementById('cdmThumbs');
   thumbs.innerHTML = imgs.length > 1
-    ? imgs.map((src, i) => `<img src="${src}" alt="Фото ${i + 1}" class="${i === 0 ? 'active' : ''}" onclick="goCdmImg(${i})" loading="lazy">`).join('')
+    ? imgs.map((src, i) => `<img src="${src}" alt="Фото ${i + 1}" class="${i === 0 ? 'active' : ''}" onclick="goCdmImg(${i})" loading="lazy" onerror="imgFallback(this)">`).join('')
     : '';
   thumbs.style.display = imgs.length > 1 ? 'flex' : 'none';
   thumbs.scrollLeft = 0;
