@@ -1590,7 +1590,6 @@ window.IAC_CATALOG = [
     brand: 'Honda', model: 'Freed', year: '06.2016',
     engine: '1.5L (1 500 см³), бензин, 4WD',
     mileage: '140 971 км',
-    color: 'белый перламутр',
     grade: '3.5',
     price: '1 700 000 ₽',
     marketPrice: '2 100 000 ₽',
@@ -1598,8 +1597,24 @@ window.IAC_CATALOG = [
     saving: 'Выгода 400 000 ₽',
     image: '',
     images: ['photos/jp-honda-freed-2020/1.jpg', 'photos/jp-honda-freed-2020/2.jpg', 'photos/jp-honda-freed-2020/3.jpg', 'photos/jp-honda-freed-2020/4.jpg', 'photos/jp-honda-freed-2020/5.jpg', 'photos/jp-honda-freed-2020/6.jpg', 'photos/jp-honda-freed-2020/7.jpg', 'photos/jp-honda-freed-2020/8.jpg', 'photos/jp-honda-freed-2020/9.jpg', 'photos/jp-honda-freed-2020/10.jpg'],
-    desc: 'Компактный семейный минивэн. Лёгкий в управлении, вместительный салон, экономичный.',
-    detail: 'Компактный семейный минивэн с гибкой трансформацией салона под пассажиров или груз. Honda Freed 4WD, комплектация G Premium Edition, 7 мест. Первая регистрация 06.2016, пробег 140 971 км, аукционная оценка 3.5. Двигатель 1.5L (1 500 см³), автоматическая коробка, полный привод. Лёгкий в управлении, подходит для города. Аукционный лист — на последнем фото.'
+    desc: 'Honda Freed, кузов GB4, комплектация G Premium Edition.',
+    detail: 'Honda Freed, кузов GB4, комплектация G Premium Edition. Первая регистрация 06.2016, пробег 140 971 км, аукционная оценка 3.5. Двигатель 1.5L (1 500 см³), бензин, 4WD. Аукционный лист — на последнем фото.'
+  },
+  {
+    id: 'jp-honda-vezel-2016',
+    type: 'arrived',
+    brand: 'Honda', model: 'Vezel', year: '06.2016',
+    engine: '1.5L (1 490 см³), бензин',
+    mileage: '52 581 км',
+    grade: 'R',
+    price: '1 450 000 ₽',
+    marketPrice: '1 750 000 ₽',
+    marketRegion: 'Дальний Восток',
+    saving: 'Выгода 300 000 ₽',
+    image: '',
+    images: ['photos/jp-honda-vezel-2016/1.jpg', 'photos/jp-honda-vezel-2016/2.jpg', 'photos/jp-honda-vezel-2016/3.jpg', 'photos/jp-honda-vezel-2016/4.jpg', 'photos/jp-honda-vezel-2016/5.jpg', 'photos/jp-honda-vezel-2016/6.jpg', 'photos/jp-honda-vezel-2016/7.jpg', 'photos/jp-honda-vezel-2016/8.jpg', 'photos/jp-honda-vezel-2016/9.jpg', 'photos/jp-honda-vezel-2016/10.jpg'],
+    desc: 'Honda Vezel, кузов RU1, комплектация X Honda Sensing.',
+    detail: 'Honda Vezel, кузов RU1, комплектация X Honda Sensing. Первая регистрация 06.2016, пробег 52 581 км, аукционная оценка R. Двигатель 1.5L (1 490 см³), бензин. Аукционный лист — на последнем фото.'
   },
   {
     id: 'jp-mazda-cx3-2014',
@@ -1743,7 +1758,7 @@ function renderCatalogSlider() {
         <div class="cat-slide-card__year">${car.year}</div>
         <div class="cat-slide-card__specs">${[car.engine, car.mileage, car.color, car.grade ? 'оценка ' + car.grade : ''].filter(Boolean).join(' · ')}</div>
         <div class="cat-slide-card__price"><span>Цена во Владивостоке</span>${car.type === 'order' ? 'От ' + car.price : car.price}</div>
-        ${car.type === 'arrived' ? `<div class="cat-slide-card__market"><span>Рынок «${car.marketRegion}»</span><s>${car.marketPrice}</s></div>` : ''}
+        ${car.type === 'arrived' && car.marketPrice ? `<div class="cat-slide-card__market"><span>Рынок «${car.marketRegion}»</span><s>${car.marketPrice}</s></div>` : ''}
         ${car.type === 'arrived' && car.saving ? `<div class="cat-slide-card__saving">${car.saving}</div>` : ''}
         ${car.desc ? `<div class="cat-slide-card__desc">${car.desc}</div>` : ''}
         <button class="cat-slide-btn" onclick="openCarDetailModal('${car.id}')">Узнать детали</button>
@@ -1799,8 +1814,8 @@ function openCarDetailModal(id) {
   document.getElementById('cdmYear').textContent = car.year;
   document.getElementById('cdmSpecs').textContent = [car.engine, car.mileage, car.color, car.grade ? 'оценка ' + car.grade : ''].filter(Boolean).join(' · ');
   document.getElementById('cdmPrice').textContent = car.type === 'order' ? 'От ' + car.price : car.price;
-  document.getElementById('cdmMarket').innerHTML = `Рынок «${car.marketRegion}»: <s>${car.marketPrice}</s>`;
-  document.getElementById('cdmMarket').style.display = car.type === 'arrived' ? 'block' : 'none';
+  document.getElementById('cdmMarket').innerHTML = car.marketPrice ? `Рынок «${car.marketRegion}»: <s>${car.marketPrice}</s>` : '';
+  document.getElementById('cdmMarket').style.display = (car.type === 'arrived' && car.marketPrice) ? 'block' : 'none';
   document.getElementById('cdmSaving').textContent = car.saving || '';
   document.getElementById('cdmSaving').style.display = (car.type === 'arrived' && car.saving) ? 'inline-block' : 'none';
   document.getElementById('cdmPriceNote').style.display = car.type === 'order' ? 'block' : 'none';

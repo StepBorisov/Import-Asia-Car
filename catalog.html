@@ -484,7 +484,22 @@ window.IAC_CARS = [
     marketRegion: 'Дальний Восток',
     saving: 'Выгода 400 000 ₽',
     images: ['photos/jp-honda-freed-2020/1.jpg', 'photos/jp-honda-freed-2020/2.jpg', 'photos/jp-honda-freed-2020/3.jpg', 'photos/jp-honda-freed-2020/4.jpg', 'photos/jp-honda-freed-2020/5.jpg', 'photos/jp-honda-freed-2020/6.jpg', 'photos/jp-honda-freed-2020/7.jpg', 'photos/jp-honda-freed-2020/8.jpg', 'photos/jp-honda-freed-2020/9.jpg', 'photos/jp-honda-freed-2020/10.jpg'],
-    description: 'Компактный семейный минивэн с гибкой трансформацией салона под пассажиров или груз. Honda Freed 4WD, комплектация G Premium Edition, 7 мест. Первая регистрация 06.2016, пробег 140 971 км, аукционная оценка 3.5. Двигатель 1.5L (1 500 см³), автоматическая коробка, полный привод. Лёгкий в управлении, подходит для города. Аукционный лист — на последнем фото.'
+    description: 'Honda Freed, кузов GB4, комплектация G Premium Edition. Первая регистрация 06.2016, пробег 140 971 км, аукционная оценка 3.5. Двигатель 1.5L (1 500 см³), бензин, 4WD. Аукционный лист — на последнем фото.'
+  },
+  {
+    id: 'jp-honda-vezel-2016',
+    type: 'arrived',
+    brand: 'Honda', model: 'Vezel', year: '06.2016', yearTo: 2016,
+    engine: '1.5L (1 490 см³), бензин',
+    mileage: '52 581 км',
+    grade: 'R',
+    country: 'Япония',
+    price: '1 450 000',
+    marketPrice: '1 750 000 ₽',
+    marketRegion: 'Дальний Восток',
+    saving: 'Выгода 300 000 ₽',
+    images: ['photos/jp-honda-vezel-2016/1.jpg', 'photos/jp-honda-vezel-2016/2.jpg', 'photos/jp-honda-vezel-2016/3.jpg', 'photos/jp-honda-vezel-2016/4.jpg', 'photos/jp-honda-vezel-2016/5.jpg', 'photos/jp-honda-vezel-2016/6.jpg', 'photos/jp-honda-vezel-2016/7.jpg', 'photos/jp-honda-vezel-2016/8.jpg', 'photos/jp-honda-vezel-2016/9.jpg', 'photos/jp-honda-vezel-2016/10.jpg'],
+    description: 'Honda Vezel, кузов RU1, комплектация X Honda Sensing. Первая регистрация 06.2016, пробег 52 581 км, аукционная оценка R. Двигатель 1.5L (1 490 см³), бензин. Аукционный лист — на последнем фото.'
   },
   {
     id: 'toyota-c-hr-2016',
@@ -1335,7 +1350,7 @@ function renderCards(cars) {
         <div class="car-card__title">${car.brand} ${car.model}</div>
         <div class="car-card__year">${car.year}</div>
         <div class="car-card__specs">${[car.engine, car.mileage, car.grade ? 'оценка ' + car.grade : ''].filter(Boolean).join(' · ')}</div>
-        <div class="car-card__price"><span>Цена во Владивостоке</span>${car.type === 'order' ? 'От ' + car.price : car.price} ₽</div>
+        <div class="car-card__price"><span>Цена во Владивостоке</span>${car.type === 'order' ? 'От ' + car.price + ' ₽' : (/\d/.test(car.price) ? car.price + ' ₽' : car.price)}</div>
         ${car.type === 'arrived' && car.marketPrice ? `<div class="car-card__market"><span>Рынок «${car.marketRegion}»</span><s>${car.marketPrice}</s></div>` : ''}
         ${car.type === 'arrived' && car.saving ? `<div class="car-card__saving">${car.saving}</div>` : ''}
         <button class="btn-card">Получить расчёт</button>
@@ -1405,7 +1420,7 @@ function openCarModal(id) {
   ].map(([l,v]) => `<div class="car-modal__spec"><div class="car-modal__spec-label">${l}</div><div class="car-modal__spec-val">${v}</div></div>`).join('');
 
   document.getElementById('carModalPrice').innerHTML = `
-    <div><span>Цена во Владивостоке</span>${car.type === 'order' ? 'От ' + car.price : car.price} ₽</div>
+    <div><span>Цена во Владивостоке</span>${car.type === 'order' ? 'От ' + car.price + ' ₽' : (/\d/.test(car.price) ? car.price + ' ₽' : car.price)}</div>
     ${car.type === 'arrived' && car.marketPrice ? `<div style="font-size:14px;font-weight:400;color:#777;margin-top:6px;">Рынок «${car.marketRegion}»: <s>${car.marketPrice}</s></div>` : ''}
     ${car.type === 'arrived' && car.saving ? `<div class="car-card__saving" style="margin-top:8px;">${car.saving}</div>` : ''}
     ${car.type === 'order' ? `<div class="car-card__price-note" style="margin-top:8px;">Цены ориентировочные, точная цена машины зависит от многих факторов, уточняйте у менеджера</div>` : ''}
