@@ -732,6 +732,7 @@ footer .footer-credit-link svg { width: 13px; height: 13px; flex-shrink: 0; }
 .cat-slide-gal__track { display:flex; overflow-x:auto; scroll-snap-type:x mandatory; scrollbar-width:none; -webkit-overflow-scrolling:touch; }
 .cat-slide-gal__track::-webkit-scrollbar { display:none; }
 .cat-slide-gal__track img { flex:0 0 100%; width:100%; aspect-ratio:4/3; object-fit:contain; scroll-snap-align:center; display:block; background:#f2f2f2; -webkit-user-drag:none; user-select:none; }
+.cat-slide-gal__track img:not(:last-child) { object-fit:cover; }
 .cat-slide-gal__count { position:absolute; right:10px; bottom:10px; background:rgba(0,0,0,0.6); color:#fff; font-size:11px; padding:3px 9px; border-radius:12px; pointer-events:none; }
 .cat-slide-card__no-img {
   width:100%; aspect-ratio:4/3; background:#f0f0f0;
